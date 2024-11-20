@@ -20,6 +20,7 @@ config/windows_native_icon="res://icon.ico"
 Config="*res://config.gd"
 Main="*res://main/main.tscn"
 Style="*res://style.gd"
+Global="*res://global.gd"
 
 [display]
 
@@ -31,6 +32,8 @@ window/stretch/mode="canvas_items"
 
 players=""
 killzone=""
+foods=""
+enemies=""
 
 [input]
 
@@ -46,10 +49,6 @@ jump={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
-
-[internationalization]
-
-locale/translations=PackedStringArray("res://assets/translations/translation.cmn.translation", "res://assets/translations/translation.en.translation", "res://assets/translations/translation.zh.translation")
 
 [rendering]
 

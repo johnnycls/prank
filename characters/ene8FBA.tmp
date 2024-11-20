@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dou3axyms2kyj"]
+
+[ext_resource type="Script" path="res://characters/enemy.gd" id="1_mei63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
+size = Vector2(200, 250)
+
+[node name="Enemy" type="Area2D" groups=["killzone"]]
+z_index = 10
+script = ExtResource("1_mei63")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 200.0
+offset_bottom = 250.0
+color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(100, 125)
+shape = SubResource("RectangleShape2D_0deo2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true

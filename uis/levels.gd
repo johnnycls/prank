@@ -21,7 +21,7 @@ func init():
 
 func create_level_button(level_number: int):
 	var is_locked = not UNLOCK_CRITERIA[level_number]
-	var status = Main.progress.get(level_number, {})
+	# var status = Main.progress.get(level_number, {})
 	var title = "TITLE_%d" % level_number
 	
 	var level_btn = level_btn_scene.instantiate()

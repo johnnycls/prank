@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal dead
+signal area_or_body_entered(area_or_body: Node2D)
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var camera: Camera2D = $Camera2D
@@ -32,7 +32,7 @@ func _ready() -> void:
 	var screen_resolution = DisplayServer.window_get_size()
 	var base_resolution = Vector2i(1920, 1080)
 	var resolution_scale = screen_resolution / base_resolution
-	var zoom_factor = Vector2.ONE * (1.2 / min(resolution_scale.x, resolution_scale.y))
+	var zoom_factor = Vector2.ONE * (0.5 / min(resolution_scale.x, resolution_scale.y))
 	camera.zoom = zoom_factor
 	camera.offset = Vector2(collision_shape.shape.size.x, -200.0) / zoom_factor
 
@@ -87,5 +87,7 @@ func jump() -> void:
 	current_jump_time = 0.0
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("killzone"):
-		dead.emit()
+	area_or_body_entered.emit(area)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	area_or_body_entered.emit(body)
