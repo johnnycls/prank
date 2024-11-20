@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://buwygu3ymg7qo"]
+
+[ext_resource type="Script" path="res://uis/components/level_button.gd" id="2_raeiu"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4abi0"]
+color = Color(1, 1, 1, 1)
+thickness = 4
+vertical = true
+
+[node name="LevelButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -901.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxLine_4abi0")
+alignment = 0
+clip_text = true
+script = ExtResource("2_raeiu")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3q3m5cestqii"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_5n7kh"]
+[ext_resource type="PackedScene" uid="uid://dm6prtdyof73e" path="res://uis/load.tscn" id="2_a6tyn"]
+[ext_resource type="PackedScene" uid="uid://b3j6uxavsdbed" path="res://uis/save.tscn" id="3_al6x3"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_5n7kh")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Inventory" type="Control" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Load" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Load" parent="TabContainer/Load" instance=ExtResource("2_a6tyn")]
+layout_mode = 1
+
+[node name="Save" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Save" parent="TabContainer/Save" instance=ExtResource("3_al6x3")]

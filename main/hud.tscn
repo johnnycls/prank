@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctgyq10dlxu46"]
+
+[ext_resource type="Script" path="res://main/hud.gd" id="1_hqj21"]
+[ext_resource type="PackedScene" uid="uid://7i2ltxhfe2tn" path="res://uis/home.tscn" id="2_1urqo"]
+[ext_resource type="Theme" uid="uid://bgq7gf52v0365" path="res://assets/theme/base_theme.tres" id="2_irx4e"]
+[ext_resource type="PackedScene" uid="uid://b3q3m5cestqii" path="res://menu/menu.tscn" id="4_bq5jc"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_hqj21")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_irx4e")
+
+[node name="Home" parent="UI" instance=ExtResource("2_1urqo")]
+layout_mode = 1
+
+[node name="Menu" parent="." instance=ExtResource("4_bq5jc")]
+process_mode = 3
+visible = false
+theme = ExtResource("2_irx4e")

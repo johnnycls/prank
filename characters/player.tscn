@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbefsipxb2dw8"]
+
+[ext_resource type="Script" path="res://characters/player.gd" id="1_fpagb"]
+[ext_resource type="Texture2D" uid="uid://c252e1mww58l3" path="res://assets/character_sprites/player.png" id="2_jc1c1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynq2q"]
+size = Vector2(50, 50)
+
+[node name="Player" type="CharacterBody2D" groups=["players"]]
+z_index = 10
+script = ExtResource("1_fpagb")
+move_speed = 500.0
+jump_velocity = -700.0
+max_jump_time = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(25, 25)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_jc1c1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_0deo2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_ynq2q")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
