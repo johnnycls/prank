@@ -7,7 +7,8 @@ var level_btn_scene = preload("res://uis/components/level_button.tscn")
 @onready var button_container = $ScrollContainer/VBoxContainer
 
 var UNLOCK_CRITERIA = {
-	0: true
+	0: true,
+	1: Main.progress.get(0, {}).get("cleared", false)
 }
 var buttons: Array = []
 var last_unlocked_button

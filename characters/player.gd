@@ -21,24 +21,21 @@ func set_cam_lim(_cam_lim_top: int, _cam_lim_bottom: int, _cam_lim_left: int, _c
 
 func _ready() -> void:
 	if not show_cam:
-		camera.hide()
+		disable_camera()
 	camera.limit_top = cam_lim_top
 	camera.limit_bottom = cam_lim_bottom
 	camera.limit_left = cam_lim_left
 	camera.limit_right = cam_lim_right
 	
-	var screen_resolution = DisplayServer.window_get_size()
-	var base_resolution = Vector2i(1920, 1080)
-	var resolution_scale = screen_resolution / base_resolution
-	var zoom_factor = Vector2.ONE * (0.5 / min(resolution_scale.x, resolution_scale.y))
+	var zoom_factor = Global.get_zoom_factor()
 	camera.zoom = zoom_factor
 	camera.offset = Vector2(collision_shape.shape.size.x, -200.0) / zoom_factor
 
 func disable_camera() -> void:
-	camera.hide() 
+	camera.enabled = false 
 	
 func enable_camera() -> void:
-	camera.show()
+	camera.enabled = true
 
 
 
@@ -97,19 +94,26 @@ func jump() -> void:
 signal die
 signal area_or_body_entered(area_or_body: Node2D)
 
+@export var invincible_time: float = 2.0
 @onready var hp_label = $HPLabel
 
 var hp: float = 100.0
+var is_invincible: bool = false
 
 func init() -> void:
 	hp = 100.0
 	hp_label.text = "%.2f" % hp + "/ 100"
 	
 func hit(damage:float):
-	hp -= damage
-	hp_label.text = "%.2f" % hp + "/ 100"
-	if hp<=0:
-		die.emit()
+	if not is_invincible:
+		is_invincible = true
+		hp -= damage
+		hp_label.text = "%.2f" % hp + "/ 100"
+		if hp<=0:
+			die.emit()
+		var timer = get_tree().create_timer(invincible_time)
+		await timer.timeout
+		is_invincible = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	area_or_body_entered.emit(area)
