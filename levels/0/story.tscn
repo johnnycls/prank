@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56quopprnfav"]
+
+[ext_resource type="Script" path="res://levels/0/story.gd" id="1_ddp86"]
+
+[node name="Story" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ddp86")
+
+[node name="Character1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 281.0
+offset_right = 376.0
+offset_bottom = 1064.0
+
+[node name="Character2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1490.0
+offset_top = 285.0
+offset_right = 1770.0
+offset_bottom = 1068.0
+
+[node name="DialogueBox" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 758.0
+offset_right = 1920.0
+offset_bottom = 1068.0
+color = Color(0, 0, 0, 1)
+
+[node name="Dialogue" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 792.0
+offset_right = 1882.0
+offset_bottom = 1030.0
+theme_override_font_sizes/normal_font_size = 32
+text = "ABC"

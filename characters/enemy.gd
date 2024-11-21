@@ -9,19 +9,24 @@ var fireball_scene: PackedScene = preload("res://objects/fireball.tscn")
 @export var shoot_cooldown: float = 2.0
 @export var player: CharacterBody2D
 
-@onready var health_label = $HealthLabel
+@onready var hp_label = $HPLabel
 @onready var shoot_timer = $ShootTimer
 
-var hungry_points: float = 100.0
+var damage = 10.0
+
+var hp: float = 100.0
 var target
+
+func init():
+	hp = 100.0
 
 func _ready():
 	shoot_timer.wait_time = shoot_cooldown
 	shoot_timer.connect("timeout", _shoot_fireball)
 
 func _physics_process(delta):
-	hungry_points -= hungry_drain_rate * delta
-	health_label.text = "%.2f" % hungry_points + "/ 100"
+	hp -= hungry_drain_rate * delta
+	hp_label.text = "%.2f" % hp + "/ 100"
 	check_death()
 
 	if Global.is_node_valid(target):
@@ -33,7 +38,6 @@ func _physics_process(delta):
 
 func find_nearest_target():
 	var targets = Global.get_valid_nodes_in_group("foods")
-	print(targets.size())
 	
 	return targets.reduce(func(closest, current):
 		var closest_dist = closest.global_position.distance_to(global_position) if closest else INF
@@ -49,10 +53,10 @@ func _shoot_fireball():
 	shoot_timer.start()
 
 func check_death():
-	if hungry_points <= 0:
+	if hp <= 0:
 		died.emit()
 		queue_free()
 
 func eat_food(food_points: float):
-	hungry_points += food_points
-	health_label.text = "%.2f" % hungry_points + "/ 100"
+	hp += food_points
+	hp_label.text = "%.2f" % hp + "/ 100"

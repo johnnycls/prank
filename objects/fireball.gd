@@ -5,6 +5,8 @@ extends Area2D
 
 var direction: Vector2 = Vector2.RIGHT
 
+var damage = 20.0
+
 func _ready():
 	var timer = get_tree().create_timer(lifetime)
 	await timer.timeout

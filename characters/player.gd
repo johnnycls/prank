@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-signal area_or_body_entered(area_or_body: Node2D)
-
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var camera: Camera2D = $Camera2D
 
@@ -41,6 +39,10 @@ func disable_camera() -> void:
 	
 func enable_camera() -> void:
 	camera.show()
+
+
+
+
 
 @export var move_speed : float = 400.0
 @export var jump_velocity : float = -500.0
@@ -85,6 +87,29 @@ func jump() -> void:
 	velocity.y = jump_velocity
 	is_jumping = true
 	current_jump_time = 0.0
+	
+	
+	
+	
+	
+	
+	
+signal die
+signal area_or_body_entered(area_or_body: Node2D)
+
+@onready var hp_label = $HPLabel
+
+var hp: float = 100.0
+
+func init() -> void:
+	hp = 100.0
+	hp_label.text = "%.2f" % hp + "/ 100"
+	
+func hit(damage:float):
+	hp -= damage
+	hp_label.text = "%.2f" % hp + "/ 100"
+	if hp<=0:
+		die.emit()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	area_or_body_entered.emit(area)

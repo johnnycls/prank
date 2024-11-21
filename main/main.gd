@@ -1,6 +1,7 @@
 extends Node
 
 signal ui_changed
+signal story_ended
 
 var home_scene = load("res://uis/home.tscn")
 var levels_ui = load("res://uis/levels.tscn")
@@ -38,6 +39,7 @@ func change_ui(page: Control) -> void:
 	
 func win_level(level_status) -> void:
 	_update_progress(current_level, level_status)
+	_current_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	var timer = get_tree().create_timer(2.0)
 	await timer.timeout
 	_remove_scene()
@@ -49,3 +51,12 @@ func save_checkpoint(level_status) -> void:
 func _update_progress(key, value)-> void:	
 	progress[key] = value
 	$State.save_progress(progress)
+
+func start_story(page) -> void:
+	_current_scene.process_mode = Node.PROCESS_MODE_DISABLED
+	change_ui(page)
+	
+func end_story() -> void:
+	$Hud.clear_ui()
+	_current_scene.process_mode = Node.PROCESS_MODE_INHERIT
+	story_ended.emit()

@@ -25,7 +25,7 @@ position_smoothing_enabled = true
 [node name="ShootTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="HealthLabel" type="Label" parent="."]
+[node name="HPLabel" type="Label" parent="."]
 offset_left = -19.0
 offset_top = -95.0
 offset_right = 219.0

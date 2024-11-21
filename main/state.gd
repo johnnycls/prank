@@ -13,7 +13,7 @@ func read_progress() -> Dictionary:
 	var json = JSON.new()
 	return json.get_data() if json.parse(file.get_as_text()) == OK else INIT_PROGRESS
 
-func save_progress(_progress: Array) -> bool:
+func save_progress(_progress: Dictionary) -> bool:
 	var file = FileAccess.open(Config.PROGRESS_PATH, FileAccess.WRITE)
 	if not file:
 		return false
