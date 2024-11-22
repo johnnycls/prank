@@ -16,11 +16,12 @@ var current_game_state
 
 func _start() -> void:
 	player.disable_camera()
-	camera.enabled = true
-	camera.move_to_player()
 	current_game_state = init_game_state.duplicate(true)
 	player.position = checkpoint_pos[int(init_game_state.get("checkpoint", 0))]
 	player.init()
+	player.process_mode = Node.PROCESS_MODE_DISABLED
+	camera.enabled = true
+	camera.move_to_player()
 
 func _ready() -> void:
 	if Main.progress.has(str(level_num)):
@@ -62,6 +63,7 @@ func _on_player_die() -> void:
 
 func _on_camera_camera_transition_complete() -> void:
 	camera.enabled = false
+	player.process_mode = Node.PROCESS_MODE_INHERIT
 	player.enable_camera()
 
 func _on_goal_player_enter() -> void:

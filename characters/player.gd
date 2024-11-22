@@ -41,53 +41,37 @@ func enable_camera() -> void:
 
 
 
-@export var move_speed : float = 400.0
-@export var jump_velocity : float = -500.0
-@export var gravity : float = 1500.0
-@export var jump_cut_height : float = 0.0
+@export var move_speed : float = 1250.0
+@export var jump_speed : float = 1250.0
+@export var acceleration_due_to_gravity : float = 2500.0
 @export var max_jump_time : float = 0.3
 @export var rotation_speed : float = 5.0
-
 var current_jump_time : float = 0.0
-var is_jumping : bool = false
+
+func _stop_jumping():
+	if velocity.y < 0:
+		velocity.y = 0
 
 func _physics_process(delta) -> void:
 	var rotation_input = Input.get_axis("rotate_anticlockwise", "rotate_clockwise")
 	rotation += rotation_input * rotation_speed * delta
-
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		
-		if is_jumping:
-			if Input.is_action_pressed("move_up"):
-				current_jump_time += delta
-				if current_jump_time > max_jump_time:
-					is_jumping = false
-			else:
-				if velocity.y < 0:
-					velocity.y *= jump_cut_height
-				is_jumping = false
-
+	
 	if Input.is_action_just_pressed("move_up"):
-		jump()
+		current_jump_time = 0
+		velocity.y = -jump_speed
+	elif Input.is_action_pressed("move_up"):
+		current_jump_time += delta
+		if current_jump_time > max_jump_time:
+			_stop_jumping()
+	else:
+		_stop_jumping()
+		
+	if not is_on_floor():
+		velocity.y += acceleration_due_to_gravity * delta
 
 	var direction = Input.get_axis("move_left", "move_right")
-	
-	if direction:
-		velocity.x = direction * move_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, move_speed)
-
+	velocity.x = direction * move_speed
 	move_and_slide()
-
-	if is_on_floor():
-		is_jumping = false
-		current_jump_time = 0.0
-
-func jump() -> void:
-	velocity.y = jump_velocity
-	is_jumping = true
-	current_jump_time = 0.0
 	
 	
 	
