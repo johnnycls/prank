@@ -12,9 +12,9 @@ size = Vector2(50, 170)
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 z_index = 10
 script = ExtResource("1_fpagb")
-move_speed = 1500.0
-jump_velocity = -1500.0
-gravity = 3000.0
+move_speed = 1250.0
+jump_velocity = -1250.0
+gravity = 2500.0
 
 [node name="HPLabel" type="Label" parent="."]
 offset_left = -84.0

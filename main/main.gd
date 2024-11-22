@@ -38,17 +38,17 @@ func change_ui(page: Control) -> void:
 	ui_changed.emit()
 	
 func win_level(level_status) -> void:
-	_update_progress(current_level, level_status)
-	_current_scene.process_mode = Node.PROCESS_MODE_DISABLED
+	_update_progress(str(current_level), level_status)
+	_current_scene.call_deferred("set_process_mode", Node.PROCESS_MODE_DISABLED)
 	var timer = get_tree().create_timer(2.0)
 	await timer.timeout
 	_remove_scene()
 	change_ui(levels_ui.instantiate())
 	
 func save_checkpoint(level_status) -> void:
-	_update_progress(current_level, level_status)
+	_update_progress(str(current_level), level_status)
 
-func _update_progress(key, value)-> void:	
+func _update_progress(key: String, value)-> void:	
 	progress[key] = value
 	$State.save_progress(progress)
 

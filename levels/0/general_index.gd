@@ -18,8 +18,8 @@ func _start() -> void:
 	player.position = checkpoint_pos[int(init_game_state.get("checkpoint", 0))]
 
 func _ready() -> void:
-	if Main.progress.has(level_num):
-		saved_game_state = Main.progress[level_num]
+	if Main.progress.has(str(level_num)):
+		saved_game_state = Main.progress[str(level_num)]
 		init_game_state.checkpoint = saved_game_state.checkpoint
 	else:
 		saved_game_state = init_game_state.duplicate(true)			

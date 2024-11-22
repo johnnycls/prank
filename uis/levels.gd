@@ -8,7 +8,7 @@ var level_btn_scene = preload("res://uis/components/level_button.tscn")
 
 var UNLOCK_CRITERIA = {
 	0: true,
-	1: Main.progress.get(0, {}).get("cleared", false)
+	1: Main.progress.get("0", {}).get("cleared", false)
 }
 var buttons: Array = []
 var last_unlocked_button
@@ -22,7 +22,7 @@ func init():
 
 func create_level_button(level_number: int):
 	var is_locked = not UNLOCK_CRITERIA[level_number]
-	# var status = Main.progress.get(level_number, {})
+	# var status = Main.progress.get(str(level_number), {})
 	var title = "TITLE_%d" % level_number
 	
 	var level_btn = level_btn_scene.instantiate()
