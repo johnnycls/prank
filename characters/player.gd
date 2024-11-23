@@ -43,34 +43,53 @@ func enable_camera() -> void:
 
 @export var move_speed : float = 1250.0
 @export var jump_speed : float = 1250.0
-@export var acceleration_due_to_gravity : float = 2500.0
+@export var acceleration_due_to_gravity : float = 1250.0
+@export var acceleration_due_to_air_resistance: float = 1000.0
 @export var max_jump_time : float = 0.3
-@export var rotation_speed : float = 5.0
+@export var rotational_speed : float = 3.0
+
 var current_jump_time : float = 0.0
+var walking_velocity: Vector2 = Vector2.ZERO
+var rotated_jumping_velocity: Vector2 = Vector2.ZERO
+var gravitational_velocity: Vector2 = Vector2.ZERO
+var is_jumping: bool = false
 
 func _stop_jumping():
-	if velocity.y < 0:
-		velocity.y = 0
+	is_jumping = false
+	rotated_jumping_velocity.x = 0
+	if -rotated_jumping_velocity.y > gravitational_velocity.y:
+		rotated_jumping_velocity.y = -gravitational_velocity.y
 
 func _physics_process(delta) -> void:
 	var rotation_input = Input.get_axis("rotate_anticlockwise", "rotate_clockwise")
-	rotation += rotation_input * rotation_speed * delta
+	rotation += rotation_input * rotational_speed * delta
 	
+	var direction = Input.get_axis("move_left", "move_right")
+	walking_velocity.x = direction * move_speed
+	var rotated_walking_velocity = walking_velocity.rotated(rotation)
+	
+	if is_on_floor():
+		rotated_jumping_velocity.y = 0
+		gravitational_velocity.y = 0
+	else:
+		gravitational_velocity.y += acceleration_due_to_gravity * delta
+		
 	if Input.is_action_just_pressed("move_up"):
+		is_jumping = true
 		current_jump_time = 0
-		velocity.y = -jump_speed
+		rotated_jumping_velocity += Vector2(0, -jump_speed).rotated(rotation)
 	elif Input.is_action_pressed("move_up"):
 		current_jump_time += delta
 		if current_jump_time > max_jump_time:
 			_stop_jumping()
-	else:
+	elif is_jumping:
 		_stop_jumping()
+	
+	if abs(rotated_jumping_velocity.x) > 0:
+		var resistance = acceleration_due_to_air_resistance * cos(rotation) * delta
+		rotated_jumping_velocity.x = move_toward(rotated_jumping_velocity.x, 0, resistance)
 		
-	if not is_on_floor():
-		velocity.y += acceleration_due_to_gravity * delta
-
-	var direction = Input.get_axis("move_left", "move_right")
-	velocity.x = direction * move_speed
+	velocity = rotated_jumping_velocity + rotated_walking_velocity + gravitational_velocity
 	move_and_slide()
 	
 	
