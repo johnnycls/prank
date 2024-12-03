@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var cam_lim_left: int = -100000000
 @export var cam_lim_right: int = 100000000
 @export var show_cam: bool = true
+@export var show_hp: bool = true
 
 func set_cam_lim(_cam_lim_top: int, _cam_lim_bottom: int, _cam_lim_left: int, _cam_lim_right: int) -> void:
 	camera.limit_top = _cam_lim_top
@@ -22,6 +23,8 @@ func set_cam_lim(_cam_lim_top: int, _cam_lim_bottom: int, _cam_lim_left: int, _c
 func _ready() -> void:
 	if not show_cam:
 		disable_camera()
+	if not show_hp:
+		hp_label.hide()
 	camera.limit_top = cam_lim_top
 	camera.limit_bottom = cam_lim_bottom
 	camera.limit_left = cam_lim_left
@@ -36,6 +39,16 @@ func disable_camera() -> void:
 	
 func enable_camera() -> void:
 	camera.enabled = true
+	
+func teleport(new_pos: Vector2) -> void:
+	camera.position_smoothing_enabled = false
+	global_position = new_pos
+	camera.reset_smoothing()
+	camera.position_smoothing_enabled = true
+
+
+
+
 
 
 
@@ -47,6 +60,7 @@ func enable_camera() -> void:
 @export var acceleration_due_to_air_resistance: float = 1000.0
 @export var max_jump_time : float = 0.3
 @export var rotational_speed : float = 3.0
+@export var can_fly: bool = true
 
 var current_jump_time : float = 0.0
 var walking_velocity: Vector2 = Vector2.ZERO
@@ -74,7 +88,7 @@ func _physics_process(delta) -> void:
 	else:
 		gravitational_velocity.y += acceleration_due_to_gravity * delta
 		
-	if Input.is_action_just_pressed("move_up"):
+	if Input.is_action_just_pressed("move_up") and (can_fly or is_on_floor()):
 		is_jumping = true
 		current_jump_time = 0
 		rotated_jumping_velocity += Vector2(0, -jump_speed).rotated(rotation)

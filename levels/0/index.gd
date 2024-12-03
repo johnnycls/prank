@@ -2,13 +2,13 @@ extends Node2D
 
 var story_scene = preload("res://levels/0/story.tscn")
 
-@export var level_num = 0
+@export var level_num = 1
 @export var checkpoint_pos: Dictionary = {
-	0: Vector2(-700,60),
+	0: Vector2(0,0),
 }
 
+@onready var camera = $Camera
 @onready var player = $Player
-@onready var enemy = $Enemy
 
 var init_game_state = {
 	"checkpoint": 0,
@@ -17,11 +17,13 @@ var saved_game_state
 var current_game_state
 
 func _start() -> void:
+	player.disable_camera()
 	current_game_state = init_game_state.duplicate(true)
 	player.position = checkpoint_pos[int(init_game_state.get("checkpoint", 0))]
-	enemy.position = Vector2(0,0)
-	enemy.init()
 	player.init()
+	player.process_mode = Node.PROCESS_MODE_DISABLED
+	camera.enabled = true
+	camera.move_to_player()
 
 func _ready() -> void:
 	if Main.progress.has(str(level_num)):
@@ -31,9 +33,6 @@ func _ready() -> void:
 		saved_game_state = init_game_state.duplicate(true)
 	Main.story_ended.connect(_on_story_ended)
 	Main.start_story(story_scene.instantiate())
-	
-func _on_story_ended() -> void:
-	_start()
 
 func lose() -> void:
 	_start()
@@ -64,3 +63,14 @@ func _on_enemy_died() -> void:
 
 func _on_player_die() -> void:
 	lose()
+
+func _on_camera_camera_transition_complete() -> void:
+	camera.enabled = false
+	player.process_mode = Node.PROCESS_MODE_INHERIT
+	player.enable_camera()
+
+func _on_goal_player_enter() -> void:
+	win()
+
+func _on_story_ended():
+	_start()

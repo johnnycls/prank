@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgpclhjaiepni"]
-
-[ext_resource type="Script" path="res://levels/0/spawn_point.gd" id="1_fsx1u"]
-
-[node name="SpawnPoint" type="Node2D"]
-script = ExtResource("1_fsx1u")

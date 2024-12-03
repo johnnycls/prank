@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmexgambip6le"]
+
+[ext_resource type="Script" path="res://scenes/runway.gd" id="1_j5mqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xdis"]
+
+[node name="Runway" type="Area2D"]
+script = ExtResource("1_j5mqs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2xdis")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

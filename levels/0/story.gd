@@ -1,40 +1,31 @@
 extends Control
 
-@onready var character1 = $Character1
-@onready var character2 = $Character2
-@onready var dialogue_box = $DialogueBox
-@onready var dialogue = $Dialogue
+@onready var speech_bubble = $SpeechBubble
+
+var player
 
 var steps: Array = [
 	func():
-		set_dialogue("LEVEL0_0"),
+		speech_bubble.set_dialogue(get_canva_pos(player),"LEVEL0_0"),
 	func():
-		set_dialogue("LEVEL0_1")
+		speech_bubble.set_dialogue(get_canva_pos(player),"LEVEL0_1"),
 ]
-var current_step: int = 0
+var current_step: int = -1
+
+func get_canva_pos(node: Node2D):
+	return get_viewport().get_canvas_transform() * node.global_position
+
+func next_step():
+	current_step += 1
+	if current_step < steps.size():
+		steps[current_step].call()
+	else:
+		Main.end_story()
 
 func _ready() -> void:
-	steps[current_step].call()
+	player = get_tree().get_first_node_in_group("players")
+	next_step()
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		current_step += 1
-		if current_step < steps.size():
-			steps[current_step].call()
-		else:
-			Main.end_story()
-
-func set_character1(img, is_hiden: bool = false):
-	if is_hiden:
-		character1.hide()
-	else:
-		character1.show()
-	
-func set_character2(img, is_hiden: bool = false):
-	if is_hiden:
-		character2.hide()
-	else:
-		character2.show()
-
-func set_dialogue(text: String):
-	dialogue.text = text
+		next_step()

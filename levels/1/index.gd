@@ -1,70 +1,48 @@
 extends Node2D
 
-@export var level_num = 1
-@export var checkpoint_pos: Dictionary = {
-	0: Vector2(0,0),
-}
+var ui = preload("res://levels/1/ui.tscn").instantiate()
 
-@onready var camera = $Camera
 @onready var player = $Player
+@onready var runway = $Runway
+
+@export var level_num: int = -1
+@export var init_position: Vector2
 
 var init_game_state = {
-	"checkpoint": 0,
+	"distance": 0,
 }
 var saved_game_state
 var current_game_state
 
 func _start() -> void:
-	player.disable_camera()
 	current_game_state = init_game_state.duplicate(true)
-	player.position = checkpoint_pos[int(init_game_state.get("checkpoint", 0))]
+	player.position = init_position
 	player.init()
-	player.process_mode = Node.PROCESS_MODE_DISABLED
-	camera.enabled = true
-	camera.move_to_player()
 
 func _ready() -> void:
 	if Main.progress.has(str(level_num)):
 		saved_game_state = Main.progress[str(level_num)]
-		init_game_state.checkpoint = saved_game_state.checkpoint
 	else:
 		saved_game_state = init_game_state.duplicate(true)
+	Main.change_ui(ui)
 	_start()
+	
+func _process(delta: float) -> void:
+	current_game_state.distance = player.global_position.x + runway.current_revolution*runway.total_length
+	ui.set_distance(current_game_state.distance)
 
 func lose() -> void:
 	_start()
 	
 func win() -> void:
 	var new_game_state = {
-		"cleared": true,
-		"checkpoint": 0
+		"distance": max(saved_game_state.distance, current_game_state.distance)
 	}
 	Main.win_level(new_game_state)
-
-func get_checkpoint(checkpoint: int) -> void:
-	var new_game_state = {
-		"cleared": saved_game_state.get("cleared", false),
-		"checkpoint": checkpoint
-	}
-	init_game_state = {
-		"checkpoint": checkpoint
-	}
-	Main.save_checkpoint(new_game_state)
 
 func _on_player_area_or_body_entered(area_or_body: Node2D) -> void:
 	if area_or_body.is_in_group("killzone"):
 		player.hit(area_or_body.damage)
 
-func _on_enemy_died() -> void:
-	win()
-
 func _on_player_die() -> void:
 	lose()
-
-func _on_camera_camera_transition_complete() -> void:
-	camera.enabled = false
-	player.process_mode = Node.PROCESS_MODE_INHERIT
-	player.enable_camera()
-
-func _on_goal_player_enter() -> void:
-	win()

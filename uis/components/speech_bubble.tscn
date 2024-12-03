@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgcpl0ee6iilu"]
+
+[ext_resource type="Texture2D" uid="uid://ducbjfpv5upjs" path="res://assets/ui_sprites/speech_bubble.png" id="1_n3xyb"]
+[ext_resource type="Script" path="res://uis/components/speech_bubble.gd" id="2_s48ch"]
+
+[node name="SpeechBubble" type="TextureRect"]
+offset_right = 1.0
+offset_bottom = 135.0
+texture = ExtResource("1_n3xyb")
+expand_mode = 1
+script = ExtResource("2_s48ch")
+
+[node name="Dialogue" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_right = 1.0
+offset_bottom = 135.0
+theme_override_font_sizes/normal_font_size = 32
+text = "ABC"
+fit_content = true
