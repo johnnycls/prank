@@ -9,11 +9,6 @@ signal camera_transition_complete
 @export var easing_type: Tween.EaseType = Tween.EASE_IN_OUT
 @export var transition_type: Tween.TransitionType = Tween.TRANS_SINE
 
-var zoom_factor
-
-func _ready() -> void:
-	zoom_factor = Global.get_zoom_factor()
-	zoom = zoom_factor
 
 func move_to_player():
 	global_position = goal.global_position
@@ -21,7 +16,7 @@ func move_to_player():
 	tween.set_ease(easing_type)
 	tween.set_trans(transition_type)
 	tween.tween_property(self, "global_position", player.global_position, transition_duration)
-	tween.parallel().tween_property(self, "offset", Vector2(player.collision_shape.shape.size.x, -200.0) / zoom_factor, transition_duration)
+	tween.parallel().tween_property(self, "offset", Vector2(player.collision_shape.shape.size.x, -200.0) / zoom, transition_duration)
 	tween.tween_callback(func():
 		camera_transition_complete.emit()
 	)

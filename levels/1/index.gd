@@ -27,7 +27,7 @@ func _ready() -> void:
 	Main.change_ui(ui)
 	_start()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	current_game_state.distance = player.global_position.x + runway.current_revolution*runway.total_length
 	ui.set_distance(current_game_state.distance)
 

@@ -8,7 +8,7 @@ size = Vector2(10, 10)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n0rqg"]
 size = Vector2(10, 10)
 
-[node name="Object" type="Area2D"]
+[node name="Object" type="Area2D" groups=["moving_objects"]]
 script = ExtResource("1_o4rpm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

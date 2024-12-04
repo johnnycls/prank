@@ -6,7 +6,7 @@ var player
 var damage = 20.0
 
 func _ready():
-	player = get_tree().get_nodes_in_group("players")[0]
+	player = Global.get_valid_nodes_in_group("players")[0]
 	queue_free()
 
 func _physics_process(delta):

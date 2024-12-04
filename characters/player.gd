@@ -29,10 +29,7 @@ func _ready() -> void:
 	camera.limit_bottom = cam_lim_bottom
 	camera.limit_left = cam_lim_left
 	camera.limit_right = cam_lim_right
-	
-	var zoom_factor = Global.get_zoom_factor()
-	camera.zoom = zoom_factor
-	camera.offset = Vector2(collision_shape.shape.size.x, -200.0) / zoom_factor
+	camera.offset = Vector2(collision_shape.shape.size.x/camera.zoom.x, -200.0) 
 
 func disable_camera() -> void:
 	camera.enabled = false 
@@ -41,10 +38,10 @@ func enable_camera() -> void:
 	camera.enabled = true
 	
 func teleport(new_pos: Vector2) -> void:
-	camera.position_smoothing_enabled = false
+	#camera.position_smoothing_enabled = false
 	global_position = new_pos
 	camera.reset_smoothing()
-	camera.position_smoothing_enabled = true
+	#camera.position_smoothing_enabled = true
 
 
 

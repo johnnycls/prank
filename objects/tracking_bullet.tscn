@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6esh"]
 size = Vector2(41, 40)
 
-[node name="Bullet" type="Area2D" groups=["killzone"]]
+[node name="Bullet" type="Area2D" groups=["killzone", "moving_objects"]]
 script = ExtResource("1_dt173")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
