@@ -1,55 +1,6 @@
 extends CharacterBody2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var camera: Camera2D = $Camera2D
-
-@export var cam_lim_top: int = -10000000
-@export var cam_lim_bottom: int = 10000000
-@export var cam_lim_left: int = -100000000
-@export var cam_lim_right: int = 100000000
-@export var show_cam: bool = true
-@export var show_hp: bool = true
-
-func set_cam_lim(_cam_lim_top: int, _cam_lim_bottom: int, _cam_lim_left: int, _cam_lim_right: int) -> void:
-	camera.limit_top = _cam_lim_top
-	camera.limit_bottom = _cam_lim_bottom
-	camera.limit_left = _cam_lim_left
-	camera.limit_right = _cam_lim_right
-	cam_lim_top = _cam_lim_top
-	cam_lim_bottom = _cam_lim_bottom
-	cam_lim_left = _cam_lim_left
-	cam_lim_right = _cam_lim_right
-
-func _ready() -> void:
-	if not show_cam:
-		disable_camera()
-	if not show_hp:
-		hp_label.hide()
-	camera.limit_top = cam_lim_top
-	camera.limit_bottom = cam_lim_bottom
-	camera.limit_left = cam_lim_left
-	camera.limit_right = cam_lim_right
-	camera.offset = Vector2(collision_shape.shape.size.x/camera.zoom.x, -200.0) 
-
-func disable_camera() -> void:
-	camera.enabled = false 
-	
-func enable_camera() -> void:
-	camera.enabled = true
-	
-func teleport(new_pos: Vector2) -> void:
-	#camera.position_smoothing_enabled = false
-	global_position = new_pos
-	camera.reset_smoothing()
-	#camera.position_smoothing_enabled = true
-
-
-
-
-
-
-
-
 
 @export var move_speed : float = 1250.0
 @export var jump_speed : float = 1250.0
@@ -112,6 +63,7 @@ func _physics_process(delta) -> void:
 signal die
 signal area_or_body_entered(area_or_body: Node2D)
 
+@export var show_hp: bool = true
 @export var invincible_time: float = 2.0
 @onready var hp_label = $HPLabel
 

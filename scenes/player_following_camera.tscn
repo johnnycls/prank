@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bupgftai44g6l"]
+
+[ext_resource type="Script" path="res://scenes/player_following_camera.gd" id="1_r5ge1"]
+
+[node name="PlayerFollowingCamera" type="Camera2D"]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("1_r5ge1")

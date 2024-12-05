@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci5tauqm6wmee"]
+[gd_scene load_steps=8 format=3 uid="uid://ci5tauqm6wmee"]
 
 [ext_resource type="Script" path="res://levels/0/index.gd" id="1_7uhyk"]
 [ext_resource type="Script" path="res://levels/0/camera.gd" id="2_01wqq"]
 [ext_resource type="PackedScene" uid="uid://b3f3n1oui38s5" path="res://scenes/castle.tscn" id="2_27ata"]
 [ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="2_otf2w"]
 [ext_resource type="PackedScene" uid="uid://c1icpbm4j7xsp" path="res://objects/object.tscn" id="4_xi2pi"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="6_0dv6y"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_k6ctl"]
 size = Vector2(40, 40)
@@ -26,6 +27,9 @@ goal = NodePath("../Goal")
 [node name="Goal" parent="." instance=ExtResource("4_xi2pi")]
 position = Vector2(1758, -272)
 texture = SubResource("PlaceholderTexture2D_k6ctl")
+
+[node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_0dv6y")]
+target = NodePath("../Player")
 
 [connection signal="camera_transition_complete" from="Camera" to="." method="_on_camera_camera_transition_complete"]
 [connection signal="area_or_body_entered" from="Player" to="." method="_on_player_area_or_body_entered"]

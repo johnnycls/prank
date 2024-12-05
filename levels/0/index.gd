@@ -9,6 +9,7 @@ var story_scene = preload("res://levels/0/story.tscn")
 
 @onready var camera = $Camera
 @onready var player = $Player
+@onready var player_cam = $PlayerFollowingCamera
 
 var init_game_state = {
 	"checkpoint": 0,
@@ -17,7 +18,7 @@ var saved_game_state
 var current_game_state
 
 func _start() -> void:
-	player.disable_camera()
+	player_cam.enabled = false
 	current_game_state = init_game_state.duplicate(true)
 	player.position = checkpoint_pos[int(init_game_state.get("checkpoint", 0))]
 	player.init()
@@ -67,7 +68,7 @@ func _on_player_die() -> void:
 func _on_camera_camera_transition_complete() -> void:
 	camera.enabled = false
 	player.process_mode = Node.PROCESS_MODE_INHERIT
-	player.enable_camera()
+	player_cam.enabled = true
 
 func _on_goal_player_enter() -> void:
 	win()

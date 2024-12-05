@@ -31,11 +31,6 @@ color = Color(0, 0, 1, 1)
 position = Vector2(25, 85)
 shape = SubResource("RectangleShape2D_0deo2")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
-limit_smoothed = true
-position_smoothing_enabled = true
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

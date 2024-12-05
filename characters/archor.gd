@@ -31,7 +31,7 @@ func _create_timer():
 
 func shoot():
 	var arrow = arrow_scene.instantiate()
-	arrow.set_angle(global_position.angle_to_point(player.global_position))
+	arrow.set_angle(global_position.angle_to_point(player.global_position) + randf_range(-0.15, 0.15))
 	get_parent().add_child(arrow)
 	arrow.global_position = global_position
 	_create_timer()

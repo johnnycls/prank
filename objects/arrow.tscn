@@ -7,6 +7,7 @@ size = Vector2(176, 13)
 
 [node name="Arrow" type="Area2D" groups=["killzone", "moving_objects"]]
 script = ExtResource("1_qxqx7")
+lifetime = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(87, 6.5)
