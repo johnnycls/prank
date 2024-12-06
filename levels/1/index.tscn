@@ -22,4 +22,5 @@ position = Vector2(-192, 252)
 target = NodePath("../Player")
 
 [connection signal="area_or_body_entered" from="Player" to="." method="_on_player_area_or_body_entered"]
-[connection signal="die" from="Player" to="." method="_on_player_die"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]

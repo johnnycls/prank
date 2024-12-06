@@ -8,6 +8,9 @@ extends Node2D
 
 var current_revolution: int = 0
 
+func init():
+	current_revolution = 0
+
 func _ready() -> void:
 	collision_shape.shape.size = Vector2(total_length, 1000000000000)
 

@@ -4,7 +4,6 @@ extends Area2D
 @export var launch_angle: float = 0.0
 @export var lifetime: float = 10.0
 @export var acceleration_gravity: float = 200.0
-@export var piercing: bool = false
 @export var damage: float = 20.0
 
 var velocity: Vector2

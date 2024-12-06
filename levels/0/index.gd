@@ -62,7 +62,7 @@ func _on_player_area_or_body_entered(area_or_body: Node2D) -> void:
 func _on_enemy_died() -> void:
 	win()
 
-func _on_player_die() -> void:
+func _on_player_dead() -> void:
 	lose()
 
 func _on_camera_camera_transition_complete() -> void:

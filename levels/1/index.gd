@@ -5,7 +5,7 @@ var ui = preload("res://levels/1/ui.tscn").instantiate()
 @onready var player = $Player
 @onready var runway = $Runway
 
-@export var level_num: int = -1
+@export var level_num: int
 @export var init_position: Vector2
 
 var init_game_state = {
@@ -16,6 +16,7 @@ var current_game_state
 
 func _start() -> void:
 	current_game_state = init_game_state.duplicate(true)
+	runway.init()	
 	player.position = init_position
 	player.init()
 
@@ -43,6 +44,11 @@ func win() -> void:
 func _on_player_area_or_body_entered(area_or_body: Node2D) -> void:
 	if area_or_body.is_in_group("killzone"):
 		player.hit(area_or_body.damage)
+	if area_or_body.is_in_group("remove_when_touched_by_player"):
+		area_or_body.queue_free()
 
-func _on_player_die() -> void:
+func _on_player_dead() -> void:
+	lose()
+
+func _on_player_left_screen() -> void:
 	lose()

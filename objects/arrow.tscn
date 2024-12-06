@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6esh"]
 size = Vector2(176, 13)
 
-[node name="Arrow" type="Area2D" groups=["killzone", "moving_objects"]]
+[node name="Arrow" type="Area2D" groups=["killzone", "moving_objects", "remove_when_touched_by_player"]]
 script = ExtResource("1_qxqx7")
 lifetime = 15.0
 

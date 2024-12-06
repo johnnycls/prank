@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var visible_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
-@export var move_speed : float = 1250.0
-@export var jump_speed : float = 1250.0
-@export var acceleration_due_to_gravity : float = 1250.0
-@export var acceleration_due_to_air_resistance: float = 1000.0
+@export var move_speed : float = 2000.0
+@export var jump_speed : float = 2000.0
+@export var acceleration_due_to_gravity : float = 2000.0
+@export var acceleration_due_to_air_resistance: float = 1500.0
 @export var max_jump_time : float = 0.3
 @export var rotational_speed : float = 3.0
 @export var can_fly: bool = true
@@ -60,8 +61,9 @@ func _physics_process(delta) -> void:
 	
 	
 	
-signal die
+signal dead
 signal area_or_body_entered(area_or_body: Node2D)
+signal left_screen
 
 @export var show_hp: bool = true
 @export var invincible_time: float = 2.0
@@ -71,8 +73,17 @@ var hp: float = 100.0
 var is_invincible: bool = false
 
 func init() -> void:
+	current_jump_time = 0.0
+	walking_velocity = Vector2.ZERO
+	rotated_jumping_velocity = Vector2.ZERO
+	gravitational_velocity = Vector2.ZERO
+	is_jumping = false
+	
 	hp = 100.0
 	hp_label.text = "%.2f" % hp + "/ 100"
+	
+func die():
+	dead.emit()
 	
 func hit(damage:float):
 	if not is_invincible:
@@ -80,7 +91,7 @@ func hit(damage:float):
 		hp -= damage
 		hp_label.text = "%.2f" % hp + "/ 100"
 		if hp<=0:
-			die.emit()
+			die()
 		var timer = get_tree().create_timer(invincible_time)
 		await timer.timeout
 		is_invincible = false
@@ -90,3 +101,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	area_or_body_entered.emit(body)
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	left_screen.emit()

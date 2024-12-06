@@ -33,5 +33,5 @@ target = NodePath("../Player")
 
 [connection signal="camera_transition_complete" from="Camera" to="." method="_on_camera_camera_transition_complete"]
 [connection signal="area_or_body_entered" from="Player" to="." method="_on_player_area_or_body_entered"]
-[connection signal="die" from="Player" to="." method="_on_player_die"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="player_enter" from="Goal" to="." method="_on_goal_player_enter"]
