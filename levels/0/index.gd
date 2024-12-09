@@ -53,7 +53,7 @@ func get_checkpoint(checkpoint: int) -> void:
 	init_game_state = {
 		"checkpoint": checkpoint
 	}
-	Main.save_checkpoint(new_game_state)
+	Main.save_progress(new_game_state)
 
 func _on_player_area_or_body_entered(area_or_body: Node2D) -> void:
 	if area_or_body.is_in_group("killzone"):

@@ -45,7 +45,7 @@ func win_level(level_status) -> void:
 	_remove_scene()
 	change_ui(levels_ui.instantiate())
 	
-func save_checkpoint(level_status) -> void:
+func save_progress(level_status) -> void:
 	_update_progress(str(current_level), level_status)
 
 func _update_progress(key: String, value)-> void:	

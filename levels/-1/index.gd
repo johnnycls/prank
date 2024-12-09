@@ -14,6 +14,9 @@ var init_game_state = {
 var saved_game_state
 var current_game_state
 
+func current_distance() -> float:
+	return player.global_position.x + runway.current_revolution*runway.total_length if player else 0.0
+
 func _start() -> void:
 	current_game_state = init_game_state.duplicate(true)
 	runway.init()	
@@ -29,17 +32,11 @@ func _ready() -> void:
 	_start()
 	
 func _process(_delta: float) -> void:
-	current_game_state.distance = player.global_position.x + runway.current_revolution*runway.total_length
-	ui.set_distance(current_game_state.distance)
+	current_game_state.distance = current_distance()
+	ui.set_distance(current_distance())
 
 func lose() -> void:
 	_start()
-	
-func win() -> void:
-	var new_game_state = {
-		"distance": max(saved_game_state.distance, current_game_state.distance)
-	}
-	Main.win_level(new_game_state)
 
 func _on_player_area_or_body_entered(area_or_body: Node2D) -> void:
 	if area_or_body.is_in_group("killzone"):

@@ -3,10 +3,10 @@ extends CharacterBody2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var visible_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
-@export var move_speed : float = 2000.0
-@export var jump_speed : float = 2000.0
-@export var acceleration_due_to_gravity : float = 2000.0
-@export var acceleration_due_to_air_resistance: float = 1500.0
+@export var move_speed : float = 3500.0
+@export var jump_speed : float = 3500.0
+@export var acceleration_due_to_gravity : float = 3000.0
+@export var acceleration_due_to_air_resistance: float = 2000.0
 @export var max_jump_time : float = 0.3
 @export var rotational_speed : float = 3.0
 @export var can_fly: bool = true
