@@ -11,7 +11,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_blhe6")
 
-[node name="LevelsBtn" type="Button" parent="."]
+[node name="StoryBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.5
+offset_top = 60.0
+offset_right = 196.5
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "STORY"
+
+[node name="EndlessBtn" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -25,7 +41,7 @@ offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 64
-text = "LEVELS"
+text = "ENDLESS"
 
 [node name="SettingsBtn" type="Button" parent="."]
 layout_mode = 1
@@ -43,5 +59,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "SETTINGS"
 
-[connection signal="pressed" from="LevelsBtn" to="." method="_on_levels_btn_pressed"]
+[connection signal="pressed" from="StoryBtn" to="." method="_on_story_btn_pressed"]
+[connection signal="pressed" from="EndlessBtn" to="." method="_on_endless_btn_pressed"]
 [connection signal="pressed" from="SettingsBtn" to="." method="_on_settings_btn_pressed"]

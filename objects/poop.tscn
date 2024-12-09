@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwicf77i4f5s3"]
+
+[ext_resource type="Script" path="res://objects/poop.gd" id="1_atqxw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6esh"]
+size = Vector2(80, 80)
+
+[node name="Poop" type="Area2D" groups=["killzone", "moving_objects", "remove_when_touched_by_player"]]
+script = ExtResource("1_atqxw")
+acceleration_gravity = 2000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_c6esh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(1, 1, 0, 1)

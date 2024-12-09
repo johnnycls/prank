@@ -1,6 +1,6 @@
 extends Node2D
 
-var ui = preload("res://levels/1/ui.tscn").instantiate()
+var ui = preload("res://levels/-1/ui.tscn").instantiate()
 
 @onready var player = $Player
 @onready var runway = $Runway
@@ -17,7 +17,7 @@ var current_game_state
 func _start() -> void:
 	current_game_state = init_game_state.duplicate(true)
 	runway.init()	
-	player.position = init_position
+	player.global_position = init_position
 	player.init()
 
 func _ready() -> void:

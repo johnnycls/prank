@@ -6,6 +6,7 @@
 
 [node name="Runway" type="Area2D"]
 script = ExtResource("1_j5mqs")
+total_length = 7680.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2xdis")

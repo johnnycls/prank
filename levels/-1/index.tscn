@@ -1,25 +1,27 @@
 [gd_scene load_steps=6 format=3 uid="uid://y7j7ofnoh22w"]
 
-[ext_resource type="Script" path="res://levels/1/index.gd" id="1_l0tm3"]
+[ext_resource type="Script" path="res://levels/-1/index.gd" id="1_l0tm3"]
 [ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="2_6hb60"]
 [ext_resource type="PackedScene" uid="uid://bmexgambip6le" path="res://scenes/runway.tscn" id="3_js6ny"]
-[ext_resource type="PackedScene" uid="uid://bkasxjfntm0lq" path="res://characters/archor.tscn" id="4_d3fbt"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="5_02srt"]
+[ext_resource type="Script" path="res://levels/-1/spawn_bird.gd" id="5_gut27"]
 
 [node name="Index" type="Node2D"]
 script = ExtResource("1_l0tm3")
-level_num = 1
+level_num = -1
 
 [node name="Player" parent="." instance=ExtResource("2_6hb60")]
+position = Vector2(10, 680)
 
 [node name="Runway" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("3_js6ny")]
 player_following_cam = NodePath("../PlayerFollowingCamera")
 
-[node name="Archor" parent="." instance=ExtResource("4_d3fbt")]
-position = Vector2(-192, 252)
-
 [node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_02srt")]
 target = NodePath("../Player")
+
+[node name="SpawnBird" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("5_gut27")
+player = NodePath("../Player")
 
 [connection signal="area_or_body_entered" from="Player" to="." method="_on_player_area_or_body_entered"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]

@@ -12,7 +12,7 @@ func init():
 	current_revolution = 0
 
 func _ready() -> void:
-	collision_shape.shape.size = Vector2(total_length, 1000000000000)
+	collision_shape.shape.size = Vector2(total_length, 5000)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("players"):
