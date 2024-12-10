@@ -37,6 +37,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="HighestScoreLabel" type="Label" parent="StartMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -161.5
+offset_right = 20.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="StartBtn" type="Button" parent="StartMenu"]
 layout_mode = 1
 anchors_preset = 8
@@ -75,6 +89,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RecordBreakingLabel" type="Label" parent="LoseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -265.5
+offset_right = 61.0
+offset_bottom = -242.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BREAK_RECORD"
+
+[node name="HighestScoreLabel" type="Label" parent="LoseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -165.5
+offset_right = 61.0
+offset_bottom = -142.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BREAK_RECORD"
 
 [node name="AgainBtn" type="Button" parent="LoseMenu"]
 layout_mode = 1

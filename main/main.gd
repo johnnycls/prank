@@ -26,7 +26,6 @@ func start_level(level: int) -> void:
 	_current_scene = load(Config.level_to_path(level)).instantiate()
 	add_child(_current_scene)
 	current_level = level
-	can_open_menu = true
 
 func back_to_home_screen() -> void:
 	_remove_scene()
@@ -37,11 +36,7 @@ func change_ui(page: Control) -> void:
 	$Hud.change_ui(page)
 	ui_changed.emit()
 	
-func win_level(level_status) -> void:
-	_update_progress(str(current_level), level_status)
-	_current_scene.call_deferred("set_process_mode", Node.PROCESS_MODE_DISABLED)
-	var timer = get_tree().create_timer(2.0)
-	await timer.timeout
+func end_level(level_status) -> void:
 	_remove_scene()
 	change_ui(levels_ui.instantiate())
 	
@@ -53,10 +48,8 @@ func _update_progress(key: String, value)-> void:
 	$State.save_progress(progress)
 
 func start_story(page) -> void:
-	_current_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	change_ui(page)
 	
 func end_story() -> void:
 	$Hud.clear_ui()
-	_current_scene.process_mode = Node.PROCESS_MODE_INHERIT
 	story_ended.emit()
