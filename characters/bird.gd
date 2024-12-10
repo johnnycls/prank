@@ -3,8 +3,6 @@ extends Node2D
 var poop_scene = preload("res://objects/poop.tscn")
 
 @export var damage = 10.0
-@export var angle: float = 0.05
-@export var angle_inc: float = 0.05
 
 var speed: float
 var min_shoot_interval: float
@@ -27,6 +25,8 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	global_position += speed * delta * direction
+	if (global_position.x > player.global_position.x + 8000) or (global_position.x < player.global_position.x - 8000):
+		queue_free()
 
 func _create_timer():
 	var shoot_timer = Timer.new()
@@ -40,13 +40,9 @@ func _create_timer():
 	shoot_timer.start(random_interval)
 
 func shoot():
-	var total_angle = angle + angle_inc*concurrent_poop
 	for i in range(concurrent_poop):
 		var poop = poop_scene.instantiate()
-		poop.init(global_position.direction_to(player.global_position).rotated(randf_range(-total_angle, total_angle)), randf_range(2500, 3500))
+		poop.init(Vector2(1,0).rotated(randf_range(0, PI)), randf_range(3000, 3500))
 		get_parent().add_child(poop)
 		poop.global_position = global_position
 	_create_timer()
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var initial_speed: float = 3500.0
+@export var initial_speed: float = 5000.0
 @export var launch_angle: float = 0.0
 @export var acceleration_gravity: float = 2500.0
 @export var damage: float = 20.0

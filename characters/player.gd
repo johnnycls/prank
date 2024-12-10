@@ -66,7 +66,7 @@ signal area_or_body_entered(area_or_body: Node2D)
 signal left_screen
 
 @export var show_hp: bool = true
-@export var invincible_time: float = 2.0
+@export var invincible_time: float = 0.2
 @onready var hp_label = $HPLabel
 
 var hp: float = 100.0
