@@ -22,21 +22,28 @@ func _start() -> void:
 	runway.init()	
 	player.global_position = init_position
 	player.init()
+	ui.play()
 
 func _ready() -> void:
 	if Main.progress.has(str(level_num)):
 		saved_game_state = Main.progress[str(level_num)]
 	else:
 		saved_game_state = init_game_state.duplicate(true)
+	current_game_state = init_game_state.duplicate(true)
 	Main.change_ui(ui)
-	_start()
+	ui.start.connect(_start)
+	ui.focus()
+	get_tree().paused = true
 	
 func _process(_delta: float) -> void:
 	current_game_state.distance = current_distance()
 	ui.set_distance(current_distance())
 
 func lose() -> void:
-	_start()
+	for node in Global.get_valid_nodes_in_group("moving_objects"):
+		node.queue_free()
+	ui.lose()
+	get_tree().paused = true
 
 func _on_player_area_or_body_entered(area_or_body: Node2D) -> void:
 	if area_or_body.is_in_group("killzone"):

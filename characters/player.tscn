@@ -4,10 +4,10 @@
 [ext_resource type="Theme" uid="uid://bgq7gf52v0365" path="res://assets/theme/base_theme.tres" id="2_yl3jm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
-size = Vector2(100, 402)
+size = Vector2(119, 402)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynq2q"]
-size = Vector2(101, 402)
+size = Vector2(123, 402)
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 z_index = 10
@@ -23,23 +23,23 @@ text = "100"
 horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 100.0
+offset_right = 120.0
 offset_bottom = 400.0
 color = Color(0, 0, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(50, 201)
+position = Vector2(59.5, 201)
 shape = SubResource("RectangleShape2D_0deo2")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(50.5, 201)
+position = Vector2(61.5, 201)
 shape = SubResource("RectangleShape2D_ynq2q")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(49.5, 203)
-scale = Vector2(4.85, 20.1)
+position = Vector2(60, 203)
+scale = Vector2(5.9, 20.1)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
