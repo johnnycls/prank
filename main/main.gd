@@ -36,7 +36,7 @@ func change_ui(page: Control) -> void:
 	$Hud.change_ui(page)
 	ui_changed.emit()
 	
-func end_level(level_status) -> void:
+func end_level() -> void:
 	_remove_scene()
 	change_ui(levels_ui.instantiate())
 	

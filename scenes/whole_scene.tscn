@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://t1346vl8kt37"]
+[gd_scene load_steps=10 format=3 uid="uid://t1346vl8kt37"]
+
+[ext_resource type="PackedScene" uid="uid://cq1ajuyrn4aeh" path="res://scenes/castle_scene.tscn" id="1_u6t4h"]
+[ext_resource type="PackedScene" uid="uid://o7qut2kkg4hq" path="res://scenes/grass_scene.tscn" id="2_fyftd"]
+[ext_resource type="PackedScene" uid="uid://dqk65bxi2wlve" path="res://scenes/ocean_scene.tscn" id="3_ecfsw"]
+[ext_resource type="PackedScene" uid="uid://wravwnx3cts" path="res://scenes/wilderness_scene.tscn" id="5_2hfcm"]
+[ext_resource type="PackedScene" uid="uid://c5guc4jshjjxo" path="res://scenes/forest_scene.tscn" id="5_datgh"]
+[ext_resource type="PackedScene" uid="uid://d110h8a7jx576" path="res://scenes/forest_with_houses_scene.tscn" id="6_k7tct"]
+[ext_resource type="PackedScene" uid="uid://b2p6wmhktayug" path="res://scenes/desert_scene.tscn" id="7_huc3w"]
+[ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="8_yk6ob"]
+[ext_resource type="PackedScene" uid="uid://ya38yybm76i3" path="res://scenes/park_scene.tscn" id="9_h5sh0"]
 
 [node name="WholeScene" type="Node2D"]
+
+[node name="CastleScene" parent="." instance=ExtResource("1_u6t4h")]
+
+[node name="GrassScene" parent="." instance=ExtResource("2_fyftd")]
+
+[node name="OceanScene" parent="." instance=ExtResource("3_ecfsw")]
+
+[node name="WildernessScene" parent="." instance=ExtResource("5_2hfcm")]
+
+[node name="ForestScene" parent="." instance=ExtResource("5_datgh")]
+
+[node name="ForestWithHousesScene" parent="." instance=ExtResource("6_k7tct")]
+
+[node name="DesertScene" parent="." instance=ExtResource("7_huc3w")]
+
+[node name="HighlandScene" parent="." instance=ExtResource("8_yk6ob")]
+
+[node name="ParkScene" parent="." instance=ExtResource("9_h5sh0")]

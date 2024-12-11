@@ -4,6 +4,8 @@ var ui = preload("res://levels/-1/ui.tscn").instantiate()
 
 @onready var player = $Player
 @onready var runway = $Runway
+@onready var cam = $PlayerFollowingCamera
+@onready var background = $Background
 
 @export var level_num: int
 @export var init_position: Vector2
@@ -18,6 +20,9 @@ var is_playing: bool = false
 
 func current_distance() -> float:
 	return player.global_position.x + runway.current_revolution*runway.total_length if player else 0.0
+
+func get_cam_distance() -> float:
+	return cam.global_position.x + runway.current_revolution*runway.total_length if player else 0.0
 
 func _start() -> void:
 	current_game_state = init_game_state.duplicate(true)
@@ -42,7 +47,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if is_playing:
 		current_game_state.distance = current_distance()
-		ui.set_distance(current_distance())
+		background.set_offset_by_distance(get_cam_distance())
+		ui.set_distance(current_game_state.distance)
 
 func lose() -> void:
 	is_playing = false

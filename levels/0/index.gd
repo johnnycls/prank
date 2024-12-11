@@ -43,7 +43,8 @@ func win() -> void:
 		"cleared": true,
 		"checkpoint": 0
 	}
-	Main.win_level(new_game_state)
+	Main.save_progress(new_game_state)
+	Main.end_level()
 
 func get_checkpoint(checkpoint: int) -> void:
 	var new_game_state = {
