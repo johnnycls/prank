@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://duk7nebouj86w"]
+[gd_scene load_steps=8 format=3 uid="uid://duk7nebouj86w"]
 
 [ext_resource type="Script" path="res://levels/-1/index.gd" id="1_l0tm3"]
 [ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="2_6hb60"]
@@ -6,10 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="5_02srt"]
 [ext_resource type="Script" path="res://levels/-1/spawn_bird.gd" id="5_gut27"]
 [ext_resource type="PackedScene" uid="uid://dnedubnevuigi" path="res://scenes/background.tscn" id="6_tfg4u"]
+[ext_resource type="PackedScene" uid="uid://b8v1t65c4l4eg" path="res://scenes/ocean_scene.tscn" id="7_wjk7w"]
 
 [node name="Index" type="Node2D"]
 script = ExtResource("1_l0tm3")
 level_num = -1
+
+[node name="Background" parent="." instance=ExtResource("6_tfg4u")]
 
 [node name="Player" parent="." instance=ExtResource("2_6hb60")]
 position = Vector2(10, 680)
@@ -24,7 +27,8 @@ target = NodePath("../Player")
 script = ExtResource("5_gut27")
 player = NodePath("../Player")
 
-[node name="Background" parent="." instance=ExtResource("6_tfg4u")]
+[node name="OceanScene" parent="." instance=ExtResource("7_wjk7w")]
+position = Vector2(-11520, -2060)
 
 [connection signal="area_or_body_entered" from="Player" to="." method="_on_player_area_or_body_entered"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]

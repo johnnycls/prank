@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://dqk65bxi2wlve"]
+[gd_scene load_steps=2 format=3 uid="uid://b8v1t65c4l4eg"]
+
+[ext_resource type="PackedScene" uid="uid://dqk65bxi2wlve" path="res://scenes/ocean.tscn" id="1_fti4n"]
 
 [node name="OceanScene" type="Node2D"]
+
+[node name="Ocean" parent="." instance=ExtResource("1_fti4n")]
+
+[node name="Ocean2" parent="." instance=ExtResource("1_fti4n")]
+position = Vector2(7680, 0)
+
+[node name="Ocean3" parent="." instance=ExtResource("1_fti4n")]
+position = Vector2(15360, 0)

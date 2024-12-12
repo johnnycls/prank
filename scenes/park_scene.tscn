@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://ya38yybm76i3"]
+[gd_scene load_steps=2 format=3 uid="uid://ya38yybm76i3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xuia"]
+size = Vector2(7680, 1000)
 
 [node name="ParkScene" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_top = 3320.0
+offset_right = 7680.0
+offset_bottom = 4320.0
+color = Color(0.38, 0.28956, 0.1862, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3840, 3820)
+shape = SubResource("RectangleShape2D_3xuia")

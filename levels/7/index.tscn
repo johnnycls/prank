@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcfyh6qavno5g"]
+
+[ext_resource type="Script" path="res://levels/0/index.gd" id="1_l01k2"]
+[ext_resource type="PackedScene" uid="uid://b3f3n1oui38s5" path="res://scenes/castle.tscn" id="2_y0l13"]
+[ext_resource type="Script" path="res://levels/0/camera.gd" id="3_ineyy"]
+[ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="4_ln0n3"]
+[ext_resource type="PackedScene" uid="uid://c1icpbm4j7xsp" path="res://objects/object.tscn" id="5_6o8s3"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="6_m2sru"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_k6ctl"]
+size = Vector2(40, 40)
+
+[node name="index" type="Node2D"]
+position = Vector2(166, -254)
+script = ExtResource("1_l01k2")
+level_num = null
+checkpoint_pos = null
+
+[node name="Castle" parent="." instance=ExtResource("2_y0l13")]
+position = Vector2(139, -783)
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player", "goal")]
+script = ExtResource("3_ineyy")
+player = NodePath("../Player")
+goal = NodePath("../Goal")
+
+[node name="Player" parent="." instance=ExtResource("4_ln0n3")]
+
+[node name="Goal" parent="." instance=ExtResource("5_6o8s3")]
+position = Vector2(1758, -272)
+texture = SubResource("PlaceholderTexture2D_k6ctl")
+
+[node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_m2sru")]
+target = NodePath("../Player")
+
+[connection signal="camera_transition_complete" from="Camera" to="." method="_on_camera_camera_transition_complete"]
+[connection signal="area_or_body_entered" from="Player" to="." method="_on_player_area_or_body_entered"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="player_enter" from="Goal" to="." method="_on_goal_player_enter"]

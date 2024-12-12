@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://o7qut2kkg4hq"]
+[gd_scene load_steps=2 format=3 uid="uid://b2p6wmhktayug"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_684ns"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v44d8"]
 size = Vector2(7680, 1000)
 
-[node name="GrassScene" type="Node2D"]
+[node name="Desert" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -15,10 +15,4 @@ color = Color(0.38, 0.28956, 0.1862, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(3840, 3820)
-shape = SubResource("RectangleShape2D_684ns")
-
-[node name="Grass" type="ColorRect" parent="."]
-offset_top = 3080.0
-offset_right = 7680.0
-offset_bottom = 3380.0
-color = Color(0.0996, 0.83, 0.416107, 1)
+shape = SubResource("RectangleShape2D_v44d8")

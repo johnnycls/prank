@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://c5guc4jshjjxo"]
+[gd_scene load_steps=2 format=3 uid="uid://dyueogwo8k4oj"]
+
+[ext_resource type="PackedScene" uid="uid://c5guc4jshjjxo" path="res://scenes/forest.tscn" id="1_lp7a8"]
 
 [node name="ForestScene" type="Node2D"]
+
+[node name="Forest" parent="." instance=ExtResource("1_lp7a8")]
+
+[node name="Forest2" parent="." instance=ExtResource("1_lp7a8")]
+position = Vector2(7680, 0)
+
+[node name="Forest3" parent="." instance=ExtResource("1_lp7a8")]
+position = Vector2(15360, 0)

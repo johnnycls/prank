@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://demeogiww5ex4"]
+
+[ext_resource type="Script" path="res://levels/0/story.gd" id="1_50j6n"]
+[ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="2_gnprj"]
+
+[node name="Story" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_50j6n")
+
+[node name="SpeechBubble" parent="." instance=ExtResource("2_gnprj")]
+layout_mode = 0

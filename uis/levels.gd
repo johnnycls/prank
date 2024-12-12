@@ -8,7 +8,13 @@ var level_btn_scene = preload("res://uis/components/level_button.tscn")
 
 var UNLOCK_CRITERIA = {
 	0: true,
-	1: Main.progress.get("0", {}).get("cleared", false)
+	1: Main.progress.get("0", {}).get("cleared", false),
+	2: Main.progress.get("1", {}).get("cleared", false),
+	3: Main.progress.get("2", {}).get("cleared", false),
+	4: Main.progress.get("3", {}).get("cleared", false),
+	5: Main.progress.get("4", {}).get("cleared", false),
+	6: Main.progress.get("5", {}).get("cleared", false),
+	7: Main.progress.get("6", {}).get("cleared", false),
 }
 var buttons: Array = []
 var last_unlocked_button

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://jh3cy50tfskr"]
+
+[ext_resource type="PackedScene" uid="uid://bjq8hddroi85t" path="res://scenes/wilderness.tscn" id="1_f30bb"]
+
+[node name="WildnernessScene" type="Node2D"]
+
+[node name="Wilderness" parent="." instance=ExtResource("1_f30bb")]
+
+[node name="Wilderness2" parent="." instance=ExtResource("1_f30bb")]
+position = Vector2(7680, 0)
+
+[node name="Wilderness3" parent="." instance=ExtResource("1_f30bb")]
+position = Vector2(15360, 0)
