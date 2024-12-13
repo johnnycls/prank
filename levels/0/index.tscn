@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levels/0/index.gd" id="1_7uhyk"]
 [ext_resource type="Script" path="res://levels/0/camera.gd" id="2_01wqq"]
-[ext_resource type="PackedScene" uid="uid://b3f3n1oui38s5" path="res://scenes/castle.tscn" id="2_27ata"]
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_nmj01"]
 [ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="2_otf2w"]
 [ext_resource type="PackedScene" uid="uid://c1icpbm4j7xsp" path="res://objects/object.tscn" id="4_xi2pi"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="6_0dv6y"]
@@ -13,11 +13,10 @@ size = Vector2(40, 40)
 [node name="index" type="Node2D"]
 position = Vector2(166, -254)
 script = ExtResource("1_7uhyk")
-level_num = null
-checkpoint_pos = null
 
-[node name="Castle" parent="." instance=ExtResource("2_27ata")]
-position = Vector2(139, -783)
+[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("2_nmj01")]
+position = Vector2(0, -2160)
+player_following_cam = NodePath("../PlayerFollowingCamera")
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player", "goal")]
 script = ExtResource("2_01wqq")
@@ -25,9 +24,10 @@ player = NodePath("../Player")
 goal = NodePath("../Goal")
 
 [node name="Player" parent="." instance=ExtResource("2_otf2w")]
+position = Vector2(16000, 760)
 
 [node name="Goal" parent="." instance=ExtResource("4_xi2pi")]
-position = Vector2(1758, -272)
+position = Vector2(13718, -5099)
 texture = SubResource("PlaceholderTexture2D_k6ctl")
 
 [node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_0dv6y")]

@@ -28,7 +28,7 @@ script = ExtResource("5_gut27")
 player = NodePath("../Player")
 
 [node name="OceanScene" parent="." instance=ExtResource("7_wjk7w")]
-position = Vector2(-11520, -2060)
+position = Vector2(-11520, -2160)
 
 [connection signal="area_or_body_entered" from="Player" to="." method="_on_player_area_or_body_entered"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]

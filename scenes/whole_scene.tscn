@@ -1,19 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://t1346vl8kt37"]
+[gd_scene load_steps=13 format=3 uid="uid://t1346vl8kt37"]
 
+[ext_resource type="Script" path="res://scenes/whole_scene.gd" id="1_e28hk"]
 [ext_resource type="PackedScene" uid="uid://bmexgambip6le" path="res://scenes/runway.tscn" id="1_mmgss"]
 [ext_resource type="PackedScene" uid="uid://cq1ajuyrn4aeh" path="res://scenes/castle_scene.tscn" id="1_u6t4h"]
+[ext_resource type="PackedScene" uid="uid://dnedubnevuigi" path="res://scenes/background.tscn" id="2_2k24j"]
 [ext_resource type="PackedScene" uid="uid://o7qut2kkg4hq" path="res://scenes/grass_scene.tscn" id="2_fyftd"]
 [ext_resource type="PackedScene" uid="uid://b8v1t65c4l4eg" path="res://scenes/ocean_scene.tscn" id="3_ecfsw"]
 [ext_resource type="PackedScene" uid="uid://dyueogwo8k4oj" path="res://scenes/forest_scene.tscn" id="5_datgh"]
 [ext_resource type="PackedScene" uid="uid://d110h8a7jx576" path="res://scenes/forest_with_houses_scene.tscn" id="6_k7tct"]
-[ext_resource type="PackedScene" uid="uid://jh3cy50tfskr" path="res://scenes/wildnerness_scene.tscn" id="7_2p7tf"]
+[ext_resource type="PackedScene" uid="uid://dny0plqyicvsj" path="res://scenes/wildnerness_scene.tscn" id="7_2p7tf"]
 [ext_resource type="PackedScene" uid="uid://bihjo5n6kgpi6" path="res://scenes/desert_scene.tscn" id="7_huc3w"]
 [ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="8_yk6ob"]
 [ext_resource type="PackedScene" uid="uid://ya38yybm76i3" path="res://scenes/park_scene.tscn" id="9_h5sh0"]
 
 [node name="WholeScene" type="Node2D"]
+script = ExtResource("1_e28hk")
 
-[node name="Runway" parent="." instance=ExtResource("1_mmgss")]
+[node name="Background" parent="." instance=ExtResource("2_2k24j")]
+
+[node name="WholeRunway" parent="." instance=ExtResource("1_mmgss")]
 total_length = 115200.0
 
 [node name="HighlandScene" parent="." instance=ExtResource("8_yk6ob")]
@@ -27,8 +32,16 @@ position = Vector2(7680, 0)
 [node name="GrassScene" parent="." instance=ExtResource("2_fyftd")]
 position = Vector2(15360, 0)
 
+[node name="OceanRunway" parent="." instance=ExtResource("1_mmgss")]
+position = Vector2(30720, 0)
+revolution = 10
+
 [node name="OceanScene" parent="." instance=ExtResource("3_ecfsw")]
 position = Vector2(23040, 0)
+
+[node name="WildnernessRunway" parent="." instance=ExtResource("1_mmgss")]
+position = Vector2(53760, 0)
+revolution = 10
 
 [node name="WildnernessScene" parent="." instance=ExtResource("7_2p7tf")]
 position = Vector2(46080, 0)
@@ -36,8 +49,16 @@ position = Vector2(46080, 0)
 [node name="ForestWithHousesScene" parent="." instance=ExtResource("6_k7tct")]
 position = Vector2(69120, 0)
 
+[node name="ForestRunway" parent="." instance=ExtResource("1_mmgss")]
+position = Vector2(84480, 0)
+revolution = 10
+
 [node name="ForestScene" parent="." instance=ExtResource("5_datgh")]
 position = Vector2(76800, 0)
+
+[node name="DesertRunway" parent="." instance=ExtResource("1_mmgss")]
+position = Vector2(107520, 0)
+revolution = 10
 
 [node name="DesertScene" parent="." instance=ExtResource("7_huc3w")]
 position = Vector2(99840, 0)

@@ -2,9 +2,9 @@ extends Node2D
 
 var story_scene = preload("res://levels/0/story.tscn")
 
-@export var level_num = 1
+@export var level_num = 0
 @export var checkpoint_pos: Dictionary = {
-	0: Vector2(0,0),
+	0: Vector2(16000,760),
 }
 
 @onready var camera = $Camera
