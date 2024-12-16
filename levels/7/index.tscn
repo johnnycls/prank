@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bcfyh6qavno5g"]
 
 [ext_resource type="Script" path="res://levels/0/index.gd" id="1_l01k2"]
-[ext_resource type="PackedScene" uid="uid://b3f3n1oui38s5" path="res://scenes/castle.tscn" id="2_y0l13"]
+[ext_resource type="PackedScene" uid="uid://b3f3n1oui38s5" path="res://scenes/castle/castle.tscn" id="2_y0l13"]
 [ext_resource type="Script" path="res://levels/0/camera.gd" id="3_ineyy"]
 [ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="4_ln0n3"]
 [ext_resource type="PackedScene" uid="uid://c1icpbm4j7xsp" path="res://objects/object.tscn" id="5_6o8s3"]

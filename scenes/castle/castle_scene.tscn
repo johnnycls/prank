@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cq1ajuyrn4aeh"]
 
-[ext_resource type="PackedScene" uid="uid://b3f3n1oui38s5" path="res://scenes/castle.tscn" id="1_iy61n"]
+[ext_resource type="PackedScene" uid="uid://b3f3n1oui38s5" path="res://scenes/castle/castle.tscn" id="1_iy61n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdoh4"]
 size = Vector2(7680, 1000)
@@ -8,7 +8,7 @@ size = Vector2(7680, 1000)
 [node name="CastleScene" type="Node2D"]
 
 [node name="Castle" parent="." instance=ExtResource("1_iy61n")]
-position = Vector2(2160, 1380)
+position = Vector2(1280, 320)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

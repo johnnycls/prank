@@ -1,7 +1,6 @@
 extends Node
 
 signal ui_changed
-signal story_ended
 
 var home_scene = load("res://uis/home.tscn")
 var levels_ui = load("res://uis/levels.tscn")
@@ -46,10 +45,3 @@ func save_progress(level_status) -> void:
 func _update_progress(key: String, value)-> void:	
 	progress[key] = value
 	$State.save_progress(progress)
-
-func start_story(page) -> void:
-	change_ui(page)
-	
-func end_story() -> void:
-	$Hud.clear_ui()
-	story_ended.emit()

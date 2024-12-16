@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://ci5tauqm6wmee"]
 
 [ext_resource type="Script" path="res://levels/0/index.gd" id="1_7uhyk"]
-[ext_resource type="Script" path="res://levels/0/camera.gd" id="2_01wqq"]
 [ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_nmj01"]
 [ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="2_otf2w"]
 [ext_resource type="PackedScene" uid="uid://c1icpbm4j7xsp" path="res://objects/object.tscn" id="4_xi2pi"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="6_0dv6y"]
+[ext_resource type="PackedScene" uid="uid://bdpjrpmotdhtj" path="res://levels/0/story.tscn" id="6_wscn7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_k6ctl"]
 size = Vector2(40, 40)
@@ -18,22 +18,22 @@ script = ExtResource("1_7uhyk")
 position = Vector2(0, -2160)
 player_following_cam = NodePath("../PlayerFollowingCamera")
 
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player", "goal")]
-script = ExtResource("2_01wqq")
-player = NodePath("../Player")
-goal = NodePath("../Goal")
-
 [node name="Player" parent="." instance=ExtResource("2_otf2w")]
 position = Vector2(16000, 760)
+can_fly = false
 
 [node name="Goal" parent="." instance=ExtResource("4_xi2pi")]
-position = Vector2(13718, -5099)
+position = Vector2(11549, 1142)
 texture = SubResource("PlaceholderTexture2D_k6ctl")
 
 [node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_0dv6y")]
+enabled = false
 target = NodePath("../Player")
 
-[connection signal="camera_transition_complete" from="Camera" to="." method="_on_camera_camera_transition_complete"]
+[node name="Story" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_wscn7")]
+player = NodePath("../Player")
+
 [connection signal="area_or_body_entered" from="Player" to="." method="_on_player_area_or_body_entered"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="player_enter" from="Goal" to="." method="_on_goal_player_enter"]
+[connection signal="story_ended" from="Story" to="." method="_on_story_story_ended"]

@@ -1,14 +1,17 @@
-extends Control
+extends Node2D
+
+signal story_ended
 
 @onready var speech_bubble = $SpeechBubble
-
-var player
+@onready var cam = $Camera2D
+@export var player: CharacterBody2D
 
 var steps: Array = [
 	func():
-		speech_bubble.set_dialogue(get_canva_pos(player),"LEVEL0_0"),
+		cam.position = player.position
+		speech_bubble.set_dialogue(player.position,"LEVEL0_0"),
 	func():
-		speech_bubble.set_dialogue(get_canva_pos(player),"LEVEL0_1"),
+		speech_bubble.set_dialogue(player.position,"LEVEL0_1"),
 ]
 var current_step: int = -1
 
@@ -20,10 +23,11 @@ func next_step():
 	if current_step < steps.size():
 		steps[current_step].call()
 	else:
-		Main.end_story()
+		speech_bubble.hide()
+		cam.enabled = false
+		story_ended.emit()
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("players")
 	next_step()
 
 func _input(event):

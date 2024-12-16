@@ -3,14 +3,9 @@
 [ext_resource type="Script" path="res://levels/0/story.gd" id="1_ddp86"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="2_5dy1n"]
 
-[node name="Story" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Story" type="Node2D"]
 script = ExtResource("1_ddp86")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="SpeechBubble" parent="." instance=ExtResource("2_5dy1n")]
-layout_mode = 0
