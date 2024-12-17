@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://yg61xxhvfvka"]
+[gd_scene load_steps=5 format=3 uid="uid://yg61xxhvfvka"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_hvqjp"]
 [ext_resource type="PackedScene" uid="uid://ctgyq10dlxu46" path="res://main/hud.tscn" id="2_sncpg"]
 [ext_resource type="Script" path="res://main/state.gd" id="3_fna58"]
+[ext_resource type="Script" path="res://main/bgm_player.gd" id="4_7gx5s"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_hvqjp")
@@ -22,3 +23,6 @@ color = Color(0.560784, 0.294118, 0.239216, 1)
 
 [node name="State" type="Node" parent="."]
 script = ExtResource("3_fna58")
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("4_7gx5s")

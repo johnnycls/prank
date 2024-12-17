@@ -33,6 +33,7 @@ func _ready() -> void:
 		init_game_state.checkpoint = saved_game_state.checkpoint
 	else:
 		saved_game_state = init_game_state.duplicate(true)
+	get_tree().paused = true
 
 func lose() -> void:
 	_start()

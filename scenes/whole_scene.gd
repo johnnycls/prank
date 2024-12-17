@@ -16,6 +16,12 @@ func _ready() -> void:
 	wilderness_runway.player_following_cam = player_following_cam
 	forest_runway.player_following_cam = player_following_cam
 	desert_runway.player_following_cam = player_following_cam
+	
+	whole_runway.init()
+	ocean_runway.init()
+	wilderness_runway.init()
+	forest_runway.init()
+	desert_runway.init()
 
 func _on_castle_scene_castle_changed_scene(scene: String) -> void:
 	castle_changed_scene.emit(scene)

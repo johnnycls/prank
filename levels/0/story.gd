@@ -4,14 +4,43 @@ signal story_ended
 
 @onready var speech_bubble = $SpeechBubble
 @onready var cam = $Camera2D
+@onready var bg = $CanvasLayer/ColorRect
+@onready var label = $CanvasLayer/MarginContainer/Label
+
 @export var player: CharacterBody2D
 
 var steps: Array = [
 	func():
-		cam.position = player.position
-		speech_bubble.set_dialogue(player.position,"LEVEL0_0"),
+		cam.enabled = false
+		label.show()
+		label.text = "LEVEL0_0",
 	func():
-		speech_bubble.set_dialogue(player.position,"LEVEL0_1"),
+		label.text = "LEVEL0_1",
+	func():
+		label.hide()
+		bg.hide()
+		cam.enabled = true
+		cam.position = player.position,
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_2"),
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_3"),
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_4"),
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_5"),
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_6"),
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_7"),
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_8"),
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_9"),
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_10"),
+	func():
+		speech_bubble.set_dialogue(player.position,"LEVEL0_11"),
 ]
 var current_step: int = -1
 
@@ -25,6 +54,7 @@ func next_step():
 	else:
 		speech_bubble.hide()
 		cam.enabled = false
+		get_tree().paused = false
 		story_ended.emit()
 
 func _ready() -> void:

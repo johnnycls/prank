@@ -1,11 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdpjrpmotdhtj"]
+[gd_scene load_steps=4 format=3 uid="uid://bdpjrpmotdhtj"]
 
 [ext_resource type="Script" path="res://levels/0/story.gd" id="1_ddp86"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="2_5dy1n"]
+[ext_resource type="Theme" uid="uid://bgq7gf52v0365" path="res://assets/theme/base_theme.tres" id="3_n1l4g"]
 
 [node name="Story" type="Node2D"]
+process_mode = 2
 script = ExtResource("1_ddp86")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 
 [node name="SpeechBubble" parent="." instance=ExtResource("2_5dy1n")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme = ExtResource("3_n1l4g")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

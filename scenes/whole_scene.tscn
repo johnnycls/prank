@@ -19,7 +19,9 @@ script = ExtResource("1_e28hk")
 [node name="Background" parent="." instance=ExtResource("2_2k24j")]
 
 [node name="WholeRunway" parent="." instance=ExtResource("1_mmgss")]
-total_length = 115200.0
+position = Vector2(65280, 2160)
+total_length = 130560.0
+initial_revolution = 10000000
 
 [node name="HighlandScene" parent="." instance=ExtResource("8_yk6ob")]
 position = Vector2(-7680, 0)
@@ -33,14 +35,14 @@ position = Vector2(7680, 0)
 position = Vector2(15360, 0)
 
 [node name="OceanRunway" parent="." instance=ExtResource("1_mmgss")]
-position = Vector2(30720, 0)
+position = Vector2(34560, 2160)
 revolution = 10
 
 [node name="OceanScene" parent="." instance=ExtResource("3_ecfsw")]
 position = Vector2(23040, 0)
 
 [node name="WildnernessRunway" parent="." instance=ExtResource("1_mmgss")]
-position = Vector2(53760, 0)
+position = Vector2(57600, 2160)
 revolution = 10
 
 [node name="WildnernessScene" parent="." instance=ExtResource("7_2p7tf")]
@@ -50,14 +52,14 @@ position = Vector2(46080, 0)
 position = Vector2(69120, 0)
 
 [node name="ForestRunway" parent="." instance=ExtResource("1_mmgss")]
-position = Vector2(84480, 0)
+position = Vector2(88420, 2160)
 revolution = 10
 
 [node name="ForestScene" parent="." instance=ExtResource("5_datgh")]
 position = Vector2(76800, 0)
 
 [node name="DesertRunway" parent="." instance=ExtResource("1_mmgss")]
-position = Vector2(107520, 0)
+position = Vector2(111460, 2160)
 revolution = 10
 
 [node name="DesertScene" parent="." instance=ExtResource("7_huc3w")]

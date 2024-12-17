@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bdpjrpmotdhtj" path="res://levels/0/story.tscn" id="6_wscn7"]
 
 [node name="index" type="Node2D"]
-position = Vector2(166, -254)
 script = ExtResource("1_7uhyk")
 
 [node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("2_nmj01")]
