@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq1ajuyrn4aeh"]
+[gd_scene load_steps=4 format=3 uid="uid://cq1ajuyrn4aeh"]
 
+[ext_resource type="Script" path="res://scenes/castle/castle_scene.gd" id="1_cnkfc"]
 [ext_resource type="PackedScene" uid="uid://b3f3n1oui38s5" path="res://scenes/castle/castle.tscn" id="1_iy61n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdoh4"]
 size = Vector2(7680, 1000)
 
 [node name="CastleScene" type="Node2D"]
+script = ExtResource("1_cnkfc")
 
 [node name="Castle" parent="." instance=ExtResource("1_iy61n")]
 position = Vector2(1280, 320)
@@ -21,3 +23,5 @@ color = Color(0.38, 0.28956, 0.1862, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(3840, 3820)
 shape = SubResource("RectangleShape2D_gdoh4")
+
+[connection signal="changed_scene" from="Castle" to="." method="_on_castle_changed_scene"]

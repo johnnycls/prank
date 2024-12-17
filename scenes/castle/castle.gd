@@ -1,5 +1,7 @@
 extends Node2D
 
+signal changed_scene(scene: String)
+
 var outside_scene = preload("res://scenes/castle/outside.tscn")
 var interior_scene = preload("res://scenes/castle/interior.tscn")
 var kitchen_scene = preload("res://scenes/castle/kitchen.tscn")
@@ -17,6 +19,7 @@ func _on_outside_in() -> void:
 	outside.interior_in.connect(_on_interior_in)
 	scene = outside
 	add_child(outside)
+	changed_scene.emit("outside")
 
 func _on_interior_in() -> void:
 	var interior = interior_scene.instantiate()
@@ -27,7 +30,7 @@ func _on_interior_in() -> void:
 		scene.queue_free()
 	scene = interior
 	add_child(interior)
-
+	changed_scene.emit("interior")
 
 func _on_kitchen_in() -> void:
 	var kitchen = kitchen_scene.instantiate()
@@ -36,6 +39,7 @@ func _on_kitchen_in() -> void:
 	kitchen.kitchen_left.connect(_on_interior_in)
 	scene = kitchen
 	add_child(kitchen)
+	changed_scene.emit("kitchen")
 	
 func _on_room_in() -> void:
 	var room = room_scene.instantiate()
@@ -44,3 +48,4 @@ func _on_room_in() -> void:
 	room.room_left.connect(_on_interior_in)
 	scene = room
 	add_child(room)
+	changed_scene.emit("room")

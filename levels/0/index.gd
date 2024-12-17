@@ -1,9 +1,12 @@
 extends Node2D
 
+var goal_scene = preload("res://levels/0/goal.tscn")
+
 @export var level_num = 0
 @export var checkpoint_pos: Dictionary = {
-	0: Vector2(16000,760),
+	0: Vector2(15500,760),
 }
+@export var goal_position: Vector2 = Vector2(11250, 750)
 
 @onready var player = $Player
 @onready var player_cam = $PlayerFollowingCamera
@@ -14,6 +17,8 @@ var init_game_state = {
 }
 var saved_game_state
 var current_game_state
+
+var goal
 
 func _start() -> void:
 	current_game_state = init_game_state.duplicate(true)
@@ -57,9 +62,19 @@ func _on_player_area_or_body_entered(area_or_body: Node2D) -> void:
 func _on_player_dead() -> void:
 	lose()
 
-func _on_goal_player_enter() -> void:
-	win()
-
 func _on_story_story_ended() -> void:
 	story.queue_free()
 	_start()
+
+func _on_player_left_screen() -> void:
+	lose()
+
+func _on_whole_scene_castle_changed_scene(scene: String) -> void:
+	if scene=="kitchen":
+		goal = goal_scene.instantiate()
+		goal.position = goal_position
+		goal.player_enter.connect(win)
+		add_child(goal)
+	elif goal:
+		goal.queue_free()
+		goal = null
