@@ -79,6 +79,11 @@ func init() -> void:
 	gravitational_velocity = Vector2.ZERO
 	is_jumping = false
 	
+	if show_hp:
+		hp_label.show()
+	else:
+		hp_label.hide()
+		
 	hp = 100.0
 	hp_label.text = "%.2f" % hp + "/ 100"
 	

@@ -16,7 +16,13 @@ player_following_cam = NodePath("../PlayerFollowingCamera")
 
 [node name="Player" parent="." instance=ExtResource("2_otf2w")]
 position = Vector2(16000, 760)
+move_speed = 1500.0
+jump_speed = 3000.0
+acceleration_due_to_gravity = 2250.0
+acceleration_due_to_air_resistance = 1500.0
+max_jump_time = 0.25
 can_fly = false
+show_hp = false
 
 [node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_0dv6y")]
 enabled = false

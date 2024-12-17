@@ -40,7 +40,7 @@ position = Vector2(2325, 750)
 shape = SubResource("RectangleShape2D_32i6x")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
-position = Vector2(0, 750)
+position = Vector2(-25, 750)
 shape = SubResource("RectangleShape2D_32i6x")
 
 [connection signal="enter" from="KitchenDoor" to="." method="_on_kitchen_door_enter"]

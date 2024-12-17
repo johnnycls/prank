@@ -4,9 +4,9 @@ var goal_scene = preload("res://levels/0/goal.tscn")
 
 @export var level_num = 0
 @export var checkpoint_pos: Dictionary = {
-	0: Vector2(15500,760),
+	0: Vector2(16000,760),
 }
-@export var goal_position: Vector2 = Vector2(11250, 750)
+@export var goal_position: Vector2 = Vector2(11000, 750)
 
 @onready var player = $Player
 @onready var player_cam = $PlayerFollowingCamera

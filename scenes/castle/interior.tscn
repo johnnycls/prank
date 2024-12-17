@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://usaskd1xeltq"]
+[gd_scene load_steps=7 format=3 uid="uid://usaskd1xeltq"]
 
 [ext_resource type="Script" path="res://scenes/castle/interior.gd" id="1_0yqey"]
 [ext_resource type="PackedScene" uid="uid://nlfwdafl7scm" path="res://scenes/door.tscn" id="1_if363"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvj25"]
 size = Vector2(300, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7ayk"]
+size = Vector2(5000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hfs2"]
+size = Vector2(50, 3000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dffe6"]
+size = Vector2(50, 3000)
 
 [node name="Interior" type="Node2D"]
 script = ExtResource("1_0yqey")
@@ -136,6 +145,20 @@ color = Color(0.54, 0.39645, 0.243, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor9"]
 position = Vector2(150, 25)
 shape = SubResource("RectangleShape2D_xvj25")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2500, -25)
+shape = SubResource("RectangleShape2D_l7ayk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-25, 1500)
+shape = SubResource("RectangleShape2D_5hfs2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(5025, 1500)
+shape = SubResource("RectangleShape2D_dffe6")
 
 [connection signal="enter" from="Door" to="." method="_on_door_enter"]
 [connection signal="enter" from="KitchenDoor" to="." method="_on_kitchen_door_enter"]
