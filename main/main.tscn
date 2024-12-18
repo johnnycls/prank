@@ -25,4 +25,7 @@ color = Color(0.560784, 0.294118, 0.239216, 1)
 script = ExtResource("3_fna58")
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 script = ExtResource("4_7gx5s")
+
+[connection signal="finished" from="BGMPlayer" to="BGMPlayer" method="_on_finished"]

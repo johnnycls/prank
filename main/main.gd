@@ -5,6 +5,8 @@ signal ui_changed
 var home_scene = load("res://uis/home.tscn")
 var levels_ui = load("res://uis/levels.tscn")
 
+@onready var bgm_player = $BGMPlayer
+
 var _current_scene: Node
 var current_level: int
 var progress: Dictionary
@@ -13,6 +15,7 @@ var can_open_menu: bool = false
 func _ready() -> void:
 	# $State.delete_progress()
 	progress = $State.read_progress()
+	play_bgm(0, 0, 1.0)
 	
 func _remove_scene() -> void:
 	if _current_scene:
@@ -45,3 +48,12 @@ func save_progress(level_status) -> void:
 func _update_progress(key: String, value)-> void:	
 	progress[key] = value
 	$State.save_progress(progress)
+
+func play_bgm(bgm_no: int, fade_duration: float = 2.0, from_position: float = 0.0):
+	bgm_player.play_bgm(bgm_no, fade_duration, from_position)
+	
+func stop_bgm(fade_duration: float = 1.0):
+	bgm_player.stop_bgm(fade_duration)
+	
+func fade_volume(target_volume_db: float, duration: float = 0.0):
+	bgm_player.fade_volume(target_volume_db, duration)

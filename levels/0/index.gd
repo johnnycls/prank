@@ -33,6 +33,7 @@ func _ready() -> void:
 		init_game_state.checkpoint = saved_game_state.checkpoint
 	else:
 		saved_game_state = init_game_state.duplicate(true)
+	Main.can_open_menu = true
 	get_tree().paused = true
 
 func lose() -> void:
@@ -44,6 +45,7 @@ func win() -> void:
 		"checkpoint": 0
 	}
 	Main.save_progress(new_game_state)
+	Main.can_open_menu = false
 	Main.end_level()
 
 func get_checkpoint(checkpoint: int) -> void:

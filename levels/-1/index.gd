@@ -43,6 +43,7 @@ func _ready() -> void:
 	ui.init(int(saved_game_state.distance))
 	Main.can_open_menu = false
 	get_tree().paused = true
+	Main.play_bgm(1)
 	
 func _process(_delta: float) -> void:
 	if is_playing:

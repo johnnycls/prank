@@ -16,7 +16,7 @@ func set_distance(distance: float) -> void:
 	distance_label.text = str(int(distance))
 	
 func init(highest_score: int) -> void:
-	start_menu_highest_score_label.text = tr("HIGHEST_SCORE_%d" % highest_score)
+	start_menu_highest_score_label.text = tr("HIGHEST_SCORE") % highest_score
 	start_btn.grab_focus()
 
 func play() -> void:
@@ -32,7 +32,7 @@ func lose(is_record_breaking: bool, highest_score: int) -> void:
 		record_breaking_label.show()
 	else:
 		record_breaking_label.hide()
-	lose_menu_highest_score_label.text = tr("HIGHEST_SCORE_%d" % highest_score)
+	lose_menu_highest_score_label.text = tr("HIGHEST_SCORE") % highest_score
 	again_btn.grab_focus()
 
 func _on_start_btn_pressed() -> void:
