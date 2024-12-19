@@ -6,6 +6,7 @@ var home_scene = load("res://uis/home.tscn")
 var levels_ui = load("res://uis/levels.tscn")
 
 @onready var bgm_player = $BGMPlayer
+@onready var hud = $Hud
 
 var _current_scene: Node
 var current_level: int
@@ -24,7 +25,7 @@ func _remove_scene() -> void:
 	
 func start_level(level: int) -> void:
 	_remove_scene()
-	$Hud.clear_ui()
+	hud.clear_ui()
 	_current_scene = load(Config.level_to_path(level)).instantiate()
 	add_child(_current_scene)
 	current_level = level
@@ -35,7 +36,7 @@ func back_to_home_screen() -> void:
 	can_open_menu = false
 
 func change_ui(page: Control) -> void:
-	$Hud.change_ui(page)
+	hud.change_ui(page)
 	ui_changed.emit()
 	
 func end_level() -> void:
@@ -49,7 +50,7 @@ func _update_progress(key: String, value)-> void:
 	progress[key] = value
 	$State.save_progress(progress)
 
-func play_bgm(bgm_no: int, fade_duration: float = 2.0, from_position: float = 0.0):
+func play_bgm(bgm_no: int, fade_duration: float = 1.0, from_position: float = 0.0):
 	bgm_player.play_bgm(bgm_no, fade_duration, from_position)
 	
 func stop_bgm(fade_duration: float = 1.0):
@@ -57,3 +58,9 @@ func stop_bgm(fade_duration: float = 1.0):
 	
 func fade_volume(target_volume_db: float, duration: float = 0.0):
 	bgm_player.fade_volume(target_volume_db, duration)
+
+func open_menu() -> void:
+	hud.open_menu()
+	
+func close_menu() -> void:
+	hud.close_menu()

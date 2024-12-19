@@ -10,7 +10,6 @@ var goal_scene = preload("res://levels/0/goal.tscn")
 
 @onready var player = $Player
 @onready var player_cam = $PlayerFollowingCamera
-@onready var story = $Story
 
 var init_game_state = {
 	"checkpoint": 0,
@@ -34,6 +33,7 @@ func _ready() -> void:
 	else:
 		saved_game_state = init_game_state.duplicate(true)
 	Main.can_open_menu = true
+	Main.play_bgm(0)
 	get_tree().paused = true
 
 func lose() -> void:
@@ -66,7 +66,7 @@ func _on_player_dead() -> void:
 	lose()
 
 func _on_story_story_ended() -> void:
-	story.queue_free()
+	$Story.queue_free()
 	_start()
 
 func _on_player_left_screen() -> void:

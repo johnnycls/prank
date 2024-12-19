@@ -6,6 +6,7 @@ signal story_ended
 @onready var cam = $Camera2D
 @onready var bg = $CanvasLayer/ColorRect
 @onready var label = $CanvasLayer/MarginContainer/Label
+@onready var audio = $AudioStreamPlayer
 
 @export var player: CharacterBody2D
 
@@ -56,6 +57,7 @@ func next_step():
 		cam.enabled = false
 		get_tree().paused = false
 		story_ended.emit()
+	audio.select()
 
 func _ready() -> void:
 	next_step()
