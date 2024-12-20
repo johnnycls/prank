@@ -163,3 +163,5 @@ shape = SubResource("RectangleShape2D_dffe6")
 [connection signal="enter" from="Door" to="." method="_on_door_enter"]
 [connection signal="enter" from="KitchenDoor" to="." method="_on_kitchen_door_enter"]
 [connection signal="enter" from="RoomDoor" to="." method="_on_room_door_enter"]
+[connection signal="enter" from="RoomDoor2" to="." method="_on_room_door_2_enter"]
+[connection signal="enter" from="RoomDoor3" to="." method="_on_room_door_3_enter"]

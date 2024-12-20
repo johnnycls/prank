@@ -6,6 +6,7 @@ var ui = preload("res://levels/-1/ui.tscn").instantiate()
 @onready var runway = $Runway
 @onready var cam = $PlayerFollowingCamera
 @onready var background = $Background
+@onready var bird_audio = $BirdAudio
 
 @export var level_num: int
 @export var init_position: Vector2
@@ -31,6 +32,8 @@ func _start() -> void:
 	player.init()
 	ui.play()
 	is_playing = true
+	bird_audio.play()
+	Main.play_bgm(1)
 	Main.can_open_menu = true
 
 func _ready() -> void:
@@ -43,7 +46,6 @@ func _ready() -> void:
 	ui.init(int(saved_game_state.distance))
 	Main.can_open_menu = false
 	get_tree().paused = true
-	Main.play_bgm(1)
 	
 func _process(_delta: float) -> void:
 	if is_playing:
@@ -61,13 +63,9 @@ func lose() -> void:
 		saved_game_state = current_game_state
 		Main.save_progress(saved_game_state)
 	ui.lose(is_record_breaking, int(saved_game_state.distance))
+	bird_audio.stop()
+	Main.stop_bgm(0.0)
 	get_tree().paused = true
-
-func _on_player_area_or_body_entered(area_or_body: Node2D) -> void:
-	if area_or_body.is_in_group("killzone"):
-		player.hit(area_or_body.damage)
-	if area_or_body.is_in_group("remove_when_touched_by_player"):
-		area_or_body.queue_free()
 
 func _on_player_dead() -> void:
 	lose()

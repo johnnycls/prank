@@ -16,7 +16,7 @@ var can_open_menu: bool = false
 func _ready() -> void:
 	# $State.delete_progress()
 	progress = $State.read_progress()
-	play_bgm(0, 0, 1.0)
+	play_bgm(0)
 	
 func _remove_scene() -> void:
 	if _current_scene:

@@ -1,8 +1,8 @@
 extends AudioStreamPlayer
 
 var bgm_list = [
-	preload("res://assets/bgm/0 Ambient 2 Loop.wav"),
-	preload("res://assets/bgm/1 retrogamecenter2.mp3"),
+	preload("res://assets/bgm/29 A Daydream.ogg"),
+	preload("res://assets/bgm/19 Lammas Festival alternate loop.ogg"),
 ]
 
 var current_bgm: int = -1
@@ -57,7 +57,3 @@ func fade_volume(target_volume_db: float, duration: float = 0.0):
 		tween.tween_property(self, "volume_db", target_volume_db, duration)
 	else:
 		volume_db = target_volume_db
-
-func _on_finished() -> void:
-	stream_paused = false
-	play()

@@ -4,3 +4,5 @@
 
 [node name="Castle" type="Node2D"]
 script = ExtResource("1_tvkjd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var visible_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+@onready var jump_audio: AudioStreamPlayer = $JumpAudio
+@onready var run_audio: AudioStreamPlayer = $RunAudio
 
 @export var move_speed : float = 3500.0
 @export var jump_speed : float = 3500.0
@@ -10,6 +12,9 @@ extends CharacterBody2D
 @export var max_jump_time : float = 0.3
 @export var rotational_speed : float = 3.0
 @export var can_fly: bool = true
+
+var jump_sound = preload("res://assets/audio/jump.wav")
+var land_sound = preload("res://assets/audio/land.wav")
 
 var current_jump_time : float = 0.0
 var walking_velocity: Vector2 = Vector2.ZERO
@@ -31,6 +36,15 @@ func _physics_process(delta) -> void:
 	walking_velocity.x = direction * move_speed
 	var rotated_walking_velocity = walking_velocity.rotated(rotation)
 	
+	if is_on_floor() and gravitational_velocity.y > 0:
+		jump_audio.stream = land_sound
+		jump_audio.play()
+	if is_on_floor() and abs(walking_velocity.x) > 0.1:
+		if not run_audio.playing:
+			run_audio.play()
+	else:
+		run_audio.stop()
+	
 	if is_on_floor():
 		rotated_jumping_velocity.y = 0
 		gravitational_velocity.y = 0
@@ -38,6 +52,8 @@ func _physics_process(delta) -> void:
 		gravitational_velocity.y += acceleration_due_to_gravity * delta
 		
 	if Input.is_action_just_pressed("move_up") and (can_fly or is_on_floor()):
+		jump_audio.stream = jump_sound
+		jump_audio.play()
 		is_jumping = true
 		current_jump_time = 0
 		rotated_jumping_velocity += Vector2(0, -jump_speed).rotated(rotation)
@@ -62,12 +78,14 @@ func _physics_process(delta) -> void:
 	
 	
 signal dead
-signal area_or_body_entered(area_or_body: Node2D)
 signal left_screen
+
+var splash_sound = preload("res://assets/audio/splash.wav")
 
 @export var show_hp: bool = true
 @export var invincible_time: float = 0.2
 @onready var hp_label = $HPLabel
+@onready var hit_audio = $HitAudio
 
 var hp: float = 100.0
 var is_invincible: bool = false
@@ -92,6 +110,8 @@ func die():
 	
 func hit(damage:float):
 	if not is_invincible:
+		hit_audio.stream = splash_sound
+		hit_audio.play()
 		is_invincible = true
 		hp -= damage
 		hp_label.text = "%.2f" % hp + "/ 100"
@@ -102,10 +122,16 @@ func hit(damage:float):
 		is_invincible = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	area_or_body_entered.emit(area)
+	if area.is_in_group("killzone"):
+		hit(area.damage)
+	if area.is_in_group("remove_when_touched_by_player"):
+		area.queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	area_or_body_entered.emit(body)
+	if body.is_in_group("killzone"):
+		hit(body.damage)
+	if body.is_in_group("remove_when_touched_by_player"):
+		body.queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	left_screen.emit()

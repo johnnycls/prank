@@ -1,8 +1,14 @@
 extends CanvasLayer
 
+var select_sound = preload("res://assets/audio/select.wav")
+
 @onready var ui: Control = $UI
 @onready var menu: Control = $Menu
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
+func select() -> void:
+	audio_player.stream = select_sound
+	audio_player.play()
 
 func _ready() -> void:
 	add_sound_effects_for_btns(ui)
@@ -25,7 +31,7 @@ func close_menu() -> void:
 
 func add_sound_effects_for_btns(node: Node) -> void:
 	if node is Button:
-		node.focus_entered.connect(audio_player.select)
-		node.pressed.connect(audio_player.select)
+		node.focus_entered.connect(select)
+		node.pressed.connect(select)
 	for child in node.get_children():
 		add_sound_effects_for_btns(child)
