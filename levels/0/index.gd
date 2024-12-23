@@ -10,6 +10,7 @@ var goal_scene = preload("res://levels/0/goal.tscn")
 
 @onready var player = $Player
 @onready var player_cam = $PlayerFollowingCamera
+@onready var whole_scene = $WholeScene
 
 var init_game_state = {
 	"checkpoint": 0,
@@ -34,6 +35,7 @@ func _ready() -> void:
 		saved_game_state = init_game_state.duplicate(true)
 	Main.can_open_menu = true
 	Main.play_bgm(0)
+	whole_scene.init_castle("outside")
 	get_tree().paused = true
 
 func lose() -> void:

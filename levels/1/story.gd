@@ -1,15 +1,113 @@
-extends Control
+extends Node2D
+
+signal story_ended(times: int)
+
+var select_sound = preload("res://assets/audio/select.wav")
+var walk_sound = preload("res://assets/audio/walk.mp3")
+var door_sound = preload("res://assets/audio/door_open.wav")
+
+var step_ended: bool = true
 
 @onready var speech_bubble = $SpeechBubble
+@onready var cam = $Camera2D
+@onready var audio = $AudioStreamPlayer
+@onready var audio2 = $AudioStreamPlayer2
 
-var player
+@export var player: CharacterBody2D
+
+func select() -> void:
+	audio.stream = select_sound
+	audio.play()
 
 var steps: Array = [
 	func():
-		speech_bubble.set_dialogue(get_canva_pos(player),"LEVEL0_0"),
+		cam.enabled = true
+		cam.global_position = player.global_position
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_0"),
 	func():
-		speech_bubble.set_dialogue(get_canva_pos(player),"LEVEL0_1"),
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_1"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_2"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_3"),
+	func():
+		speech_bubble.hide()
+		step_ended = false
+		audio2.stream = walk_sound
+		audio2.play()
+		await audio2.finished
+		next_step(),
+	func():
+		speech_bubble.show()
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_4")
+		step_ended = true,
+	func():
+		speech_bubble.hide()
+		cam.enabled = false
+		story_ended.emit(0),
+	func():
+		speech_bubble.show()
+		cam.global_position = player.global_position
+		cam.enabled = true
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_5"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_6"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_7"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_8"),
+	func():
+		step_ended = false
+		speech_bubble.hide()
+		audio2.stream = door_sound
+		audio2.play()
+		await audio2.finished
+		next_step(),
+	func():
+		speech_bubble.show()
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_9")
+		step_ended = true,
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_10"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_11"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_12"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_13"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_14"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_15"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_16"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_17"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_18"),
+	func():
+		step_ended = false
+		speech_bubble.hide()
+		audio2.stream = door_sound
+		audio2.play()
+		await audio2.finished
+		next_step(),
+	func():
+		speech_bubble.show()
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_19")
+		step_ended = true,
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_20"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_21"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_22"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_23"),
+	func():
+		speech_bubble.set_dialogue(player.global_position,"LEVEL1_24"),
 ]
+
 var current_step: int = -1
 
 func get_canva_pos(node: Node2D):
@@ -20,12 +118,15 @@ func next_step():
 	if current_step < steps.size():
 		steps[current_step].call()
 	else:
-		Main.end_story()
+		speech_bubble.hide()
+		cam.enabled = false
+		get_tree().paused = false
+		story_ended.emit(1)
+	select()
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("players")
-	next_step()
+		next_step()
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") and step_ended:
 		next_step()

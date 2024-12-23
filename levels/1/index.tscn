@@ -1,39 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1t75naswfyd6"]
+[gd_scene load_steps=6 format=3 uid="uid://d1t75naswfyd6"]
 
-[ext_resource type="Script" path="res://levels/0/index.gd" id="1_geafa"]
-[ext_resource type="PackedScene" uid="uid://b3f3n1oui38s5" path="res://scenes/castle/castle.tscn" id="2_ntgaf"]
-[ext_resource type="Script" path="res://levels/0/camera.gd" id="3_65bgu"]
+[ext_resource type="Script" path="res://levels/1/index.gd" id="1_3prab"]
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_3lkf8"]
 [ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="4_nrws0"]
-[ext_resource type="PackedScene" uid="uid://c1icpbm4j7xsp" path="res://objects/object.tscn" id="5_xn4sj"]
+[ext_resource type="PackedScene" uid="uid://d35q587j7sl80" path="res://levels/1/story.tscn" id="5_ydf7i"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="6_bx5f0"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_k6ctl"]
-size = Vector2(40, 40)
-
 [node name="index" type="Node2D"]
-position = Vector2(166, -254)
-script = ExtResource("1_geafa")
-level_num = null
-checkpoint_pos = null
+script = ExtResource("1_3prab")
 
-[node name="Castle" parent="." instance=ExtResource("2_ntgaf")]
-position = Vector2(139, -783)
-
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player", "goal")]
-script = ExtResource("3_65bgu")
-player = NodePath("../Player")
-goal = NodePath("../Goal")
+[node name="WholeScene" parent="." instance=ExtResource("2_3lkf8")]
+position = Vector2(0, -2160)
 
 [node name="Player" parent="." instance=ExtResource("4_nrws0")]
-
-[node name="Goal" parent="." instance=ExtResource("5_xn4sj")]
-position = Vector2(1758, -272)
-texture = SubResource("PlaceholderTexture2D_k6ctl")
+position = Vector2(11000, 760)
+move_speed = 1500.0
+jump_speed = 3000.0
+acceleration_due_to_gravity = 2250.0
+acceleration_due_to_air_resistance = 1500.0
+max_jump_time = 0.25
+can_fly = false
+show_hp = false
 
 [node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_bx5f0")]
+enabled = false
 target = NodePath("../Player")
 
-[connection signal="camera_transition_complete" from="Camera" to="." method="_on_camera_camera_transition_complete"]
-[connection signal="area_or_body_entered" from="Player" to="." method="_on_player_area_or_body_entered"]
+[node name="Story" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ydf7i")]
+player = NodePath("../Player")
+
+[connection signal="castle_changed_scene" from="WholeScene" to="." method="_on_whole_scene_castle_changed_scene"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
-[connection signal="player_enter" from="Goal" to="." method="_on_goal_player_enter"]
+[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
+[connection signal="story_ended" from="Story" to="." method="_on_story_story_ended"]
