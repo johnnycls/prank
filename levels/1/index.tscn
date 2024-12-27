@@ -26,8 +26,9 @@ show_hp = false
 enabled = false
 target = NodePath("../Player")
 
-[node name="Story" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ydf7i")]
+[node name="Story" parent="." node_paths=PackedStringArray("player", "whole_scene") instance=ExtResource("5_ydf7i")]
 player = NodePath("../Player")
+whole_scene = NodePath("../WholeScene")
 
 [connection signal="castle_changed_scene" from="WholeScene" to="." method="_on_whole_scene_castle_changed_scene"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]

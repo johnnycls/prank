@@ -12,8 +12,6 @@ size = Vector2(40, 40)
 [node name="index" type="Node2D"]
 position = Vector2(166, -254)
 script = ExtResource("1_ui6cp")
-level_num = null
-checkpoint_pos = null
 
 [node name="Castle" parent="." instance=ExtResource("2_6wfsj")]
 position = Vector2(139, -783)

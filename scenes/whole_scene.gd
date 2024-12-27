@@ -11,6 +11,9 @@ signal castle_changed_scene(scene: String)
 @onready var forest_runway = $ForestRunway
 @onready var desert_runway = $DesertRunway
 
+func castle_center() -> Vector2:
+	return castle_scene.center()
+
 func _ready() -> void:
 	whole_runway.player_following_cam = player_following_cam
 	ocean_runway.player_following_cam = player_following_cam

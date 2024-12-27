@@ -77,3 +77,6 @@ func _on_locked_door_in(audio_play: bool = true) -> void:
 	if audio_play:
 		audio.stream = error_sound
 		audio.play()
+
+func center() -> Vector2:
+	return scene.get_node("Center").global_position

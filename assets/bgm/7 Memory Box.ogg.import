@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://pxwonapts3lf"
+path="res://.godot/imported/7 Memory Box.ogg-d1a4d9492373b8bff7cf6294ce986430.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/bgm/7 Memory Box.ogg"
+dest_files=["res://.godot/imported/7 Memory Box.ogg-d1a4d9492373b8bff7cf6294ce986430.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

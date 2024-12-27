@@ -3,6 +3,7 @@ extends AudioStreamPlayer
 var bgm_list = [
 	preload("res://assets/bgm/29 A Daydream.ogg"),
 	preload("res://assets/bgm/19 Lammas Festival alternate loop.ogg"),
+	preload("res://assets/bgm/7 Memory Box.ogg"),
 ]
 
 var current_bgm: int = -1
@@ -42,13 +43,13 @@ func play_bgm(bgm_no: int, fade_duration: float, from_position: float):
 		current_bgm = bgm_no
 
 func stop_bgm(fade_duration: float = 1.0):
+	current_bgm = -1
 	if playing:
 		if fade_duration > 0:
 			var fade_out = create_tween()
 			fade_out.tween_property(self, "volume_db", -80, fade_duration)
 			await fade_out.finished
 		stop()
-	current_bgm = -1
 
 func fade_volume(target_volume_db: float, duration: float = 0.0):
 	base_volume_db = target_volume_db

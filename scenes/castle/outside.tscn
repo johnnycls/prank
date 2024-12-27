@@ -14,4 +14,7 @@ color = Color(1, 0.933333, 0, 1)
 [node name="Door" parent="." instance=ExtResource("1_41v0h")]
 position = Vector2(2350, 2400)
 
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(2500, 1500)
+
 [connection signal="enter" from="Door" to="." method="_on_door_enter"]

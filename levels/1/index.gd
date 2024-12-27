@@ -4,7 +4,7 @@ var goal_scene = preload("res://levels/0/goal.tscn")
 
 @export var level_num = 1
 @export var checkpoint_pos: Dictionary = {
-	0: Vector2(11000,760),
+	0: Vector2(10800,760),
 }
 
 @onready var player = $Player
@@ -33,7 +33,6 @@ func _ready() -> void:
 	else:
 		saved_game_state = init_game_state.duplicate(true)
 	Main.can_open_menu = true
-	Main.play_bgm(0)
 	whole_scene.init_castle("kitchen")
 	get_tree().paused = true
 

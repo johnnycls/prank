@@ -16,3 +16,6 @@ func _on_castle_changed_scene(scene: String) -> void:
 
 func init(scene: String)-> void:
 	castle.init(scene)
+
+func center() -> Vector2:
+	return castle.center()

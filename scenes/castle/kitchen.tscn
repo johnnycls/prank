@@ -43,4 +43,7 @@ shape = SubResource("RectangleShape2D_32i6x")
 position = Vector2(-25, 750)
 shape = SubResource("RectangleShape2D_32i6x")
 
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(1150, 2287.5)
+
 [connection signal="enter" from="KitchenDoor" to="." method="_on_kitchen_door_enter"]
