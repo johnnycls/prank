@@ -32,7 +32,7 @@ func _ready() -> void:
 		init_game_state.checkpoint = saved_game_state.checkpoint
 	else:
 		saved_game_state = init_game_state.duplicate(true)
-	Main.can_open_menu = true
+	Main.can_open_menu = false
 	whole_scene.init_castle("kitchen")
 	get_tree().paused = true
 
@@ -64,6 +64,7 @@ func _on_player_dead() -> void:
 func _on_story_story_ended(times: int) -> void:
 	if times==0:
 		get_tree().paused = false
+		Main.can_open_menu = true
 		$Story.hide()
 		_start()
 	else:

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvfbyslx2mt5i"]
+[gd_scene load_steps=4 format=3 uid="uid://bvfbyslx2mt5i"]
 
 [ext_resource type="Script" path="res://characters/warrior_story.gd" id="1_mb76p"]
+[ext_resource type="AudioStream" uid="uid://bce0gwu7cwrfy" path="res://assets/audio/run.ogg" id="2_68wf4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
 size = Vector2(120, 400)
 
-[node name="Warrior" type="Area2D" groups=["killzone", "moving_objects"]]
+[node name="Warrior" type="CharacterBody2D" groups=["killzone", "moving_objects"]]
+process_mode = 2
 z_index = 10
 script = ExtResource("1_mb76p")
 
@@ -17,3 +19,10 @@ color = Color(1, 0, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(60, 200)
 shape = SubResource("RectangleShape2D_0deo2")
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="RunAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_68wf4")
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="."]

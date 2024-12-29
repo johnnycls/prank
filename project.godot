@@ -20,7 +20,7 @@ config/windows_native_icon="res://icon.ico"
 Config="*res://config.gd"
 Main="*res://main/main.tscn"
 Style="*res://style.gd"
-Global="*res://global.gd"
+Global="*res://global.tscn"
 
 [display]
 

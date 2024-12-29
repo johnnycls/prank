@@ -21,6 +21,8 @@ func init(_scene) -> void:
 		_on_interior_in(false)
 	elif _scene=="kitchen":
 		_on_kitchen_in(false)
+	elif _scene=="room":
+		_on_room_in(false)
 
 func _on_outside_in(audio_play: bool = true) -> void:
 	var outside = outside_scene.instantiate()

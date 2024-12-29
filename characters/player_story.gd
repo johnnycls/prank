@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var jump_audio: AudioStreamPlayer = $JumpAudio
 @onready var run_audio: AudioStreamPlayer = $RunAudio
-@onready var attack_audio: AudioStreamPlayer = $AttackAudio
 
 @export var move_speed : float = 3500.0
 @export var jump_speed : float = 3500.0
@@ -15,7 +14,6 @@ extends CharacterBody2D
 
 var jump_sound = preload("res://assets/audio/jump.wav")
 var land_sound = preload("res://assets/audio/land.wav")
-var sword_sound = preload("res://assets/audio/sword.wav")
 
 var current_jump_time : float = 0.0
 var walking_velocity: Vector2 = Vector2.ZERO
@@ -27,10 +25,6 @@ var is_jump_just_pressed: bool = false
 var is_jump_pressed: bool = false
 var rotation_input: float = 0.0 
 var direction: float = 0.0
-
-func attack():
-	attack_audio.stream = sword_sound
-	attack_audio.play()
 
 func _stop_jumping():
 	is_jumping = false
