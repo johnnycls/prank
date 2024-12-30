@@ -14,8 +14,8 @@ func _on_castle_changed_scene(scene: String) -> void:
 			ground.show()
 	castle_changed_scene.emit(scene)
 
-func init(scene: String)-> void:
-	castle.init(scene)
+func set_scene(scene: String, audio_play: bool = false)-> void:
+	castle.set_scene(scene, audio_play)
 
 func center() -> Vector2:
 	return castle.center()

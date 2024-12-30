@@ -108,10 +108,11 @@ func init() -> void:
 func die():
 	dead.emit()
 	
-func hit(damage:float):
+func hit(damage:float, audio):
 	if not is_invincible:
-		hit_audio.stream = splash_sound
-		hit_audio.play()
+		if audio:
+			hit_audio.stream = audio
+			hit_audio.play()
 		is_invincible = true
 		hp -= damage
 		hp_label.text = "%.2f" % hp + "/ 100"
@@ -123,13 +124,13 @@ func hit(damage:float):
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("killzone"):
-		hit(area.damage)
+		hit(area.damage, splash_sound if area.is_in_group("poop") else null)
 	if area.is_in_group("remove_when_touched_by_player"):
 		area.queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("killzone"):
-		hit(body.damage)
+		hit(body.damage, splash_sound if body.is_in_group("poop") else null)
 	if body.is_in_group("remove_when_touched_by_player"):
 		body.queue_free()
 

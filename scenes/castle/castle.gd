@@ -14,15 +14,15 @@ var scene
 
 @onready var audio = $AudioStreamPlayer
 
-func init(_scene) -> void:
+func set_scene(_scene, audio_play: bool = false) -> void:
 	if _scene=="outside":
-		_on_outside_in(false)
+		_on_outside_in(audio_play)
 	elif _scene=="interior":
-		_on_interior_in(false)
+		_on_interior_in(audio_play)
 	elif _scene=="kitchen":
-		_on_kitchen_in(false)
+		_on_kitchen_in(audio_play)
 	elif _scene=="room":
-		_on_room_in(false)
+		_on_room_in(audio_play)
 
 func _on_outside_in(audio_play: bool = true) -> void:
 	var outside = outside_scene.instantiate()

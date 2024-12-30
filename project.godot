@@ -36,6 +36,7 @@ killzone=""
 foods=""
 moving_objects=""
 remove_when_touched_by_player=""
+poop=""
 
 [input]
 

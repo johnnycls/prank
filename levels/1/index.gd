@@ -33,7 +33,7 @@ func _ready() -> void:
 	else:
 		saved_game_state = init_game_state.duplicate(true)
 	Main.can_open_menu = false
-	whole_scene.init_castle("kitchen")
+	whole_scene.set_castle_scene("kitchen")
 	get_tree().paused = true
 
 func lose() -> void:

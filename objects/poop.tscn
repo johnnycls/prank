@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6esh"]
 size = Vector2(80, 80)
 
-[node name="Poop" type="Area2D" groups=["killzone", "moving_objects", "remove_when_touched_by_player"]]
+[node name="Poop" type="Area2D" groups=["killzone", "moving_objects", "poop", "remove_when_touched_by_player"]]
 script = ExtResource("1_atqxw")
 acceleration_gravity = 2000.0
 
