@@ -26,7 +26,7 @@ func set_scene(_scene, audio_play: bool = false) -> void:
 
 func _on_outside_in(audio_play: bool = true) -> void:
 	var outside = outside_scene.instantiate()
-	if scene:
+	if Global.is_node_valid(scene):
 		scene.queue_free()
 	outside.interior_in.connect(_on_interior_in)
 	scene = outside
@@ -42,7 +42,7 @@ func _on_interior_in(audio_play: bool = true) -> void:
 	interior.kitchen_in.connect(_on_kitchen_in)
 	interior.room_in.connect(_on_room_in)
 	interior.locked_door_in.connect(_on_locked_door_in)
-	if scene:
+	if Global.is_node_valid(scene):
 		scene.queue_free()
 	scene = interior
 	add_child(interior)
@@ -53,7 +53,7 @@ func _on_interior_in(audio_play: bool = true) -> void:
 
 func _on_kitchen_in(audio_play: bool = true) -> void:
 	var kitchen = kitchen_scene.instantiate()
-	if scene:
+	if Global.is_node_valid(scene):
 		scene.queue_free()
 	kitchen.kitchen_left.connect(_on_interior_in)
 	scene = kitchen
@@ -65,7 +65,7 @@ func _on_kitchen_in(audio_play: bool = true) -> void:
 	
 func _on_room_in(audio_play: bool = true) -> void:
 	var room = room_scene.instantiate()
-	if scene:
+	if Global.is_node_valid(scene):
 		scene.queue_free()
 	room.room_left.connect(_on_interior_in)
 	scene = room

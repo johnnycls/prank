@@ -40,7 +40,7 @@ func find_nearest_target():
 	var targets = Global.get_valid_nodes_in_group("foods")
 	
 	return targets.reduce(func(closest, current):
-		var closest_dist = closest.global_position.distance_to(global_position) if closest else INF
+		var closest_dist = closest.global_position.distance_to(global_position) if Global.is_node_valid(closest) else INF
 		var current_dist = current.global_position.distance_to(global_position)
 		return current if current_dist < closest_dist else closest
 	)

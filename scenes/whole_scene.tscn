@@ -37,14 +37,14 @@ position = Vector2(15360, 0)
 
 [node name="OceanRunway" parent="." instance=ExtResource("1_mmgss")]
 position = Vector2(34560, 2160)
-revolution = 40
+revolution = 2
 
 [node name="OceanScene" parent="." instance=ExtResource("3_ecfsw")]
 position = Vector2(23040, 0)
 
 [node name="WildnernessRunway" parent="." instance=ExtResource("1_mmgss")]
 position = Vector2(57600, 2160)
-revolution = 10
+revolution = 20
 
 [node name="WildnernessScene" parent="." instance=ExtResource("7_2p7tf")]
 position = Vector2(46080, 0)
@@ -54,14 +54,14 @@ position = Vector2(69120, 0)
 
 [node name="ForestRunway" parent="." instance=ExtResource("1_mmgss")]
 position = Vector2(88420, 2160)
-revolution = 60
+revolution = 25
 
 [node name="ForestScene" parent="." instance=ExtResource("5_datgh")]
 position = Vector2(76800, 0)
 
 [node name="DesertRunway" parent="." instance=ExtResource("1_mmgss")]
 position = Vector2(111460, 2160)
-revolution = 100
+revolution = 30
 
 [node name="DesertScene" parent="." instance=ExtResource("7_huc3w")]
 position = Vector2(99840, 0)

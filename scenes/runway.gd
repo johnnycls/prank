@@ -16,7 +16,7 @@ func _ready() -> void:
 	collision_shape.shape.size = Vector2(total_length, 4320)
 
 func _on_body_exited(body: Node2D) -> void:
-	if player_following_cam and body.is_in_group("players"):
+	if is_instance_valid(player_following_cam) and body.is_in_group("players"):
 		if body.global_position.x<global_position.x:
 			if current_revolution > 0:
 				current_revolution -= 1

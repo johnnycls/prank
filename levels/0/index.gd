@@ -75,6 +75,6 @@ func _on_whole_scene_castle_changed_scene(scene: String) -> void:
 		goal.position = goal_position
 		goal.player_enter.connect(win)
 		add_child(goal)
-	elif goal:
+	elif Global.is_node_valid(goal):
 		goal.queue_free()
 		goal = null

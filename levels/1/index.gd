@@ -1,7 +1,5 @@
 extends Node2D
 
-var goal_scene = preload("res://levels/0/goal.tscn")
-
 @export var level_num = 1
 @export var checkpoint_pos: Dictionary = {
 	0: Vector2(10800,760),
@@ -16,8 +14,6 @@ var init_game_state = {
 }
 var saved_game_state
 var current_game_state
-
-var goal
 
 func _start() -> void:
 	current_game_state = init_game_state.duplicate(true)

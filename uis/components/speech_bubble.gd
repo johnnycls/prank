@@ -3,6 +3,7 @@ extends TextureRect
 @onready var dialogue = $Dialogue
 
 func set_dialogue(pos: Vector2, text: String, is_flip_h = true):
+	show()
 	flip_h = is_flip_h
 	dialogue.text = text
 	var max_width = 300

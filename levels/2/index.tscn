@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu47j0siap50u"]
+[gd_scene load_steps=10 format=3 uid="uid://cu47j0siap50u"]
 
 [ext_resource type="Script" path="res://levels/2/index.gd" id="1_1o8v1"]
 [ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_40y0f"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="6_mmhh5"]
 [ext_resource type="Script" path="res://levels/2/spawn_bird.gd" id="7_vxgx7"]
 [ext_resource type="AudioStream" uid="uid://bwvuvm56xpg2u" path="res://assets/audio/birds.ogg" id="8_k4a1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mtol"]
+size = Vector2(1000, 10000)
 
 [node name="index" type="Node2D"]
 script = ExtResource("1_1o8v1")
@@ -39,6 +42,13 @@ player = NodePath("../Player")
 stream = ExtResource("8_k4a1h")
 autoplay = true
 
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(48000, -2160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("RectangleShape2D_8mtol")
+
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
 [connection signal="story_ended" from="Story" to="." method="_on_story_story_ended"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

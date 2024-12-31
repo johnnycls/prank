@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
 size = Vector2(119, 402)
 
-[node name="Player" type="CharacterBody2D" groups=["players"]]
+[node name="Player" type="CharacterBody2D"]
 process_mode = 2
 z_index = 10
 script = ExtResource("1_vdhmo")

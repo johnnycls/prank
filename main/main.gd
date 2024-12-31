@@ -19,7 +19,7 @@ func _ready() -> void:
 	play_bgm(0)
 	
 func _remove_scene() -> void:
-	if _current_scene:
+	if Global.is_node_valid(_current_scene):
 		_current_scene.queue_free()
 		_current_scene = null
 	

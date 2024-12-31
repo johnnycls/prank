@@ -20,10 +20,10 @@ var current_game_state: Dictionary
 var is_playing: bool = false
 
 func current_distance() -> float:
-	return player.global_position.x + runway.current_revolution*runway.total_length if player else 0.0
+	return player.global_position.x + runway.current_revolution*runway.total_length if Global.is_node_valid(player) else 0.0
 
 func get_cam_distance() -> float:
-	return cam.global_position.x + runway.current_revolution*runway.total_length if player else 0.0
+	return cam.global_position.x + runway.current_revolution*runway.total_length if Global.is_node_valid(player) else 0.0
 
 func _start() -> void:
 	current_game_state = init_game_state.duplicate(true)

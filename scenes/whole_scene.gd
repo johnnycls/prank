@@ -14,8 +14,9 @@ signal castle_changed_scene(scene: String)
 
 func castle_center() -> Vector2:
 	return castle_scene.center()
-
-func _ready() -> void:
+	
+func init(_player_following_cam: Camera2D):
+	player_following_cam = _player_following_cam
 	whole_runway.player_following_cam = player_following_cam
 	ocean_runway.player_following_cam = player_following_cam
 	wilderness_runway.player_following_cam = player_following_cam
@@ -26,7 +27,7 @@ func _ready() -> void:
 	ocean_runway.init()
 	wilderness_runway.init()
 	forest_runway.init()
-	desert_runway.init()
+	desert_runway.init()	
 
 func _on_castle_scene_castle_changed_scene(scene: String) -> void:
 	if scene!="outside":
@@ -42,7 +43,7 @@ func set_castle_scene(scene: String, audio_play: bool = false) -> void:
 	castle_scene.set_scene(scene, audio_play)
 
 func get_cam_distance() -> float:
-	return (player_following_cam.global_position.x if player_following_cam else 0.0) + ocean_runway.current_revolution*ocean_runway.total_length + wilderness_runway.current_revolution*wilderness_runway.total_length + forest_runway.current_revolution*forest_runway.total_length + desert_runway.current_revolution*desert_runway.total_length
+	return (player_following_cam.global_position.x if Global.is_node_valid(player_following_cam) else 0.0) + ocean_runway.current_revolution*ocean_runway.total_length + wilderness_runway.current_revolution*wilderness_runway.total_length + forest_runway.current_revolution*forest_runway.total_length + desert_runway.current_revolution*desert_runway.total_length
 
 func _physics_process(_delta: float) -> void:
 		background.set_offset_by_distance(get_cam_distance())

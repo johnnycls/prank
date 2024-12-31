@@ -7,10 +7,10 @@ signal castle_changed_scene(scene: String)
 
 func _on_castle_changed_scene(scene: String) -> void:
 	if scene!="outside":
-		if ground:
+		if Global.is_node_valid(ground):
 			ground.hide()
 	else:
-		if ground:
+		if Global.is_node_valid(ground):
 			ground.show()
 	castle_changed_scene.emit(scene)
 

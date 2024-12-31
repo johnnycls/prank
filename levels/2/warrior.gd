@@ -11,5 +11,5 @@ func _on_body_entered(body: Node2D) -> void:
 		attack_audio.play()
 
 func _physics_process(_delta: float) -> void:
-	if player:
+	if Global.is_node_valid(player):
 		global_position.y = min(755, player.global_position.y)
