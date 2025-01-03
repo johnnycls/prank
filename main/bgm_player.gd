@@ -4,6 +4,8 @@ var bgm_list = [
 	preload("res://assets/bgm/29 A Daydream.ogg"),
 	preload("res://assets/bgm/19 Lammas Festival alternate loop.ogg"),
 	preload("res://assets/bgm/7 Memory Box.ogg"),
+	preload("res://assets/bgm/25 Snow Moon.ogg"),
+	preload("res://assets/bgm/5 In Loneliness.ogg"),
 ]
 
 var current_bgm: int = -1

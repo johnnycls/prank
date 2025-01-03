@@ -37,6 +37,8 @@ func _ready() -> void:
 		saved_game_state = init_game_state.duplicate(true)
 	Main.can_open_menu = false
 	whole_scene.set_castle_scene("room")
+	player.global_position = Vector2(-1000000, -10000000)
+	warrior.global_position = Vector2(-1000000, -10000000)
 	get_tree().paused = true
 	$Story.next_step()
 

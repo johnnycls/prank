@@ -33,7 +33,7 @@ func _start() -> void:
 	ui.play()
 	is_playing = true
 	bird_audio.play()
-	Main.play_bgm(1)
+	Main.play_bgm(1,0)
 	Main.can_open_menu = true
 
 func _ready() -> void:

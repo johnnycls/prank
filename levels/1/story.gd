@@ -25,7 +25,7 @@ func select() -> void:
 
 var steps: Array = [
 	func():
-		Main.play_bgm(0)
+		Main.play_bgm(0,0)
 		speech_bubble.hide()
 		step_ended = false
 		audio2.stream = eat_sound
@@ -61,7 +61,7 @@ var steps: Array = [
 		cam.enabled = false
 		story_ended.emit(0),
 	func():
-		Main.play_bgm(2)
+		Main.play_bgm(2,0)
 		speech_bubble.show()
 		player.global_position = Vector2(10300, -740)
 		cam.global_position = whole_scene.castle_center()
@@ -114,7 +114,7 @@ var steps: Array = [
 		await audio2.finished
 		next_step(),
 	func():
-		Main.play_bgm(2)
+		Main.play_bgm(2,0)
 		speech_bubble.show()
 		speech_bubble.set_dialogue(player.global_position,"LEVEL1_19")
 		step_ended = true,

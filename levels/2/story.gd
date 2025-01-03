@@ -27,14 +27,13 @@ func select() -> void:
 
 var steps: Array = [
 	func():
-		Main.play_bgm(2)
+		Main.play_bgm(2,0)
 		whole_scene.init(cam)
 		step_ended = true
 		cam.enabled = true
 		cam.global_position = whole_scene.castle_center()
 		player = player_scene.instantiate()
 		add_child(player)
-		player.show()
 		player.global_position = Vector2(10200, -740)
 		speech_bubble.set_dialogue(player.global_position,"LEVEL2_0"),
 	func():
@@ -66,6 +65,7 @@ var steps: Array = [
 		player.direction = 0.75
 		await Global.wait(0.05)
 		player.direction = 0
+		Main.play_bgm(3, 0)
 		next_step(),
 	func():
 		speech_bubble.set_dialogue(player.global_position,"LEVEL2_5")
@@ -174,8 +174,9 @@ var steps: Array = [
 		warrior.queue_free()
 		story_ended.emit(0),
 	func():
+		Main.play_bgm(4)
 		player = player_scene.instantiate()
-		add_child(player)
+		add_child.call_deferred(player)
 		player.global_position = Vector2(48000, 755)
 		cam.global_position.x = player.global_position.x
 		cam.target = player

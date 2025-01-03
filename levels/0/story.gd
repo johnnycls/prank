@@ -17,7 +17,7 @@ func select() -> void:
 
 var steps: Array = [
 	func():
-		Main.play_bgm(0)
+		Main.play_bgm(0,0)
 		cam.enabled = false
 		label.show()
 		label.text = "LEVEL0_0",

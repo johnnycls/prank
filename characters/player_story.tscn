@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://characters/player_story.gd" id="1_vdhmo"]
 [ext_resource type="AudioStream" uid="uid://bce0gwu7cwrfy" path="res://assets/audio/run.ogg" id="3_28cbb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
-size = Vector2(119, 402)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6b7w"]
+size = Vector2(120, 400)
 
 [node name="Player" type="CharacterBody2D"]
 process_mode = 2
@@ -18,7 +18,7 @@ color = Color(0, 0, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(59.5, 201)
-shape = SubResource("RectangleShape2D_0deo2")
+shape = SubResource("RectangleShape2D_y6b7w")
 
 [node name="JumpAudio" type="AudioStreamPlayer" parent="."]
 
