@@ -35,13 +35,7 @@ func load_lang() -> void:
 		var file: FileAccess = FileAccess.open(Config.PREFERENCE_PATH, FileAccess.READ)
 		var settings: Dictionary = file.get_var()
 		file.close()
-		var lang_id: int = settings.get("language", 0)
-		
-		var lang_id_to_code: Dictionary = {}
-		var _id: int = 0
-		for code in Config.LANGS.keys():
-			lang_id_to_code[_id] = code
-			_id += 1
-		TranslationServer.set_locale(lang_id_to_code[lang_id])
+		var lang_id: int = settings.get("language", Config.DEFAULT_LANG)
+		TranslationServer.set_locale(Config.LANG_IDS[lang_id])
 	else:
-		TranslationServer.set_locale(Config.DEFAULT_LANG)
+		TranslationServer.set_locale(Config.LANG_IDS[Config.DEFAULT_LANG])

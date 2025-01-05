@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwn8hmtpaob0u"]
 
 [ext_resource type="Script" path="res://scenes/castle/outside.gd" id="1_iq10m"]
-[ext_resource type="Texture2D" uid="uid://dbrsrfwgenlle" path="res://assets/environment_sprites/castle_outside.png" id="2_j4q6m"]
+[ext_resource type="Texture2D" uid="uid://ch5egj06q1vir" path="res://assets/environment_sprites/castle_outside.png" id="2_j4q6m"]
 [ext_resource type="PackedScene" uid="uid://c8b8mfceo5nji" path="res://scenes/castle/outside_door.tscn" id="3_uk07p"]
 
 [node name="Outside" type="Node2D"]
@@ -13,7 +13,7 @@ offset_bottom = 3001.0
 texture = ExtResource("2_j4q6m")
 
 [node name="Door" parent="." instance=ExtResource("3_uk07p")]
-position = Vector2(2185, 1989)
+position = Vector2(2200, 2000)
 
 [node name="Center" type="Marker2D" parent="."]
 position = Vector2(2500, 1500)
