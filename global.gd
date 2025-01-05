@@ -29,3 +29,19 @@ func play_sound(audio_player: AudioStreamPlayer, sound: AudioStream = null, shou
 func wait(duration: float):
 	var timer = get_tree().create_timer(duration)
 	await timer.timeout
+
+func load_lang() -> void:	
+	if FileAccess.file_exists(Config.PREFERENCE_PATH):
+		var file: FileAccess = FileAccess.open(Config.PREFERENCE_PATH, FileAccess.READ)
+		var settings: Dictionary = file.get_var()
+		file.close()
+		var lang_id: int = settings.get("language", 0)
+		
+		var lang_id_to_code: Dictionary = {}
+		var _id: int = 0
+		for code in Config.LANGS.keys():
+			lang_id_to_code[_id] = code
+			_id += 1
+		TranslationServer.set_locale(lang_id_to_code[lang_id])
+	else:
+		TranslationServer.set_locale(Config.DEFAULT_LANG)
