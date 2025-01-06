@@ -35,14 +35,18 @@ func back_to_home_screen() -> void:
 	_remove_scene()
 	change_ui(home_scene.instantiate())
 	can_open_menu = false
+	play_bgm(0,0)
 
 func change_ui(page: Control) -> void:
 	hud.change_ui(page)
 	ui_changed.emit()
 	
 func end_level() -> void:
-	_remove_scene()
-	change_ui(levels_ui.instantiate())
+	if current_level+1<Config.LEVELS:
+		start_level(current_level+1)
+	else:
+		_remove_scene()
+		change_ui(levels_ui.instantiate())
 	
 func save_progress(level_status) -> void:
 	_update_progress(str(current_level), level_status)

@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://8wc8g6o34a35"]
 
-[ext_resource type="Script" path="res://levels/2/warrior.gd" id="1_tbd4n"]
-[ext_resource type="AudioStream" uid="uid://dc8ekx4l6p8j6" path="res://assets/audio/sword.wav" id="2_dlugf"]
+[ext_resource type="Script" path="res://characters/warrior_protect_castle.gd" id="1_4hi6l"]
+[ext_resource type="AudioStream" uid="uid://dc8ekx4l6p8j6" path="res://assets/audio/sword.wav" id="2_tmqay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
 size = Vector2(120, 400)
 
 [node name="Warrior" type="Area2D" groups=["killzone"]]
 z_index = 10
-script = ExtResource("1_tbd4n")
+script = ExtResource("1_4hi6l")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 120.0
@@ -20,6 +20,6 @@ position = Vector2(60, 200)
 shape = SubResource("RectangleShape2D_0deo2")
 
 [node name="AttackAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_dlugf")
+stream = ExtResource("2_tmqay")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

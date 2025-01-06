@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levels/2/index.gd" id="1_1o8v1"]
 [ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_40y0f"]
-[ext_resource type="PackedScene" uid="uid://8wc8g6o34a35" path="res://levels/2/warrior.tscn" id="4_458g6"]
+[ext_resource type="PackedScene" uid="uid://8wc8g6o34a35" path="res://characters/warrior_protect_castle.tscn" id="4_458g6"]
 [ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="4_dx424"]
 [ext_resource type="PackedScene" uid="uid://cglrsypmaslbv" path="res://levels/2/story.tscn" id="5_dp487"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="6_mmhh5"]

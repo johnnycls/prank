@@ -1,30 +1,38 @@
 extends Node2D
 
-var story_scene = preload("res://levels/0/story.tscn")
-
-@export var level_num = 1
+@export var level_num = 3
 @export var checkpoint_pos: Dictionary = {
-	0: Vector2(0,0),
+	0: Vector2(48000, 740),
 }
 
-@onready var camera = $Camera
-@onready var player = $Player
-@onready var player_cam = $PlayerFollowingCamera
-
+@onready var player = $Game/Player
+@onready var man = $Game/Man
+@onready var player_cam = $Game/PlayerFollowingCamera
+@onready var whole_scene = $WholeScene
+@onready var spawn_bird = $Game/SpawnBird
+@onready var bird_audio = $Game/BirdAudio
 var init_game_state = {
 	"checkpoint": 0,
 }
 var saved_game_state
 var current_game_state
 
+func start_story() -> void:
+	$Game.hide()
+	get_tree().paused = true
+	$Story.show()
+	$Story.next_step()
+
 func _start() -> void:
-	player_cam.enabled = false
 	current_game_state = init_game_state.duplicate(true)
-	player.position = checkpoint_pos[int(init_game_state.get("checkpoint", 0))]
+	player.global_position = checkpoint_pos[int(init_game_state.get("checkpoint", 0))]
+	man.global_position.x = man.global_position.x - 1000
+	player_cam.global_position.x = player.global_position.x
 	player.init()
-	player.process_mode = Node.PROCESS_MODE_DISABLED
-	camera.enabled = true
-	camera.move_to_player()
+	player.show()
+	man.show()
+	player_cam.enabled = true
+	whole_scene.init(player_cam)
 
 func _ready() -> void:
 	if Main.progress.has(str(level_num)):
@@ -32,8 +40,11 @@ func _ready() -> void:
 		init_game_state.checkpoint = saved_game_state.checkpoint
 	else:
 		saved_game_state = init_game_state.duplicate(true)
-	Main.story_ended.connect(_on_story_ended)
-	Main.start_story(story_scene.instantiate())
+	Main.can_open_menu = false
+	whole_scene.set_castle_scene("outside")
+	player.global_position = Vector2(-1000000, -10000000)
+	man.global_position = Vector2(-1000000, -10000000)
+	start_story()
 
 func lose() -> void:
 	_start()
@@ -44,6 +55,7 @@ func win() -> void:
 		"checkpoint": 0
 	}
 	Main.save_progress(new_game_state)
+	Main.can_open_menu = false
 	Main.end_level()
 
 func get_checkpoint(checkpoint: int) -> void:
@@ -56,23 +68,21 @@ func get_checkpoint(checkpoint: int) -> void:
 	}
 	Main.save_progress(new_game_state)
 
-func _on_player_area_or_body_entered(area_or_body: Node2D) -> void:
-	if area_or_body.is_in_group("killzone"):
-		player.hit(area_or_body.damage)
-
-func _on_enemy_died() -> void:
-	win()
-
 func _on_player_dead() -> void:
 	lose()
 
-func _on_camera_camera_transition_complete() -> void:
-	camera.enabled = false
-	player.process_mode = Node.PROCESS_MODE_INHERIT
-	player_cam.enabled = true
+func _on_story_story_ended(times: int) -> void:
+	if times==0:
+		get_tree().paused = false
+		$Story.hide()
+		_start()
+	else:
+		win()
 
-func _on_goal_player_enter() -> void:
-	win()
+func _on_player_left_screen() -> void:
+	lose()
 
-func _on_story_ended():
-	_start()
+func _on_goal_body_entered(body: Node2D) -> void:
+	if body.is_in_group("players"):
+		$Game.queue_free()
+		start_story()
