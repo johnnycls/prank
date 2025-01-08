@@ -39,7 +39,7 @@ func _physics_process(delta) -> void:
 	if is_on_floor() and gravitational_velocity.y > 0:
 		jump_audio.stream = land_sound
 		jump_audio.play()
-	if is_on_floor() and abs(walking_velocity.x) > 0.1:
+	if is_on_floor() and abs(walking_velocity.x) > 1000:
 		if not run_audio.playing:
 			run_audio.play()
 	else:
