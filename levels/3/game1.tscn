@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6vi736hs7yl7"]
+
+[ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="1_5ffqh"]
+[ext_resource type="Script" path="res://levels/3/game1.gd" id="1_vbiak"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="2_65jp7"]
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_j7yaq"]
+[ext_resource type="Script" path="res://levels/3/spawn_bird.gd" id="3_hch5i"]
+[ext_resource type="AudioStream" uid="uid://bwvuvm56xpg2u" path="res://assets/audio/birds.ogg" id="4_8cpyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mtol"]
+size = Vector2(1000, 10000)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_vbiak")
+
+[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("2_j7yaq")]
+position = Vector2(0, -2160)
+player_following_cam = NodePath("../PlayerFollowingCamera")
+
+[node name="Player" parent="." instance=ExtResource("1_5ffqh")]
+position = Vector2(50000, 750)
+
+[node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_65jp7")]
+target = NodePath("../Player")
+
+[node name="SpawnBird" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("3_hch5i")
+player = NodePath("../Player")
+
+[node name="BirdAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8cpyj")
+autoplay = true
+
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(60000, -2160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("RectangleShape2D_8mtol")
+
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

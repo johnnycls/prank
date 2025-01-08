@@ -9,15 +9,15 @@ var bird_scene = preload("res://characters/bird.tscn")
 var enabled: bool = true
 
 func max_spawn_interval() -> float:
-	return 5
+	return 1.2
 func min_spawn_interval() -> float:
-	return 3
+	return 1.2
 func concurrent_poop() -> int:
 	return 1
 func max_shoot_time() -> float:
-	return 2
+	return 1.2
 func min_shoot_time() -> float:
-	return 1.5
+	return 1.2
 
 func _ready() -> void:
 	_create_spawn_timer()

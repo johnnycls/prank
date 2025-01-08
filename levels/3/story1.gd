@@ -1,36 +1,28 @@
 extends Node2D
 
-signal story_ended(times: int)
+signal ended
 
-var player_scene = preload("res://characters/player_story.tscn")
-var man_scene = preload("res://characters/man_story.tscn")
 var select_sound = preload("res://assets/audio/select.wav")
-var man_sound = preload("res://assets/audio/jump_scare.wav")
 
-var player: CharacterBody2D
-var man
 var step_ended: bool = true
 
+@onready var player = $Player
 @onready var speech_bubble = $SpeechBubble
 @onready var cam = $Camera2D
 @onready var audio = $AudioStreamPlayer
 @onready var audio2 = $AudioStreamPlayer2
+@onready var whole_scene = $WholeScene
 
-@export var whole_scene: Node2D
+func _ready() -> void:
+	next_step()
 
 var steps: Array = [
 	func():
-		Main.play_bgm(4,0)
+		Main.play_bgm(4, 0)
 		whole_scene.init(cam)
 		step_ended = false
-		player = player_scene.instantiate()
-		add_child(player)
-		player.global_position = Vector2(48000, 750)
-		cam.global_position = player.global_position
-		cam.enabled = true
-		cam.target = player
 		speech_bubble.hide()
-		player.direction = 0.05
+		player.direction = 0.1
 		await Global.wait(5)
 		player.direction = 0
 		next_step(),
@@ -40,7 +32,7 @@ var steps: Array = [
 	func():
 		step_ended = false
 		speech_bubble.hide()
-		player.direction = 0.05
+		player.direction = 0.1
 		await Global.wait(3)
 		player.direction = 0
 		next_step(),
@@ -50,7 +42,7 @@ var steps: Array = [
 	func():
 		step_ended = false
 		speech_bubble.hide()
-		player.direction = 0.05
+		player.direction = 0.1
 		await Global.wait(3)
 		player.direction = 0
 		next_step(),
@@ -60,7 +52,7 @@ var steps: Array = [
 	func():
 		step_ended = false
 		speech_bubble.hide()
-		player.direction = 0.05
+		player.direction = 0.1
 		await Global.wait(3)
 		player.direction = 0
 		next_step(),
@@ -70,7 +62,7 @@ var steps: Array = [
 	func():
 		step_ended = false
 		speech_bubble.hide()
-		player.direction = 0.05
+		player.direction = 0.1
 		await Global.wait(3)
 		player.direction = 0
 		next_step(),
@@ -80,7 +72,7 @@ var steps: Array = [
 	func():
 		step_ended = false
 		speech_bubble.hide()
-		player.direction = 0.05
+		player.direction = 0.1
 		await Global.wait(5)
 		player.direction = 0
 		next_step(),
@@ -92,7 +84,7 @@ var steps: Array = [
 	func():
 		step_ended = false
 		speech_bubble.hide()
-		player.direction = 0.05
+		player.direction = 0.1
 		await Global.wait(3)
 		player.direction = 0
 		next_step(),
@@ -115,68 +107,6 @@ var steps: Array = [
 		speech_bubble.set_dialogue(player.global_position,"LEVEL3_10"),
 	func():
 		speech_bubble.set_dialogue(player.global_position,"LEVEL3_11"),
-	func():
-		speech_bubble.hide()
-		cam.enabled = false
-		player.queue_free()
-		story_ended.emit(0),	
-	func():
-		step_ended = false
-		player = player_scene.instantiate()
-		add_child.call_deferred(player)
-		player.global_position = Vector2(50000, 750)
-		cam.global_position = player.global_position
-		cam.enabled = true
-		cam.target = player
-		player.direction = 0.4
-		await Global.wait(5)
-		man = man_scene.instantiate()
-		add_child(man)
-		man.global_position = Vector2(player.global_position.x-250, player.global_position.y)
-		Global.play_sound(audio2, man_sound)
-		player.direction = 0
-		next_step(),
-	func():
-		speech_bubble.set_dialogue(man.global_position,"LEVEL3_12")
-		step_ended = true,
-	func():
-		step_ended = false
-		speech_bubble.hide()
-		player.direction = 0.5
-		await Global.wait(0.5)
-		player.direction = 0
-		next_step(),
-	func():
-		speech_bubble.set_dialogue(man.global_position,"LEVEL3_13")
-		step_ended = true,
-	func():
-		step_ended = false
-		speech_bubble.hide()
-		player.direction = 0.5
-		man.direction = 0.5
-		await Global.wait(1)
-		player.direction = 0
-		man.direction = 0
-		next_step(),
-	func():
-		cam.enabled = false
-		player.queue_free()
-		man.queue_free()
-		story_ended.emit(1),	
-	func():
-		step_ended = false
-		player = player_scene.instantiate()
-		add_child(player)
-		player.global_position = Vector2(66500, 750)
-		man = man_scene.instantiate()
-		add_child(man)
-		man.global_position = Vector2(66000, 750)
-		cam.global_position = player.global_position
-		cam.enabled = true
-		cam.target = player
-		speech_bubble.set_dialogue(man.global_position,"LEVEL3_14")
-		await $EyeLid.close_eyes()
-		step_ended = true,
 ]
 
 var current_step: int = -1
@@ -189,9 +119,7 @@ func next_step():
 	if current_step < steps.size():
 		steps[current_step].call()
 	else:
-		await Global.wait(0.2)
-		get_tree().paused = false
-		story_ended.emit(2)
+		ended.emit()
 	Global.play_sound(audio, select_sound)
 
 func _input(event):

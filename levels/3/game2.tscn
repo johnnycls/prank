@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2arh4pvgf2c1"]
+
+[ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="1_706qd"]
+[ext_resource type="Script" path="res://levels/3/game2.gd" id="1_cpcyh"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="2_57r3c"]
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_mju8r"]
+[ext_resource type="Script" path="res://levels/3/spawn_bird.gd" id="3_1taeg"]
+[ext_resource type="PackedScene" uid="uid://mmghrehlpatl" path="res://characters/man_catch.tscn" id="4_r0ilw"]
+[ext_resource type="AudioStream" uid="uid://bwvuvm56xpg2u" path="res://assets/audio/birds.ogg" id="4_uar0f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mtol"]
+size = Vector2(1000, 10000)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_cpcyh")
+
+[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("2_mju8r")]
+position = Vector2(0, -2160)
+player_following_cam = NodePath("../PlayerFollowingCamera")
+
+[node name="Player" parent="." instance=ExtResource("1_706qd")]
+position = Vector2(11000, 760)
+
+[node name="Man" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_r0ilw")]
+player = NodePath("../Player")
+speed = 3100.0
+
+[node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_57r3c")]
+target = NodePath("../Player")
+
+[node name="SpawnBird" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("3_1taeg")
+player = NodePath("../Player")
+
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(65000, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("RectangleShape2D_8mtol")
+
+[node name="BirdAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uar0f")
+autoplay = true
+
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
