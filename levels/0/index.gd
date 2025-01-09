@@ -1,16 +1,11 @@
 extends Node2D
 
-var goal_scene = preload("res://levels/0/goal.tscn")
-
 @export var level_num = 0
-@export var checkpoint_pos: Dictionary = {
-	0: Vector2(16000,760),
-}
-@export var goal_position: Vector2 = Vector2(11000, 750)
 
-@onready var player = $Player
-@onready var player_cam = $PlayerFollowingCamera
-@onready var whole_scene = $WholeScene
+var game = preload("res://levels/0/game.tscn")
+var story = preload("res://levels/0/story.tscn")
+
+var scene
 
 var init_game_state = {
 	"checkpoint": 0,
@@ -18,14 +13,11 @@ var init_game_state = {
 var saved_game_state
 var current_game_state
 
-var goal
-
-func _start() -> void:
-	current_game_state = init_game_state.duplicate(true)
-	player.global_position = checkpoint_pos[int(init_game_state.get("checkpoint", 0))]
-	player_cam.global_position.x = player.global_position.x
-	player.init()
-	player_cam.enabled = true
+func change_scene(_scene):
+	if Global.is_node_valid(scene):
+		scene.queue_free()
+	scene = _scene.instantiate()
+	add_child.call_deferred(scene)
 
 func _ready() -> void:
 	if Main.progress.has(str(level_num)):
@@ -33,12 +25,9 @@ func _ready() -> void:
 		init_game_state.checkpoint = saved_game_state.checkpoint
 	else:
 		saved_game_state = init_game_state.duplicate(true)
-	Main.can_open_menu = true
-	whole_scene.set_castle_scene("outside")
-	get_tree().paused = true
-
-func lose() -> void:
-	_start()
+	change_scene(story)
+	scene.ended.connect(_on_story_ended)
+	Main.can_open_menu = false
 	
 func win() -> void:
 	var new_game_state = {
@@ -46,7 +35,6 @@ func win() -> void:
 		"checkpoint": 0
 	}
 	Main.save_progress(new_game_state)
-	Main.can_open_menu = false
 	Main.end_level()
 
 func get_checkpoint(checkpoint: int) -> void:
@@ -59,22 +47,10 @@ func get_checkpoint(checkpoint: int) -> void:
 	}
 	Main.save_progress(new_game_state)
 
-func _on_player_dead() -> void:
-	lose()
-
-func _on_story_story_ended() -> void:
-	$Story.queue_free()
-	_start()
-
-func _on_player_left_screen() -> void:
-	lose()
-
-func _on_whole_scene_castle_changed_scene(scene: String) -> void:
-	if scene=="kitchen":
-		goal = goal_scene.instantiate()
-		goal.position = goal_position
-		goal.player_enter.connect(win)
-		add_child(goal)
-	elif Global.is_node_valid(goal):
-		goal.queue_free()
-		goal = null
+func _on_story_ended():
+	change_scene(game)
+	scene.ended.connect(_on_game_ended)
+	Main.can_open_menu = true
+	
+func _on_game_ended():
+	win()

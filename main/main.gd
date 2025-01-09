@@ -28,7 +28,7 @@ func start_level(level: int) -> void:
 	_remove_scene()
 	hud.clear_ui()
 	_current_scene = load(Config.level_to_path(level)).instantiate()
-	add_child(_current_scene)
+	add_child.call_deferred(_current_scene)
 	current_level = level
 
 func back_to_home_screen() -> void:

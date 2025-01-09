@@ -1,19 +1,16 @@
 extends Node2D
 
-signal story_ended
+signal ended
 
 var select_sound = preload("res://assets/audio/select.wav")
+
+@onready var player = $Player
+@onready var whole_scene = $WholeScene
 @onready var speech_bubble = $SpeechBubble
 @onready var cam = $Camera2D
 @onready var bg = $CanvasLayer/ColorRect
 @onready var label = $CanvasLayer/MarginContainer/Label
 @onready var audio = $AudioStreamPlayer
-
-@export var player: CharacterBody2D
-
-func select() -> void:
-	audio.stream = select_sound
-	audio.play()
 
 var steps: Array = [
 	func():
@@ -59,13 +56,11 @@ func next_step():
 	if current_step < steps.size():
 		steps[current_step].call()
 	else:
-		speech_bubble.hide()
-		cam.enabled = false
-		get_tree().paused = false
-		story_ended.emit()
-	select()
+		ended.emit()
+	Global.play_sound(audio, select_sound)
 
 func _ready() -> void:
+	whole_scene.set_castle_scene("outside")
 	next_step()
 
 func _input(event):

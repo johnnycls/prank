@@ -23,7 +23,7 @@ position = Vector2(11000, 760)
 
 [node name="Man" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_r0ilw")]
 player = NodePath("../Player")
-speed = 3100.0
+speed = 3300.0
 
 [node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_57r3c")]
 target = NodePath("../Player")
