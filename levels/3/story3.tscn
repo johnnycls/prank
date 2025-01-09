@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b7oq8hksgnxi7"]
 
-[ext_resource type="Script" path="res://levels/3/story1.gd" id="1_g4tqg"]
+[ext_resource type="Script" path="res://levels/3/story3.gd" id="1_rxlcc"]
 [ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_i0evw"]
 [ext_resource type="Script" path="res://levels/3/camera_2d.gd" id="2_l84do"]
 [ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="3_g5a4g"]
@@ -9,20 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="4_afens"]
 
 [node name="Story" type="Node2D"]
-script = ExtResource("1_g4tqg")
+script = ExtResource("1_rxlcc")
 
 [node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("2_i0evw")]
 player_following_cam = NodePath("../Camera2D")
 
 [node name="Player" parent="." instance=ExtResource("3_g5a4g")]
-process_mode = 0
 position = Vector2(66500, 750)
 
 [node name="Man" parent="." instance=ExtResource("4_adpcm")]
-process_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_l84do")
 

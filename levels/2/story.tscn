@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cglrsypmaslbv"]
+[gd_scene load_steps=5 format=3 uid="uid://cglrsypmaslbv"]
 
 [ext_resource type="Script" path="res://levels/2/story.gd" id="1_yyq38"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="2_3nd5o"]
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_snt2e"]
 [ext_resource type="Script" path="res://levels/2/camera_2d.gd" id="3_acn2d"]
 
 [node name="Story" type="Node2D"]
-process_mode = 2
 script = ExtResource("1_yyq38")
 
+[node name="WholeScene" parent="." instance=ExtResource("2_snt2e")]
+position = Vector2(0, -2160)
+
 [node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
 zoom = Vector2(0.77, 0.77)
 script = ExtResource("3_acn2d")
 

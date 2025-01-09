@@ -1,36 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1t75naswfyd6"]
+[gd_scene load_steps=2 format=3 uid="uid://d1t75naswfyd6"]
 
 [ext_resource type="Script" path="res://levels/1/index.gd" id="1_3prab"]
-[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_3lkf8"]
-[ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="4_nrws0"]
-[ext_resource type="PackedScene" uid="uid://d35q587j7sl80" path="res://levels/1/story.tscn" id="5_ydf7i"]
-[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="6_bx5f0"]
 
 [node name="index" type="Node2D"]
 script = ExtResource("1_3prab")
-
-[node name="WholeScene" parent="." instance=ExtResource("2_3lkf8")]
-position = Vector2(0, -2160)
-
-[node name="Player" parent="." instance=ExtResource("4_nrws0")]
-position = Vector2(11000, 760)
-move_speed = 1500.0
-jump_speed = 3000.0
-acceleration_due_to_gravity = 2250.0
-acceleration_due_to_air_resistance = 1500.0
-max_jump_time = 0.25
-can_fly = false
-show_hp = false
-
-[node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_bx5f0")]
-enabled = false
-target = NodePath("../Player")
-
-[node name="Story" parent="." node_paths=PackedStringArray("player", "whole_scene") instance=ExtResource("5_ydf7i")]
-player = NodePath("../Player")
-whole_scene = NodePath("../WholeScene")
-
-[connection signal="castle_changed_scene" from="WholeScene" to="." method="_on_whole_scene_castle_changed_scene"]
-[connection signal="dead" from="Player" to="." method="_on_player_dead"]
-[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
-[connection signal="story_ended" from="Story" to="." method="_on_story_story_ended"]

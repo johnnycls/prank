@@ -7,15 +7,19 @@ var goal_scene = preload("res://levels/0/goal.tscn")
 @export var goal_position: Vector2 = Vector2(11000, 750)
 
 @onready var player = $Player
+@onready var cam = $PlayerFollowingCamera
 @onready var whole_scene = $WholeScene
 
 var goal
 
 func _start() -> void:
+	player.global_position = Vector2(11000, 750)
+	cam.global_position.x = player.global_position.x
 	player.init()
 
 func _ready() -> void:
 	whole_scene.set_castle_scene("outside")
+	whole_scene.init(cam)
 
 func lose() -> void:
 	_start()

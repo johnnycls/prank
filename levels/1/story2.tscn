@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://drrkq6kf0f60c"]
+
+[ext_resource type="Script" path="res://levels/1/story2.gd" id="1_4axyf"]
+[ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="2_mye0l"]
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="4_na1h7"]
+[ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="5_uhq0t"]
+
+[node name="Story" type="Node2D"]
+script = ExtResource("1_4axyf")
+
+[node name="Player" parent="." instance=ExtResource("2_mye0l")]
+
+[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("4_na1h7")]
+position = Vector2(0, -2160)
+player_following_cam = NodePath("../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.77, 0.77)
+
+[node name="SpeechBubble" parent="." instance=ExtResource("5_uhq0t")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]

@@ -13,9 +13,9 @@ func _ready() -> void:
 
 func _start() -> void:
 	player.global_position = Vector2(55000, 755)
+	cam.global_position.x = player.global_position.x
 	man.global_position = Vector2(52000, 755)
 	player.init()
-	cam.global_position = player.global_position
 
 func _on_goal_body_entered(body: Node2D) -> void:
 	if body.is_in_group("players"):

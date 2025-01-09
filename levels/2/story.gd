@@ -1,37 +1,32 @@
 extends Node2D
 
-signal story_ended(times: int)
+signal ended
 
-var player_scene = preload("res://characters/player_story.tscn")
-var warrior_scene = preload("res://characters/warrior_story.tscn")
 var select_sound = preload("res://assets/audio/select.wav")
-var walk_sound = preload("res://assets/audio/walk.mp3")
 var door_sound = preload("res://assets/audio/door_open_slowly.wav")
 var door_open_sound = preload("res://assets/audio/door_open.wav")
-var sword_sound = preload("res://assets/audio/sword.wav")
-
-var player: CharacterBody2D
-var warrior
-var step_ended: bool = true
+var player_scene = preload("res://characters/player_story.tscn")
+var warrior_scene = preload("res://characters/warrior_story.tscn")
 
 @onready var speech_bubble = $SpeechBubble
 @onready var cam = $Camera2D
 @onready var audio = $AudioStreamPlayer
 @onready var audio2 = $AudioStreamPlayer2
+@onready var whole_scene = $WholeScene
 
-@export var whole_scene: Node2D
+var step_ended: bool = true
+var player
+var warrior
 
-func select() -> void:
-	audio.stream = select_sound
-	audio.play()
+func _ready() -> void:
+	Main.play_bgm(2)
+	whole_scene.set_castle_scene("room")
+	whole_scene.init(cam)
+	cam.global_position = whole_scene.castle_center()
+	next_step()
 
 var steps: Array = [
 	func():
-		Main.play_bgm(2,0)
-		whole_scene.init(cam)
-		step_ended = true
-		cam.enabled = true
-		cam.global_position = whole_scene.castle_center()
 		player = player_scene.instantiate()
 		add_child(player)
 		player.global_position = Vector2(10200, -740)
@@ -52,9 +47,10 @@ var steps: Array = [
 		warrior = warrior_scene.instantiate()
 		add_child(warrior)
 		warrior.global_position = Vector2(9250, -740)
-		step_ended = true,
+		next_step(),
 	func():
-		speech_bubble.set_dialogue(player.global_position,"LEVEL2_4"),
+		speech_bubble.set_dialogue(player.global_position,"LEVEL2_4")
+		step_ended = true,
 	func():
 		step_ended = false
 		speech_bubble.hide()
@@ -65,7 +61,6 @@ var steps: Array = [
 		player.direction = 0.75
 		await Global.wait(0.05)
 		player.direction = 0
-		Main.play_bgm(3, 0)
 		next_step(),
 	func():
 		speech_bubble.set_dialogue(player.global_position,"LEVEL2_5")
@@ -167,27 +162,6 @@ var steps: Array = [
 		speech_bubble.set_dialogue(warrior.global_position,"LEVEL2_17"),
 	func():
 		speech_bubble.set_dialogue(player.global_position,"LEVEL2_18"),
-	func():
-		speech_bubble.hide()
-		cam.enabled = false
-		player.queue_free()
-		warrior.queue_free()
-		story_ended.emit(0),
-	func():
-		Main.play_bgm(4)
-		player = player_scene.instantiate()
-		add_child.call_deferred(player)
-		player.global_position = Vector2(48000, 755)
-		cam.global_position.x = player.global_position.x
-		cam.target = player
-		cam.enabled = true
-		speech_bubble.set_dialogue(player.global_position,"LEVEL2_19"),
-	func():
-		speech_bubble.set_dialogue(player.global_position,"LEVEL2_20"),
-	func():
-		speech_bubble.set_dialogue(player.global_position,"LEVEL2_21"),
-	func():
-		speech_bubble.set_dialogue(player.global_position,"LEVEL2_22"),
 ]
 
 var current_step: int = -1
@@ -200,10 +174,8 @@ func next_step():
 	if current_step < steps.size():
 		steps[current_step].call()
 	else:
-		await Global.wait(0.2)
-		get_tree().paused = false
-		story_ended.emit(1)
-	select()
+		ended.emit()
+	Global.play_sound(audio, select_sound)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and step_ended:

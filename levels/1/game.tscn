@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://vlulaag7iiik"]
+
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="1_60u8c"]
+[ext_resource type="Script" path="res://levels/1/game.gd" id="1_fx8i2"]
+[ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="2_g3qdy"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="3_5in33"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_fx8i2")
+
+[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("1_60u8c")]
+position = Vector2(0, -2160)
+player_following_cam = NodePath("../PlayerFollowingCamera")
+
+[node name="Player" parent="." instance=ExtResource("2_g3qdy")]
+position = Vector2(11000, 760)
+move_speed = 1500.0
+jump_speed = 3000.0
+acceleration_due_to_gravity = 2250.0
+acceleration_due_to_air_resistance = 1500.0
+max_jump_time = 0.25
+can_fly = false
+show_hp = false
+
+[node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_5in33")]
+target = NodePath("../Player")
+
+[connection signal="castle_changed_scene" from="WholeScene" to="." method="_on_whole_scene_castle_changed_scene"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]

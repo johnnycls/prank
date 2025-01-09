@@ -14,12 +14,12 @@ var step_ended: bool = true
 @onready var whole_scene = $WholeScene
 
 func _ready() -> void:
+	Main.play_bgm(4, 0)
+	whole_scene.init(cam)
 	next_step()
 
 var steps: Array = [
 	func():
-		Main.play_bgm(4, 0)
-		whole_scene.init(cam)
 		step_ended = false
 		speech_bubble.hide()
 		player.direction = 0.1

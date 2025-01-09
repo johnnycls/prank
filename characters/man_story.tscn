@@ -7,7 +7,6 @@
 size = Vector2(120, 400)
 
 [node name="Man" type="CharacterBody2D"]
-process_mode = 2
 z_index = 10
 script = ExtResource("1_rpdq0")
 

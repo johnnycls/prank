@@ -19,11 +19,12 @@ func _ready() -> void:
 	
 var steps: Array = [	
 	func():
-		step_ended = false
 		player.global_position = Vector2(66500, 750)
 		man.global_position = Vector2(66000, 750)
 		cam.global_position = player.global_position
-		speech_bubble.set_dialogue(man.global_position,"LEVEL3_14")
+		speech_bubble.set_dialogue(man.global_position,"LEVEL3_14"),
+	func():
+		step_ended = false
 		await $EyeLid.close_eyes()
 		step_ended = true,
 ]

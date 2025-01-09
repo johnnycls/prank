@@ -10,7 +10,6 @@
 script = ExtResource("1_hn8bp")
 
 [node name="Player" parent="." instance=ExtResource("2_1q7tt")]
-process_mode = 0
 position = Vector2(48000, 755)
 
 [node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("3_nwuje")]
