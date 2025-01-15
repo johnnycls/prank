@@ -95,9 +95,6 @@ var steps: Array = [
 
 var current_step: int = -1
 
-func get_canva_pos(node: Node2D):
-	return get_viewport().get_canvas_transform() * node.global_position
-
 func next_step():
 	current_step += 1
 	if current_step < steps.size():

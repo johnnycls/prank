@@ -7,9 +7,7 @@
 [ext_resource type="Script" path="res://levels/3/spawn_bird.gd" id="3_1taeg"]
 [ext_resource type="PackedScene" uid="uid://mmghrehlpatl" path="res://characters/man_catch.tscn" id="4_r0ilw"]
 [ext_resource type="AudioStream" uid="uid://bwvuvm56xpg2u" path="res://assets/audio/birds.ogg" id="4_uar0f"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mtol"]
-size = Vector2(1000, 10000)
+[ext_resource type="PackedScene" uid="uid://dr3ghqee7tryj" path="res://objects/trap.tscn" id="7_k1rkp"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_cpcyh")
@@ -32,11 +30,7 @@ target = NodePath("../Player")
 script = ExtResource("3_1taeg")
 player = NodePath("../Player")
 
-[node name="Goal" type="Area2D" parent="."]
-position = Vector2(65000, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
-shape = SubResource("RectangleShape2D_8mtol")
+[node name="Trap" parent="." instance=ExtResource("7_k1rkp")]
 
 [node name="BirdAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uar0f")
@@ -44,4 +38,3 @@ autoplay = true
 
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
-[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

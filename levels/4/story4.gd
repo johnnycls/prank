@@ -7,7 +7,6 @@ var select_sound = preload("res://assets/audio/select.wav")
 var step_ended: bool = true
 
 @onready var player = $Player
-@onready var man = $Man
 @onready var speech_bubble = $SpeechBubble
 @onready var cam = $Camera2D
 @onready var audio = $AudioStreamPlayer
@@ -15,18 +14,13 @@ var step_ended: bool = true
 @onready var whole_scene = $WholeScene
 
 func _ready() -> void:
+	Main.play_bgm(4, 0)
+	whole_scene.init(cam)
 	next_step()
-	
-var steps: Array = [	
+
+var steps: Array = [
 	func():
-		player.global_position = Vector2(66500, 750)
-		man.global_position = Vector2(66000, 750)
-		cam.global_position = player.global_position
-		speech_bubble.set_dialogue(man.global_position,"LEVEL3_14"),
-	func():
-		step_ended = false
-		await $EyeLid.close_eyes()
-		step_ended = true,
+		pass
 ]
 
 var current_step: int = -1

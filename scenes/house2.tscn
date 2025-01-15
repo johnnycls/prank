@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://b4ch4fte08mld"]
-
-[node name="Castle" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 3311.0
-offset_bottom = 1840.0
-color = Color(1, 0.933333, 0, 1)

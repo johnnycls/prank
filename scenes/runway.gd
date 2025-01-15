@@ -1,5 +1,7 @@
 extends Node2D
 
+signal exited(is_left: bool)
+
 @onready var collision_shape = $CollisionShape2D
 
 @export var player_following_cam: Camera2D
@@ -24,6 +26,7 @@ func _on_body_exited(body: Node2D) -> void:
 				player_following_cam.global_position.x += total_length
 				for node in Global.get_valid_nodes_in_group("moving_objects"):
 					node.global_position.x += total_length
+				exited.emit(true)
 		else:
 			if current_revolution < revolution:
 				current_revolution += 1
@@ -31,3 +34,4 @@ func _on_body_exited(body: Node2D) -> void:
 				player_following_cam.global_position.x -= total_length
 				for node in Global.get_valid_nodes_in_group("moving_objects"):
 					node.global_position.x -= total_length
+				exited.emit(false)

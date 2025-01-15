@@ -4,14 +4,16 @@
 [ext_resource type="Script" path="res://uis/components/speech_bubble.gd" id="2_s48ch"]
 [ext_resource type="FontFile" uid="uid://b6vy8u7dib2jk" path="res://assets/fonts/NotoSansTC-Regular.ttf" id="3_wmqii"]
 
-[node name="SpeechBubble" type="TextureRect"]
+[node name="SpeechBubble" type="CanvasLayer"]
+script = ExtResource("2_s48ch")
+
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1.0
 offset_bottom = 135.0
 texture = ExtResource("1_n3xyb")
 expand_mode = 1
-script = ExtResource("2_s48ch")
 
-[node name="Dialogue" type="RichTextLabel" parent="."]
+[node name="Dialogue" type="RichTextLabel" parent="TextureRect"]
 layout_mode = 2
 offset_right = 1.0
 offset_bottom = 135.0

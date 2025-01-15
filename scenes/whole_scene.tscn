@@ -72,4 +72,6 @@ position = Vector2(122880, 0)
 [node name="ParkScene2" parent="." instance=ExtResource("9_h5sh0")]
 position = Vector2(130560, 0)
 
+[connection signal="exited" from="WholeRunway" to="." method="_on_whole_runway_exited"]
 [connection signal="castle_changed_scene" from="CastleScene" to="." method="_on_castle_scene_castle_changed_scene"]
+[connection signal="house1_changed_scene" from="ForestWithHousesScene" to="." method="_on_forest_with_houses_scene_house_1_changed_scene"]

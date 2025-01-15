@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwwsin4ujyjdt"]
+
+[ext_resource type="Script" path="res://scenes/house/interior.gd" id="1_reio4"]
+[ext_resource type="PackedScene" uid="uid://c757y14xts01h" path="res://scenes/house/interior_door.tscn" id="2_j5clu"]
+
+[node name="Interior" type="Node2D"]
+script = ExtResource("1_reio4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 3200.0
+offset_bottom = 2000.0
+color = Color(0.3, 1, 0, 1)
+
+[node name="Door" parent="." instance=ExtResource("2_j5clu")]
+position = Vector2(1338, 996)
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(1600, 1000)
+
+[connection signal="enter" from="Door" to="." method="_on_door_enter"]
