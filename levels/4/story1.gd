@@ -21,8 +21,6 @@ func _ready() -> void:
 	whole_scene.set_house1_scene("interior")
 	eye_lid.init(false)
 	cam.global_position = whole_scene.house1_center()
-	player.global_position = Vector2(72000,755)
-	man.global_position = Vector2(70500, 755)
 	next_step()
 
 var steps: Array = [
@@ -63,6 +61,10 @@ var steps: Array = [
 		speech_bubble.set_dialogue(man.global_position, "LEVEL4_14"),
 	func():
 		speech_bubble.set_dialogue(man.global_position, "LEVEL4_15"),
+	func():
+		step_ended = false
+		await eye_lid.close_eyes(3)
+		next_step(),
 ]
 
 var current_step: int = -1

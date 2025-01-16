@@ -42,11 +42,8 @@ func change_ui(page: Control) -> void:
 	ui_changed.emit()
 	
 func end_level() -> void:
-	if current_level+1<Config.LEVELS:
-		start_level(current_level+1)
-	else:
-		_remove_scene()
-		change_ui(levels_ui.instantiate())
+	_remove_scene()
+	change_ui(levels_ui.instantiate())
 	
 func save_progress(level_status) -> void:
 	_update_progress(str(current_level), level_status)

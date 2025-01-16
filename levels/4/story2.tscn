@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw2r5gqa1w1ul"]
+[gd_scene load_steps=9 format=3 uid="uid://cw2r5gqa1w1ul"]
 
 [ext_resource type="Script" path="res://levels/4/story2.gd" id="1_amvex"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="2_gdxqk"]
 [ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="3_ccckg"]
-[ext_resource type="PackedScene" uid="uid://801yunnbif45" path="res://characters/man_story.tscn" id="3_dknxh"]
+[ext_resource type="PackedScene" uid="uid://bsbe2andqjhxm" path="res://characters/young_man_story.tscn" id="4_ocrln"]
 [ext_resource type="Script" path="res://levels/3/camera_2d.gd" id="4_ut37a"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="5_87466"]
 [ext_resource type="PackedScene" uid="uid://dr3ghqee7tryj" path="res://objects/trap.tscn" id="5_e22mv"]
@@ -12,8 +13,10 @@
 script = ExtResource("1_amvex")
 
 [node name="Fairy" parent="." instance=ExtResource("5_s3frf")]
+position = Vector2(52000, 755)
 
-[node name="Man" parent="." groups=["moving_objects"] instance=ExtResource("3_dknxh")]
+[node name="Man" parent="." groups=["moving_objects"] instance=ExtResource("4_ocrln")]
+position = Vector2(50000, 755)
 
 [node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("3_ccckg")]
 position = Vector2(0, -2160)
@@ -23,7 +26,7 @@ wildnerness_revolution = 2
 [node name="Trap" parent="." instance=ExtResource("5_e22mv")]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(48000, 750)
+position = Vector2(50000, 155)
 zoom = Vector2(0.3, 0.3)
 script = ExtResource("4_ut37a")
 target = NodePath("../Man")
@@ -34,5 +37,7 @@ offset_y = 600.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="EyeLid" parent="." instance=ExtResource("2_gdxqk")]
 
 [connection signal="body_entered" from="Trap" to="." method="_on_trap_body_entered"]

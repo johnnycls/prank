@@ -6,6 +6,7 @@ var select_sound = preload("res://assets/audio/select.wav")
 
 var step_ended: bool = true
 
+@onready var eye_lid = $EyeLid
 @onready var fairy = $Fairy
 @onready var man = $Man
 @onready var speech_bubble = $SpeechBubble
@@ -15,12 +16,10 @@ var step_ended: bool = true
 @onready var whole_scene = $WholeScene
 
 func _ready() -> void:
+	eye_lid.init(true)
 	Main.play_bgm(4, 0)
 	whole_scene.init(cam)
 	whole_scene.set_house1_scene("outside")
-	fairy.global_position = Vector2(52000,755)
-	man.global_position = Vector2(50000, 755)
-	cam.global_position = man.global_position
 	next_step()
 
 var steps: Array = [
@@ -52,9 +51,9 @@ var steps: Array = [
 		man.direction = 0.75
 		await Global.wait(1)
 		man.direction = 0
+		await Global.wait(2)
 		next_step(),
 	func():
-		await Global.wait(2)
 		$Trap.queue_free()
 		step_ended = true,
 	func():
@@ -100,6 +99,10 @@ var steps: Array = [
 		speech_bubble.set_dialogue(man.global_position, "LEVEL4_29")
 		fairy.direction = 0
 		step_ended = true,
+	func():
+		step_ended = false
+		await eye_lid.close_eyes(3)
+		next_step(),
 ]
 
 var current_step: int = -1

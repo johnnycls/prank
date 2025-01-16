@@ -11,12 +11,11 @@
 [node name="Story" type="Node2D"]
 script = ExtResource("1_p5a0b")
 
-[node name="EyeLid" parent="." instance=ExtResource("2_qjuy5")]
-
 [node name="Player" parent="." instance=ExtResource("2_x2e1i")]
-position = Vector2(48000, 755)
+position = Vector2(72000, 755)
 
 [node name="Man" parent="." instance=ExtResource("4_dbs8b")]
+position = Vector2(70500, 755)
 
 [node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("3_eq7q4")]
 position = Vector2(0, -2160)
@@ -32,3 +31,5 @@ script = ExtResource("4_cl8q1")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="EyeLid" parent="." instance=ExtResource("2_qjuy5")]

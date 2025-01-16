@@ -5,8 +5,6 @@ extends Node2D
 var story1 = preload("res://levels/4/story1.tscn")
 var story2 = preload("res://levels/4/story2.tscn")
 var story3 = preload("res://levels/4/story3.tscn")
-var story4 = preload("res://levels/4/story4.tscn")
-var story5 = preload("res://levels/4/story5.tscn")
 
 var scene
 
@@ -61,15 +59,5 @@ func _on_story2_ended():
 	Main.can_open_menu = false
 	
 func _on_story3_ended():
-	change_scene(story4)
-	scene.ended.connect(_on_story4_ended)
-	Main.can_open_menu = false
-	
-func _on_story4_ended():
-	change_scene(story5)
-	scene.ended.connect(_on_story5_ended)
-	Main.can_open_menu = false
-	
-func _on_story5_ended():
 	win()
 	Main.can_open_menu = false

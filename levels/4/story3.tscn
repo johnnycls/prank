@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dai7rgf1dlp4r"]
+[gd_scene load_steps=8 format=3 uid="uid://dai7rgf1dlp4r"]
 
 [ext_resource type="Script" path="res://levels/4/story3.gd" id="1_lyl5o"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="2_3e13b"]
 [ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="2_idcio"]
+[ext_resource type="PackedScene" uid="uid://801yunnbif45" path="res://characters/man_story.tscn" id="3_gk8wv"]
 [ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="3_x42dr"]
 [ext_resource type="Script" path="res://levels/3/camera_2d.gd" id="4_f3c0m"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="5_ung28"]
@@ -9,8 +11,11 @@
 [node name="Story" type="Node2D"]
 script = ExtResource("1_lyl5o")
 
+[node name="Man" parent="." instance=ExtResource("3_gk8wv")]
+position = Vector2(70500, 755)
+
 [node name="Player" parent="." instance=ExtResource("2_idcio")]
-position = Vector2(48000, 755)
+position = Vector2(72000, 755)
 
 [node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("3_x42dr")]
 position = Vector2(0, -2160)
@@ -27,3 +32,5 @@ target = NodePath("../Player")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="EyeLid" parent="." instance=ExtResource("2_3e13b")]
