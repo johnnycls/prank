@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
 size = Vector2(120, 400)
 
-[node name="Warrior" type="Area2D" groups=["killzone", "moving_objects"]]
+[node name="Warrior" type="Area2D" groups=["killzone"]]
 z_index = 10
 script = ExtResource("1_iar4h")
 

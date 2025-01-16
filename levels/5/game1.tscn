@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://dilyqbutpxfni"]
+
+[ext_resource type="Script" path="res://levels/5/game1.gd" id="1_jce53"]
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_hxcdo"]
+[ext_resource type="PackedScene" uid="uid://cbefsipxb2dw8" path="res://characters/player.tscn" id="3_ab373"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="4_782gp"]
+[ext_resource type="Script" path="res://levels/3/spawn_bird.gd" id="5_pjlnj"]
+[ext_resource type="AudioStream" uid="uid://bwvuvm56xpg2u" path="res://assets/audio/birds.ogg" id="6_ex6cc"]
+[ext_resource type="PackedScene" uid="uid://nehnbu4eymtb" path="res://objects/catus.tscn" id="7_d2yhl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mtol"]
+size = Vector2(1000, 10000)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_jce53")
+
+[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("2_hxcdo")]
+position = Vector2(0, -2160)
+player_following_cam = NodePath("../PlayerFollowingCamera")
+forest_revolution = 15
+desert_revolution = 15
+
+[node name="Player" parent="." instance=ExtResource("3_ab373")]
+position = Vector2(78000, 750)
+
+[node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_782gp")]
+position = Vector2(78000, 0)
+target = NodePath("../Player")
+
+[node name="SpawnBird" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("5_pjlnj")
+player = NodePath("../Player")
+
+[node name="BirdAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ex6cc")
+autoplay = true
+
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(125000, -2160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("RectangleShape2D_8mtol")
+
+[node name="Catus1" parent="." instance=ExtResource("7_d2yhl")]
+position = Vector2(111300, 950)
+
+[node name="Catus2" parent="." instance=ExtResource("7_d2yhl")]
+position = Vector2(101000, 950)
+
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

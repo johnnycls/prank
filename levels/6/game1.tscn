@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxuw1juispouu"]
+
+[ext_resource type="Script" path="res://levels/6/game1.gd" id="1_vlauj"]
+[ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="2_8gscn"]
+[ext_resource type="PackedScene" uid="uid://bdxsjk7vwowb2" path="res://objects/food.tscn" id="3_o4uol"]
+[ext_resource type="PackedScene" uid="uid://nd1x06awfi2a" path="res://characters/fairy.tscn" id="4_chwav"]
+[ext_resource type="PackedScene" uid="uid://dou3axyms2kyj" path="res://characters/warrior.tscn" id="5_g0auv"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_vlauj")
+
+[node name="HighlandScene" parent="." instance=ExtResource("2_8gscn")]
+position = Vector2(-3840, -2160)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.25, 0.25)
+
+[node name="Food" parent="." instance=ExtResource("3_o4uol")]
+position = Vector2(-3275, 50)
+
+[node name="Food2" parent="." instance=ExtResource("3_o4uol")]
+position = Vector2(-75, 50)
+
+[node name="Food3" parent="." instance=ExtResource("3_o4uol")]
+position = Vector2(3125, 50)
+
+[node name="Player" parent="." instance=ExtResource("4_chwav")]
+position = Vector2(-1820, -150)
+
+[node name="Warrior" parent="." instance=ExtResource("5_g0auv")]
+position = Vector2(1820, -150)
+
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
+[connection signal="died" from="Warrior" to="." method="_on_warrior_died"]

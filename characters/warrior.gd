@@ -29,12 +29,11 @@ func _physics_process(delta):
 	hp_label.text = "%.2f" % hp + "/ 100"
 	check_death()
 
+	target = find_nearest_target()
 	if Global.is_node_valid(target):
-		var direction = (target.global_position - global_position).normalized()
+		var direction = -1 if target.global_position.x < global_position.x else 1
 		var velocity = direction * move_speed
-		global_position = global_position + velocity * delta
-	else:
-		target = find_nearest_target()
+		global_position.x = global_position.x + velocity * delta
 
 func find_nearest_target():
 	var targets = Global.get_valid_nodes_in_group("foods")

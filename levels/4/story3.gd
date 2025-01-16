@@ -66,6 +66,7 @@ var steps: Array = [
 		speech_bubble.set_dialogue(man.global_position, "LEVEL4_60"),
 	func():
 		step_ended = false
+		speech_bubble.hide()
 		man.direction = 0.2
 		await Global.wait(0.75)
 		man.queue_free()

@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckemtvlxadgcp"]
+
+[ext_resource type="Script" path="res://levels/6/story1.gd" id="1_jq2jb"]
+[ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="2_cocqw"]
+[ext_resource type="PackedScene" uid="uid://bdxsjk7vwowb2" path="res://objects/food.tscn" id="3_vhdqa"]
+[ext_resource type="PackedScene" uid="uid://cfdub3r3ey8yj" path="res://characters/fairy_story.tscn" id="4_gy6rx"]
+[ext_resource type="PackedScene" uid="uid://bmauwlu6blts7" path="res://characters/old_warrior_story.tscn" id="4_tyid3"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="7_6gtp1"]
+[ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="7_rsbpe"]
+
+[node name="Story" type="Node2D"]
+script = ExtResource("1_jq2jb")
+
+[node name="HighlandScene" parent="." instance=ExtResource("2_cocqw")]
+position = Vector2(-3840, -2160)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.25, 0.25)
+
+[node name="Food" parent="." instance=ExtResource("3_vhdqa")]
+position = Vector2(-3275, 50)
+
+[node name="Food2" parent="." instance=ExtResource("3_vhdqa")]
+position = Vector2(-75, 50)
+
+[node name="Food3" parent="." instance=ExtResource("3_vhdqa")]
+position = Vector2(3125, 50)
+
+[node name="Fairy" parent="." instance=ExtResource("4_gy6rx")]
+
+[node name="Warrior" parent="." instance=ExtResource("4_tyid3")]
+
+[node name="SpeechBubble" parent="." instance=ExtResource("7_rsbpe")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="EyeLid" parent="." instance=ExtResource("7_6gtp1")]

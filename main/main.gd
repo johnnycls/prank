@@ -43,6 +43,7 @@ func change_ui(page: Control) -> void:
 	
 func end_level() -> void:
 	_remove_scene()
+	await Global.wait(0.2)
 	change_ui(levels_ui.instantiate())
 	
 func save_progress(level_status) -> void:

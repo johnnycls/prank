@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dm0c1ossm8gtb"]
+
+[ext_resource type="Script" path="res://levels/5/story2.gd" id="1_ectyq"]
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_go7nd"]
+[ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="3_0318r"]
+[ext_resource type="Script" path="res://levels/3/camera_2d.gd" id="5_me820"]
+[ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="6_nv81l"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qa16k"]
+size = Vector2(7680, 4320)
+
+[node name="Story" type="Node2D"]
+script = ExtResource("1_ectyq")
+
+[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("2_go7nd")]
+position = Vector2(0, -2160)
+player_following_cam = NodePath("../Camera2D")
+
+[node name="Player" parent="." instance=ExtResource("3_0318r")]
+position = Vector2(125000, -145)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(125000, -300)
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("5_me820")
+target = NodePath("../Player")
+
+[node name="SpeechBubble" parent="." instance=ExtResource("6_nv81l")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_qa16k")

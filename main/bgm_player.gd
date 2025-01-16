@@ -9,7 +9,7 @@ var bgm_list = [
 ]
 
 var current_bgm: int = -1
-var base_volume_db: float = 0.0
+var base_volume_db: float = -80.0
 @onready var next_player = AudioStreamPlayer.new()
 
 func _ready():

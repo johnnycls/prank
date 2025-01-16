@@ -21,11 +21,10 @@ position = Vector2(72000, 755)
 position = Vector2(0, -2160)
 player_following_cam = NodePath("../Camera2D")
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(48000, 750)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("4_f3c0m")
-target = NodePath("../Player")
 
 [node name="SpeechBubble" parent="." instance=ExtResource("5_ung28")]
 

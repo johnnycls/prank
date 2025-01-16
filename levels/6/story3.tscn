@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://6ptgyeaheq1"]
+
+[ext_resource type="Script" path="res://levels/6/story3.gd" id="1_ed1w1"]
+[ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="2_vcdj2"]
+[ext_resource type="PackedScene" uid="uid://bdxsjk7vwowb2" path="res://objects/food.tscn" id="3_6r402"]
+[ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="4_yvs8f"]
+[ext_resource type="Theme" uid="uid://bgq7gf52v0365" path="res://assets/theme/base_theme.tres" id="6_b4p58"]
+[ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="6_ccfgd"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gjg4u"]
+size = Vector2(7680, 4320)
+
+[node name="Story" type="Node2D"]
+script = ExtResource("1_ed1w1")
+
+[node name="HighlandScene" parent="." instance=ExtResource("2_vcdj2")]
+position = Vector2(-3840, -2160)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.25, 0.25)
+
+[node name="Food" parent="." instance=ExtResource("3_6r402")]
+position = Vector2(-3275, 50)
+
+[node name="Food2" parent="." instance=ExtResource("3_6r402")]
+position = Vector2(-75, 50)
+
+[node name="Food3" parent="." instance=ExtResource("3_6r402")]
+position = Vector2(3125, 50)
+
+[node name="Player" parent="." instance=ExtResource("4_yvs8f")]
+
+[node name="SpeechBubble" parent="." instance=ExtResource("6_ccfgd")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_gjg4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_b4p58")
+text = "LEVEL6_26"
+fit_content = true
