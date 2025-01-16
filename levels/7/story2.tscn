@@ -1,36 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmrqmeh8x2r3a"]
+[gd_scene load_steps=6 format=3 uid="uid://cmrqmeh8x2r3a"]
 
-[ext_resource type="Script" path="res://levels/6/story2.gd" id="1_id3ri"]
-[ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="2_god3r"]
-[ext_resource type="PackedScene" uid="uid://bdxsjk7vwowb2" path="res://objects/food.tscn" id="3_uuivg"]
-[ext_resource type="PackedScene" uid="uid://cfdub3r3ey8yj" path="res://characters/fairy_story.tscn" id="4_80315"]
-[ext_resource type="PackedScene" uid="uid://bmauwlu6blts7" path="res://characters/old_warrior_story.tscn" id="5_33j1e"]
+[ext_resource type="Script" path="res://levels/7/story2.gd" id="1_wf0j6"]
+[ext_resource type="PackedScene" uid="uid://ya38yybm76i3" path="res://scenes/park_scene.tscn" id="2_6xpuk"]
+[ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="4_rqdqo"]
+[ext_resource type="PackedScene" uid="uid://dh73gw4u1u6e8" path="res://characters/child.tscn" id="5_2pbei"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="6_wrvvl"]
 
 [node name="Story" type="Node2D"]
-script = ExtResource("1_id3ri")
+script = ExtResource("1_wf0j6")
 
-[node name="HighlandScene" parent="." instance=ExtResource("2_god3r")]
+[node name="ParkScene" parent="." instance=ExtResource("2_6xpuk")]
 position = Vector2(-3840, -2160)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.25, 0.25)
-
-[node name="Food" parent="." instance=ExtResource("3_uuivg")]
-position = Vector2(-3275, 50)
-
-[node name="Food2" parent="." instance=ExtResource("3_uuivg")]
-position = Vector2(-75, 50)
-
-[node name="Food3" parent="." instance=ExtResource("3_uuivg")]
-position = Vector2(3125, 50)
-
-[node name="Fairy" parent="." instance=ExtResource("4_80315")]
-
-[node name="Warrior" parent="." instance=ExtResource("5_33j1e")]
 
 [node name="SpeechBubble" parent="." instance=ExtResource("6_wrvvl")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("4_rqdqo")]
+position = Vector2(-50, 755)
+
+[node name="Child" parent="." instance=ExtResource("5_2pbei")]
+position = Vector2(300, 755)
+
+[node name="Child2" parent="." instance=ExtResource("5_2pbei")]
+position = Vector2(600, 755)
+
+[node name="Child3" parent="." instance=ExtResource("5_2pbei")]
+position = Vector2(900, 755)
+
+[node name="Child4" parent="." instance=ExtResource("5_2pbei")]
+position = Vector2(-300, 755)
+
+[node name="Child5" parent="." instance=ExtResource("5_2pbei")]
+position = Vector2(-600, 755)
+
+[node name="Child6" parent="." instance=ExtResource("5_2pbei")]
+position = Vector2(-850, 755)
