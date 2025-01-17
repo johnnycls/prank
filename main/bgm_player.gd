@@ -7,6 +7,8 @@ var bgm_list = [
 	preload("res://assets/bgm/25 Snow Moon.ogg"),
 	preload("res://assets/bgm/5 In Loneliness.ogg"),
 	preload("res://assets/bgm/16 Recollections.ogg"),
+	preload("res://assets/bgm/sonatina_letsadventure_3ToArms.ogg"),
+	preload("res://assets/bgm/sonatina_letsadventure_1ATaleForTheJourney.ogg"),
 ]
 
 var current_bgm: int = -1

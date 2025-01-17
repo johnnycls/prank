@@ -33,7 +33,7 @@ func _physics_process(delta):
 	if Global.is_node_valid(target):
 		var direction = -1 if target.global_position.x < global_position.x else 1
 		var velocity = direction * move_speed
-		global_position.x = global_position.x + velocity * delta
+		global_position.x += velocity * delta
 
 func find_nearest_target():
 	var targets = Global.get_valid_nodes_in_group("foods")
@@ -59,3 +59,8 @@ func check_death():
 func eat_food(food_points: float):
 	hp += food_points
 	hp_label.text = "%.2f" % hp + "/ 100"
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("foods"):
+		eat_food(area.food_points)
+		area.on_eaten()

@@ -1,9 +1,9 @@
 extends Area2D
 
-signal eaten(eaten_by)
+signal eaten
 
-func _on_area_entered(area: Area2D) -> void:
-	eaten.emit(area)
+var food_points: float = 10
 
-func _on_body_entered(body: Node2D) -> void:
-	eaten.emit(body)
+func on_eaten() -> void:
+	eaten.emit()
+	queue_free()	

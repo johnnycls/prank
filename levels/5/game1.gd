@@ -12,7 +12,10 @@ func _ready() -> void:
 	_start()
 
 func _start() -> void:
-	for node in Global.get_valid_nodes_in_group("moving_objects"):
+	whole_scene.init(cam)
+	for node in Global.get_valid_nodes_in_group("poop"):
+		node.queue_free()
+	for node in Global.get_valid_nodes_in_group("birds"):
 		node.queue_free()
 	player.global_position = Vector2(74000, 755)
 	cam.global_position.x = player.global_position.x

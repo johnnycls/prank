@@ -7,6 +7,7 @@ var daughter_scene = preload("res://characters/daughter.tscn")
 
 var step_ended: bool = true
 
+@onready var background = $Background
 @onready var eye_lid = $EyeLid
 @onready var warrior = $Warrior
 @onready var castle_scene = $CastleScene
@@ -18,7 +19,7 @@ var step_ended: bool = true
 var daughter
 
 func _ready() -> void:
-	Main.play_bgm(4, 0)
+	Main.stop_bgm()
 	eye_lid.init(false)
 	castle_scene.set_scene("outside")
 	next_step()
@@ -26,20 +27,19 @@ func _ready() -> void:
 var steps: Array = [
 	func():
 		step_ended = false
-		await eye_lid.open_eyes(3)
-		next_step(),
+		eye_lid.open_eyes(3)
+		warrior.direction = 0.2,
 	func():
-		warrior.direction = 0.2
-		await Global.wait(5)
 		warrior.direction = 0
 		await Global.wait(5)
 		castle_scene.set_scene("interior", true)
+		background.hide()
 		daughter = daughter_scene.instantiate()
 		daughter.global_position = Vector2(3000, 750)
 		add_child(daughter)
-		await Global.wait(1)
 		next_step(),
 	func():
+		Main.play_bgm(7, 0)
 		speech_bubble.set_dialogue(daughter.global_position, "LEVEL7_0")
 		step_ended = true,
 	func():
@@ -68,6 +68,7 @@ var steps: Array = [
 		speech_bubble.set_dialogue(daughter.global_position, "LEVEL7_12"),
 	func():
 		step_ended = false
+		speech_bubble.hide()
 		await eye_lid.close_eyes(3)
 		next_step(),
 ]
@@ -85,3 +86,8 @@ func next_step():
 func _input(event):
 	if event.is_action_pressed("ui_accept") and step_ended:
 		next_step()
+
+func _on_stop_1_body_entered(body: Node2D) -> void:
+	if body.is_in_group("killzone"):
+		next_step()
+		$Stop1.queue_free()

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://6ptgyeaheq1"]
+[gd_scene load_steps=10 format=3 uid="uid://6ptgyeaheq1"]
 
 [ext_resource type="Script" path="res://levels/6/story3.gd" id="1_ed1w1"]
 [ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="2_vcdj2"]
+[ext_resource type="PackedScene" uid="uid://dnedubnevuigi" path="res://scenes/background.tscn" id="2_xt0n8"]
 [ext_resource type="PackedScene" uid="uid://bdxsjk7vwowb2" path="res://objects/food.tscn" id="3_6r402"]
 [ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="4_yvs8f"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="6_1mo0i"]
 [ext_resource type="Theme" uid="uid://bgq7gf52v0365" path="res://assets/theme/base_theme.tres" id="6_b4p58"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="6_ccfgd"]
 
@@ -13,11 +15,10 @@ size = Vector2(7680, 4320)
 [node name="Story" type="Node2D"]
 script = ExtResource("1_ed1w1")
 
+[node name="Background" parent="." instance=ExtResource("2_xt0n8")]
+
 [node name="HighlandScene" parent="." instance=ExtResource("2_vcdj2")]
 position = Vector2(-3840, -2160)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.25, 0.25)
 
 [node name="Food" parent="." instance=ExtResource("3_6r402")]
 position = Vector2(-3275, 50)
@@ -29,6 +30,8 @@ position = Vector2(-75, 50)
 position = Vector2(3125, 50)
 
 [node name="Player" parent="." instance=ExtResource("4_yvs8f")]
+
+[node name="PlayerFollowingCamera" parent="." instance=ExtResource("6_1mo0i")]
 
 [node name="SpeechBubble" parent="." instance=ExtResource("6_ccfgd")]
 

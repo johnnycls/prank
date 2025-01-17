@@ -1,29 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://c63tit53v06wn"]
+[gd_scene load_steps=8 format=3 uid="uid://c63tit53v06wn"]
 
 [ext_resource type="Script" path="res://levels/7/story1.gd" id="1_d55ch"]
 [ext_resource type="PackedScene" uid="uid://cq1ajuyrn4aeh" path="res://scenes/castle/castle_scene.tscn" id="2_3tnmp"]
+[ext_resource type="PackedScene" uid="uid://dnedubnevuigi" path="res://scenes/background.tscn" id="2_mjkqm"]
 [ext_resource type="PackedScene" uid="uid://bmauwlu6blts7" path="res://characters/old_warrior_story.tscn" id="5_62tfp"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="6_mpur7"]
 [ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="7_2sx72"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7stki"]
+size = Vector2(100, 4320)
+
 [node name="Story" type="Node2D"]
 script = ExtResource("1_d55ch")
+
+[node name="Background" parent="." instance=ExtResource("2_mjkqm")]
 
 [node name="CastleScene" parent="." instance=ExtResource("2_3tnmp")]
 position = Vector2(0, -2160)
 
-[node name="Warrior" parent="." instance=ExtResource("5_62tfp")]
+[node name="Warrior" parent="." groups=["killzone"] instance=ExtResource("5_62tfp")]
 position = Vector2(0, 755)
+
+[node name="Stop1" type="Area2D" parent="."]
+position = Vector2(3880, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stop1"]
+shape = SubResource("RectangleShape2D_7stki")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(3840, 0)
-zoom = Vector2(0.25, 0.25)
+zoom = Vector2(0.35, 0.35)
 
 [node name="SpeechBubble" parent="." instance=ExtResource("6_mpur7")]
+layer = 10
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 
 [node name="EyeLid" parent="." instance=ExtResource("7_2sx72")]
-visible = false
+
+[connection signal="body_entered" from="Stop1" to="." method="_on_stop_1_body_entered"]

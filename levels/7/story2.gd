@@ -6,6 +6,7 @@ var select_sound = preload("res://assets/audio/select.wav")
 
 var step_ended: bool = true
 
+@onready var eye_lid = $EyeLid
 @onready var player = $Player
 @onready var child = $Child
 @onready var speech_bubble = $SpeechBubble
@@ -14,16 +15,26 @@ var step_ended: bool = true
 @onready var audio2 = $AudioStreamPlayer2
 
 func _ready() -> void:
-	Main.play_bgm(4, 0)
+	eye_lid.init(false)
 	next_step()
 
 var steps: Array = [
 	func():
-		speech_bubble.set_dialogue(player.global_position, "LEVEL6_13"),
+		step_ended = false
+		await eye_lid.open_eyes(3)
+		next_step(),
 	func():
-		speech_bubble.set_dialogue(child.global_position, "LEVEL6_14"),
+		speech_bubble.set_dialogue(player.global_position, "LEVEL7_13")
+		step_ended = true,
 	func():
-		speech_bubble.set_dialogue(player.global_position, "LEVEL6_15"),
+		speech_bubble.set_dialogue(child.global_position, "LEVEL7_14"),
+	func():
+		speech_bubble.set_dialogue(player.global_position, "LEVEL7_15"),
+	func():
+		step_ended = false
+		speech_bubble.hide()
+		await eye_lid.close_eyes(6)
+		next_step(),
 ]
 
 var current_step: int = -1

@@ -1,35 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://52nlihr63syr"]
+[gd_scene load_steps=9 format=3 uid="uid://52nlihr63syr"]
 
 [ext_resource type="Script" path="res://levels/6/story2.gd" id="1_va6qp"]
 [ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="2_nokyi"]
-[ext_resource type="PackedScene" uid="uid://bdxsjk7vwowb2" path="res://objects/food.tscn" id="3_kqhbc"]
+[ext_resource type="PackedScene" uid="uid://dnedubnevuigi" path="res://scenes/background.tscn" id="2_rjwgj"]
 [ext_resource type="PackedScene" uid="uid://cfdub3r3ey8yj" path="res://characters/fairy_story.tscn" id="4_dtnju"]
 [ext_resource type="PackedScene" uid="uid://bmauwlu6blts7" path="res://characters/old_warrior_story.tscn" id="5_4dxxy"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="5_l7lrq"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="7_dnsyb"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="8_m5up3"]
 
 [node name="Story" type="Node2D"]
 script = ExtResource("1_va6qp")
 
+[node name="Background" parent="." instance=ExtResource("2_rjwgj")]
+
 [node name="HighlandScene" parent="." instance=ExtResource("2_nokyi")]
 position = Vector2(-3840, -2160)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.25, 0.25)
-
-[node name="Food" parent="." instance=ExtResource("3_kqhbc")]
-position = Vector2(-3275, 50)
-
-[node name="Food2" parent="." instance=ExtResource("3_kqhbc")]
-position = Vector2(-75, 50)
-
-[node name="Food3" parent="." instance=ExtResource("3_kqhbc")]
-position = Vector2(3125, 50)
-
 [node name="Fairy" parent="." instance=ExtResource("4_dtnju")]
+position = Vector2(-1820, -150)
 
 [node name="Warrior" parent="." instance=ExtResource("5_4dxxy")]
+position = Vector2(1820, -150)
+
+[node name="PlayerFollowingCamera" parent="." instance=ExtResource("7_dnsyb")]
 
 [node name="SpeechBubble" parent="." instance=ExtResource("5_l7lrq")]
+
+[node name="EyeLid" parent="." instance=ExtResource("8_m5up3")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 

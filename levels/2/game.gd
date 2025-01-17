@@ -14,6 +14,11 @@ var start_pos = Vector2(22800, 735)
 @onready var bird_audio = $BirdAudio
 
 func _start() -> void:
+	for node in Global.get_valid_nodes_in_group("poop"):
+		node.queue_free()
+	for node in Global.get_valid_nodes_in_group("birds"):
+		node.queue_free()
+	whole_scene.init(player_cam)
 	player.global_position = start_pos
 	warrior.global_position.x = player.global_position.x - 1000
 	player_cam.global_position.x = player.global_position.x

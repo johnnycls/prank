@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chomgxa2p51c4"]
+
+[ext_resource type="Script" path="res://levels/6/spawn_food.gd" id="1_bxg6k"]
+
+[node name="SpawnFood" type="Node2D"]
+script = ExtResource("1_bxg6k")

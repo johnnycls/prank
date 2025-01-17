@@ -1,25 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmrqmeh8x2r3a"]
+[gd_scene load_steps=8 format=3 uid="uid://cmrqmeh8x2r3a"]
 
 [ext_resource type="Script" path="res://levels/7/story2.gd" id="1_wf0j6"]
 [ext_resource type="PackedScene" uid="uid://ya38yybm76i3" path="res://scenes/park_scene.tscn" id="2_6xpuk"]
+[ext_resource type="PackedScene" uid="uid://dnedubnevuigi" path="res://scenes/background.tscn" id="2_cgytt"]
 [ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="4_rqdqo"]
 [ext_resource type="PackedScene" uid="uid://dh73gw4u1u6e8" path="res://characters/child.tscn" id="5_2pbei"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="6_wrvvl"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="7_0m6hn"]
 
 [node name="Story" type="Node2D"]
 script = ExtResource("1_wf0j6")
 
+[node name="Background" parent="." instance=ExtResource("2_cgytt")]
+
 [node name="ParkScene" parent="." instance=ExtResource("2_6xpuk")]
 position = Vector2(-3840, -2160)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.25, 0.25)
-
-[node name="SpeechBubble" parent="." instance=ExtResource("6_wrvvl")]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("4_rqdqo")]
 position = Vector2(-50, 755)
@@ -41,3 +36,14 @@ position = Vector2(-600, 755)
 
 [node name="Child6" parent="." instance=ExtResource("5_2pbei")]
 position = Vector2(-850, 755)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.25, 0.25)
+
+[node name="SpeechBubble" parent="." instance=ExtResource("6_wrvvl")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="EyeLid" parent="." instance=ExtResource("7_0m6hn")]

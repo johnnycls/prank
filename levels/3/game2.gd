@@ -12,6 +12,7 @@ func _ready() -> void:
 	_start()
 
 func _start() -> void:
+	whole_scene.init(cam)
 	for node in Global.get_valid_nodes_in_group("poop"):
 		node.queue_free()
 	for node in Global.get_valid_nodes_in_group("birds"):

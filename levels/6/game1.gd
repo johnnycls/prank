@@ -4,19 +4,15 @@ signal ended
 
 @onready var player = $Player
 @onready var warrior = $Warrior
-@onready var whole_scene = $WholeScene
-@onready var cam = $PlayerFollowingCamera
 
 func _ready() -> void:
-	whole_scene.init(cam)
-	whole_scene.set_house1_scene("outside")
 	_start()
 
 func _start() -> void:
 	for node in Global.get_valid_nodes_in_group("moving_objects"):
 		node.queue_free()
-	player.global_position = Vector2(-1820, 150)
-	warrior.global_position = Vector2(1820, 150)
+	player.global_position = Vector2(-1820, -150)
+	warrior.global_position = Vector2(1820, -150)
 	player.init()
 	warrior.init()
 

@@ -127,6 +127,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		hit(area.damage, splash_sound if area.is_in_group("poop") else null)
 	if area.is_in_group("remove_when_touched_by_player"):
 		area.queue_free()
+	if area.is_in_group("foods"):
+		area.on_eaten()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("killzone"):

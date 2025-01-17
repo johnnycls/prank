@@ -6,20 +6,27 @@ var select_sound = preload("res://assets/audio/select.wav")
 
 var step_ended: bool = true
 
+@onready var eye_lid = $EyeLid
 @onready var fairy = $Fairy
 @onready var warrior = $Warrior
 @onready var speech_bubble = $SpeechBubble
-@onready var cam = $Camera2D
+@onready var cam = $PlayerFollowingCamera
 @onready var audio = $AudioStreamPlayer
 @onready var audio2 = $AudioStreamPlayer2
 
 func _ready() -> void:
-	Main.play_bgm(4, 0)
+	eye_lid.init(false)
+	Main.stop_bgm()
 	next_step()
 
 var steps: Array = [
 	func():
-		speech_bubble.set_dialogue(warrior.global_position, "LEVEL6_0"),
+		step_ended = false
+		await eye_lid.open_eyes(3)
+		next_step(),
+	func():
+		speech_bubble.set_dialogue(warrior.global_position, "LEVEL6_0")
+		step_ended = true,
 	func():
 		speech_bubble.set_dialogue(fairy.global_position, "LEVEL6_1"),
 	func():
@@ -29,6 +36,7 @@ var steps: Array = [
 	func():
 		speech_bubble.set_dialogue(warrior.global_position, "LEVEL6_4"),
 	func():
+		Main.play_bgm(6, 0 ,1.0)
 		speech_bubble.set_dialogue(fairy.global_position, "LEVEL6_5"),
 	func():
 		speech_bubble.set_dialogue(warrior.global_position, "LEVEL6_6"),

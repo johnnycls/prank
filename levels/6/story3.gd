@@ -9,13 +9,12 @@ var step_ended: bool = true
 @onready var eye_lid = $EyeLid
 @onready var player = $Player
 @onready var speech_bubble = $SpeechBubble
-@onready var cam = $Camera2D
 @onready var audio = $AudioStreamPlayer
 @onready var audio2 = $AudioStreamPlayer2
 @onready var img = $CanvasLayer
 
 func _ready() -> void:
-	Main.play_bgm(4, 0)
+	Main.stop_bgm()
 	eye_lid.init(false)
 	next_step()
 
