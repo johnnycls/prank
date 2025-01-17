@@ -17,13 +17,15 @@ position = Vector2(0, -2160)
 player_following_cam = NodePath("../PlayerFollowingCamera")
 
 [node name="Player" parent="." instance=ExtResource("1_706qd")]
-position = Vector2(11000, 760)
+position = Vector2(55000, 750)
 
 [node name="Man" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_r0ilw")]
+position = Vector2(52000, 750)
 player = NodePath("../Player")
 speed = 3300.0
 
 [node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_57r3c")]
+position = Vector2(55000, 0)
 target = NodePath("../Player")
 
 [node name="SpawnBird" type="Node2D" parent="." node_paths=PackedStringArray("player")]
@@ -31,6 +33,7 @@ script = ExtResource("3_1taeg")
 player = NodePath("../Player")
 
 [node name="Trap" parent="." instance=ExtResource("7_k1rkp")]
+position = Vector2(66500, 0)
 
 [node name="BirdAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uar0f")
@@ -38,3 +41,4 @@ autoplay = true
 
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
+[connection signal="body_entered" from="Trap" to="." method="_on_trap_body_entered"]

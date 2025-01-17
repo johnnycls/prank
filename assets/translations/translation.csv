@@ -154,8 +154,8 @@ LEVEL4_62,Is he a good person? Is what he said about the legend true?,他是好�
 LEVEL4_63,Do other demons really exist in this world?,世上真的存在其他惡魔嗎？,世上真的存在其他恶魔吗？,,
 LEVEL4_64,I wonder if what he said about the east might have some clues?,不知道他說的東方會不會有什麽綫索呢？,不知道他说的东方会不会有什么线索呢？,,
 LEVEL4_65,"Come to think of it, this is the second time I've slept in a bed since I can remember",話説這是我有記憶以來第二次在床上睡吧,话说这是我有记忆以来第二次在床上睡吧,,
-LEVEL4_66,The first time... I hope nothing happens this time.,第一次。。。希望這次會沒事吧。,第一次。。。希望这次会没事吧。,,# 門外（19年）
-TITLE_5,Escape,逃脫,逃脱,,
+LEVEL4_66,The first time... I hope nothing happens this time.,第一次。。。希望這次會沒事吧。,第一次。。。希望这次会没事吧。,,
+TITLE_5,Escape to the Desert,逃到沙漠,逃到沙漠,,# 門外（19年）
 LEVEL5_0,"Huh, how did someone come here?",咦，怎麽會有人來到這裏啊？,咦，怎么会有人来到这里啊？,,
 LEVEL5_1,"I'm someone from the west, have you seen any demons?",我是從西方過來的人，請問你們有見過惡魔嗎？,我是从西方过来的人，请问你们有见过恶魔吗？,,
 LEVEL5_2,From the west? You crossed such a vast ocean to get here?,從西方？你跨越了那麽大的海洋過來了嗎？,从西方？你跨越了那么大的海洋过来了吗？,,
@@ -165,7 +165,8 @@ LEVEL5_5,Fairy? Don't be fooled by her! She's the demon who killed my father and
 LEVEL5_6,Aren't you misunderstanding something?,你是不是有什麽誤會啊？,你是不是有什么误会啊？,,
 LEVEL5_7,"Father, sister, I will avenge you!",父親，妹妹，我要給你們報仇了！,父亲，妹妹，我要给你们报仇了！,,
 LEVEL5_8,Oh no! How did he find this place?,糟了！他怎麽會找到這？,糟了！他怎么会找到这？,,# 主角飛了幾天幾夜
-LEVEL5_9,(Panting) He shouldn't be able to catch up here! Eh what's that ahead?,（喘氣）他應該追不到這裏吧！欸前面的是？,（喘气）他应该追不到这里吧！诶前面的是？,,# 六個仙人掌前有兩條尸體。男尸的劍刺穿了女尸的心臟，女尸手上戴著和主角同樣的手環。
+LEVEL5_9,(Panting) He shouldn't be able to catch up here!,（喘氣）他應該追不到這裏吧！,（喘气）他应该追不到这里吧！,,
+LEVEL5_10,Eh what's that ahead?,欸前面的是？,诶前面的是？,,# 三個仙人掌前有兩條尸體。男尸的劍刺穿了女尸的心臟，女尸手上戴著和主角同樣的手環。
 TITLE_6,Ancestor's Prank,祖先的惡作劇,祖先的恶作剧,,
 LEVEL6_0,Where did you take my daughter? Fight me fair and square if you dare.,你究竟抓了我女兒去哪？有種跟我堂堂正正地對決。,你究竟抓了我女儿去哪？有种跟我堂堂正正地对决。,,# 進入回憶二十年前（-1年）
 LEVEL6_1,"Haha! When you thought I wasn't attacking you, you were already under attack",哈哈哈！在你以爲我沒有攻擊你的時候，你已經受到攻擊了,哈哈哈！在你以为我没有攻击你的时候，你已经受到攻击了,,
@@ -176,7 +177,7 @@ LEVEL6_5,Haha! Now you know my power,哈哈哈！知道我的厲害了吧,哈哈
 LEVEL6_6,"Damn, I'll go find food first, after I eat, let's see how you escape",可惡，我先去找吃的，吃飽了，我就看你還怎麽逃,可恶，我先去找吃的，吃饱了，我就看你还怎么逃,,
 LEVEL6_7,Haha! Do you know why I lured you here?,哈哈哈！你知道我爲什麽要把你引到這裏嗎？,哈哈哈！你知道我为什么要把你引到这里吗？,,
 LEVEL6_8,What are you trying to do?,你究竟想幹什麽？,你究竟想干什么？,,
-LEVEL6_9,I lured you here because the only thing to eat here is these six cacti,我引你到這裏，是因爲這裏唯一能吃的，就是這六棵仙人掌,我引你到这里，是因为这里唯一能吃的，就是这六棵仙人掌,,
+LEVEL6_9,I lured you here because the only thing to eat here is these six cacti,我引你到這裏，是因爲這裏唯一能吃的，就是這六棵仙人掌,我引你到这里，是因为这里唯一能吃的，就是这三棵仙人掌,,
 LEVEL6_10,"That's perfect, I love eating cacti",那正好，我最愛吃仙人掌了,那正好，我最爱吃仙人掌了,,
 LEVEL6_11,Then let's see if you can snatch them from me,那就看你搶不搶得過我了,那就看你抢不抢得过我了,,# 仙女把仙人掌全搶掉，勇者餓到沒有力氣了
 LEVEL6_12,"To think that I, a noble hero, would be defeated by such a technique. At this point, I can only use that move",我堂堂勇者竟然被這種招式戰勝。事到如今，唯有用這招了,我堂堂勇者竟然被这种招式战胜。事到如今，唯有用这招了,,
@@ -191,8 +192,9 @@ LEVEL6_20,It's pranks!,那就是惡作劇啊！,那就是恶作剧啊！,,
 LEVEL6_21,"I never kidnapped your daughter, I just turned her into a demon! Brother!",我根本沒有抓走你的女兒，我只是把她變成惡魔而已啦！哥哥！,我根本没有抓走你的女儿，我只是把她变成恶魔而已啦！哥哥！,,
 LEVEL6_22,What?,甚麽？,什么？,,
 LEVEL6_23,Hahahahaha!,哈哈哈哈哈哈！,哈哈哈哈哈哈！,,# 勇者使出終極奧義，與小惡魔同歸於盡。
-LEVEL6_24,"December, Year -1",-1年12月,-1年12月,,# 回到現在，主角翻開女尸，發現一封遺書。
-LEVEL6_25,"So everything was an ancestor's prank. At this point, I don't know who made the first mistake. But that's not important anymore. Whether I'm a demon or a fairy has nothing to do with what I've done. I don't think I have the ability to change human perceptions, I just hope I don't have to live avoiding heroes, and that this prank can end with the next generation.",原來一切都是祖先的惡作劇。事到如今，我已不知道是誰先做錯了。可是那已經不重要了。我究竟是惡魔還是仙女，跟我做過什麽根本無關。我並不認爲自己有能力改變人類的認知，我只希望我不需要過著躲避勇者的日子，以及這惡作劇，能在下一代結束。,原来一切都是祖先的恶作剧。事到如今，我已不知道是谁先做错了。可是那已经不重要了。我究竟是恶魔还是仙女，跟我做过什么根本无关。我并不认为自己有能力改变人类的认知，我只希望我不需要过着躲避勇者的日子，以及这恶作剧，能在下一代结束。,,
+LEVEL6_24,That just now... were those the memories from when the body was alive?,剛才的是，尸體生前的記憶？,刚才的是，尸体生前的记忆？,,
+LEVEL6_25,Then what about the paper inside the body?,那麽尸體裏的紙是？,那么尸体里的是？,,# 回到現在，主角翻開女尸，發現一封遺書。
+LEVEL6_26,"So everything was an ancestor's prank. At this point, I don't know who made the first mistake. But that's not important anymore. Whether I'm a demon or a fairy has nothing to do with what I've done. I don't think I have the ability to change human perceptions, I just hope I don't have to live avoiding heroes, and that this prank can end with the next generation.",原來一切都是祖先的惡作劇。事到如今，我已不知道是誰先做錯了。可是那已經不重要了。我究竟是惡魔還是仙女，跟我做過什麽根本無關。我並不認爲自己有能力改變人類的認知，我只希望我不需要過著躲避勇者的日子，以及這惡作劇，能在下一代結束。,原来一切都是祖先的恶作剧。事到如今，我已不知道是谁先做错了。可是那已经不重要了。我究竟是恶魔还是仙女，跟我做过什么根本无关。我并不认为自己有能力改变人类的认知，我只希望我不需要过着躲避勇者的日子，以及这恶作剧，能在下一代结束。,,
 TITLE_7,The Demon Story,惡魔的故事,恶魔的故事,,
 LEVEL7_0,"Dad, you're finally back",爸爸，你終於回來了,爸爸，你终于回来了,,# 一年後，城堡裏（20年）
 LEVEL7_1,"I'm glad you're okay, you know how worried I was about you being eaten by demons.",你沒事就好，你知道我多擔心你被惡魔吃掉啊。,你没事就好，你知道我多担心你被恶魔吃掉啊。,,

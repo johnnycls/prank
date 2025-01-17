@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6b7w"]
 size = Vector2(120, 400)
 
-[node name="Fairy" type="CharacterBody2D" groups=["players"]]
+[node name="Fairy" type="CharacterBody2D"]
 z_index = 10
 script = ExtResource("1_x6xod")
 

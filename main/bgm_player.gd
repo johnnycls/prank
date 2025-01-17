@@ -6,10 +6,11 @@ var bgm_list = [
 	preload("res://assets/bgm/7 Memory Box.ogg"),
 	preload("res://assets/bgm/25 Snow Moon.ogg"),
 	preload("res://assets/bgm/5 In Loneliness.ogg"),
+	preload("res://assets/bgm/16 Recollections.ogg"),
 ]
 
 var current_bgm: int = -1
-var base_volume_db: float = -80.0
+var base_volume_db: float = 0.0
 @onready var next_player = AudioStreamPlayer.new()
 
 func _ready():

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="2_8gscn"]
 [ext_resource type="PackedScene" uid="uid://bdxsjk7vwowb2" path="res://objects/food.tscn" id="3_o4uol"]
 [ext_resource type="PackedScene" uid="uid://nd1x06awfi2a" path="res://characters/fairy.tscn" id="4_chwav"]
-[ext_resource type="PackedScene" uid="uid://dou3axyms2kyj" path="res://characters/warrior.tscn" id="5_g0auv"]
+[ext_resource type="PackedScene" uid="uid://dou3axyms2kyj" path="res://characters/last_warrior.tscn" id="5_g0auv"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vlauj")

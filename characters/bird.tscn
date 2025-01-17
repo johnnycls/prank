@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3d7tf"]
 size = Vector2(199, 74)
 
-[node name="Bird" type="Area2D" groups=["killzone", "moving_objects"]]
+[node name="Bird" type="Area2D" groups=["birds", "killzone", "moving_objects"]]
 script = ExtResource("1_ylmgm")
 
 [node name="ColorRect" type="ColorRect" parent="."]

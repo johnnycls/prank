@@ -2,24 +2,24 @@
 
 [ext_resource type="Script" path="res://levels/3/story1.gd" id="1_hn8bp"]
 [ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="2_1q7tt"]
-[ext_resource type="Script" path="res://levels/3/camera_2d.gd" id="2_yhgnr"]
 [ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="3_nwuje"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="3_yofni"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="4_3j68d"]
 
 [node name="Story" type="Node2D"]
 script = ExtResource("1_hn8bp")
 
+[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("3_nwuje")]
+position = Vector2(0, -2160)
+player_following_cam = NodePath("../PlayerFollowingCamera")
+
 [node name="Player" parent="." instance=ExtResource("2_1q7tt")]
 position = Vector2(48000, 755)
 
-[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("3_nwuje")]
-position = Vector2(0, -2160)
-player_following_cam = NodePath("../Camera2D")
-
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(48000, 750)
+[node name="PlayerFollowingCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_3j68d")]
+position = Vector2(48000, 500)
 zoom = Vector2(0.5, 0.5)
-script = ExtResource("2_yhgnr")
+y_coordinate = 500.0
 target = NodePath("../Player")
 
 [node name="SpeechBubble" parent="." instance=ExtResource("3_yofni")]

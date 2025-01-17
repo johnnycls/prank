@@ -10,7 +10,6 @@ var step_ended: bool = true
 @onready var player = $Player
 @onready var man = $Man
 @onready var speech_bubble = $SpeechBubble
-@onready var cam = $Camera2D
 @onready var audio = $AudioStreamPlayer
 @onready var audio2 = $AudioStreamPlayer2
 @onready var whole_scene = $WholeScene
@@ -21,7 +20,6 @@ func _ready() -> void:
 var steps: Array = [
 	func():
 			step_ended = false
-			cam.global_position = player.global_position
 			player.direction = 0.4
 			await Global.wait(5)
 			man.global_position = Vector2(player.global_position.x-250, player.global_position.y)

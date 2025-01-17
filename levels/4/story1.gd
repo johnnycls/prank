@@ -10,7 +10,7 @@ var step_ended: bool = true
 @onready var eye_lid = $EyeLid
 @onready var man = $Man
 @onready var speech_bubble = $SpeechBubble
-@onready var cam = $Camera2D
+@onready var cam = $PlayerFollowingCamera
 @onready var audio = $AudioStreamPlayer
 @onready var audio2 = $AudioStreamPlayer2
 @onready var whole_scene = $WholeScene
@@ -73,9 +73,9 @@ func next_step():
 	current_step += 1
 	if current_step < steps.size():
 		steps[current_step].call()
+		Global.play_sound(audio, select_sound)
 	else:
 		ended.emit()
-	Global.play_sound(audio, select_sound)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and step_ended:

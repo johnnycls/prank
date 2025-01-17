@@ -16,7 +16,7 @@ var step_ended: bool = true
 @onready var whole_scene = $WholeScene
 
 func _ready() -> void:
-	eye_lid.init(false)
+	eye_lid.init(true)
 	Main.play_bgm(5, 0)
 	whole_scene.init(cam)
 	whole_scene.set_house1_scene("outside")
@@ -25,61 +25,37 @@ func _ready() -> void:
 var steps: Array = [
 	func():
 		step_ended = false
-		eye_lid.open_eyes(3)
-		man.direction = 0.75
-		fairy.direction = 0.75
-		await Global.wait(7)
-		man.direction = 0
-		fairy.direction = 0
-		await Global.wait(0.5)
-		next_step(),
-	func():
-		speech_bubble.set_dialogue(man.global_position, "LEVEL4_16")
-		step_ended = true,
-	func():
-		speech_bubble.hide()
-		step_ended = false
-		man.direction = 0.75
-		fairy.direction = 0.75,
-	func():
-		man.direction = 0 
-		fairy.direction = 0
-		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_17")
-		step_ended = true,
-	func():
-		step_ended = false
-		speech_bubble.hide()
-		man.direction = 0.75
+		fairy.direction = -0.5
+		fairy.is_jump_just_pressed = true
+		fairy.is_jump_pressed = true
 		await Global.wait(1)
-		man.direction = 0
-		await Global.wait(2)
+		fairy.is_jump_just_pressed = true
+		fairy.is_jump_pressed = true
+		await Global.wait(0.5)
+		fairy.direction = 0
+		await Global.wait(1)
 		next_step(),
 	func():
-		$Trap.queue_free()
+		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_34")
 		step_ended = true,
 	func():
-		speech_bubble.set_dialogue(man.global_position, "LEVEL4_18")
-		await Global.wait(1),
+		speech_bubble.set_dialogue(man.global_position, "LEVEL4_35"),
 	func():
-		speech_bubble.set_dialogue(man.global_position, "LEVEL4_19"),
+		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_36"),
 	func():
-		speech_bubble.set_dialogue(man.global_position, "LEVEL4_20"),
+		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_37"),
 	func():
-		speech_bubble.set_dialogue(man.global_position, "LEVEL4_21"),
+		speech_bubble.set_dialogue(man.global_position, "LEVEL4_38"),
 	func():
-		speech_bubble.set_dialogue(man.global_position, "LEVEL4_22"),
+		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_39"),
 	func():
-		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_23"),
+		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_40"),
 	func():
-		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_24"),
+		speech_bubble.set_dialogue(man.global_position, "LEVEL4_41"),
 	func():
-		speech_bubble.set_dialogue(man.global_position, "LEVEL4_25"),
+		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_42"),
 	func():
-		speech_bubble.set_dialogue(man.global_position, "LEVEL4_26"),
-	func():
-		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_27"),
-	func():
-		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_28"),
+		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_43"),
 	func():
 		step_ended = false
 		speech_bubble.hide()
@@ -97,11 +73,8 @@ var steps: Array = [
 		fairy.is_jump_pressed = true
 		next_step(),
 	func():
-		fairy.direction = 0
-		speech_bubble.set_dialogue(man.global_position, "LEVEL4_29")
-		step_ended = true,
-	func():
 		step_ended = false
+		fairy.queue_free()
 		await eye_lid.close_eyes(3)
 		next_step(),
 ]

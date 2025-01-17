@@ -12,9 +12,10 @@ func _ready() -> void:
 	_start()
 
 func _start() -> void:
-	player.global_position = Vector2(55000, 755)
-	cam.global_position.x = player.global_position.x
-	man.global_position = Vector2(52000, 755)
+	for node in Global.get_valid_nodes_in_group("poop"):
+		node.queue_free()
+	for node in Global.get_valid_nodes_in_group("birds"):
+		node.queue_free()
 	player.init()
 
 func _on_player_dead() -> void:

@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsxbcw5c01r82"]
+
+[ext_resource type="Script" path="res://levels/4/story4.gd" id="1_75v1y"]
+[ext_resource type="PackedScene" uid="uid://cfdub3r3ey8yj" path="res://characters/fairy_story.tscn" id="2_os0ub"]
+[ext_resource type="PackedScene" uid="uid://bsbe2andqjhxm" path="res://characters/young_man_story.tscn" id="3_rpu6q"]
+[ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="4_eanrc"]
+[ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="5_hs5nq"]
+[ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="6_dnjgj"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="7_ff4bx"]
+
+[node name="Story" type="Node2D"]
+script = ExtResource("1_75v1y")
+
+[node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("4_eanrc")]
+position = Vector2(0, -2160)
+player_following_cam = NodePath("../PlayerFollowingCamera")
+wildnerness_revolution = 2
+
+[node name="Fairy" parent="." instance=ExtResource("2_os0ub")]
+position = Vector2(74000, 0)
+
+[node name="Man" parent="." groups=["moving_objects"] instance=ExtResource("3_rpu6q")]
+position = Vector2(70000, 755)
+
+[node name="PlayerFollowingCamera" parent="." instance=ExtResource("5_hs5nq")]
+position = Vector2(71000, 250)
+zoom = Vector2(0.4, 0.4)
+y_coordinate = 250.0
+
+[node name="SpeechBubble" parent="." instance=ExtResource("6_dnjgj")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="EyeLid" parent="." instance=ExtResource("7_ff4bx")]
