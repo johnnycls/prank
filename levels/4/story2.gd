@@ -44,6 +44,7 @@ var steps: Array = [
 	func():
 		man.direction = 0 
 		fairy.direction = 0
+		await Global.wait(0.2)
 		speech_bubble.set_dialogue(fairy.global_position, "LEVEL4_17")
 		step_ended = true,
 	func():

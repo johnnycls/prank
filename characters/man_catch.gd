@@ -12,9 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 		attack_audio.play()
 
 func _physics_process(delta: float) -> void:
-	if Global.is_node_valid(player):
-		global_position.y = min(755, player.global_position.y)
-		
+	if Global.is_node_valid(player):		
 		var target_x = player.global_position.x
 		var max_movement = speed * delta
 		var new_x = move_toward(global_position.x, target_x, max_movement)

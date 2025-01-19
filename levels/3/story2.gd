@@ -35,6 +35,7 @@ var steps: Array = [
 			player.direction = 0.5
 			await Global.wait(0.5)
 			player.direction = 0
+			await Global.wait(0.2)
 			next_step(),
 		func():
 			speech_bubble.set_dialogue(man.global_position,"LEVEL3_13")

@@ -23,14 +23,17 @@ func _ready() -> void:
 	whole_scene.set_castle_scene("room")
 	whole_scene.init(cam)
 	cam.global_position = whole_scene.castle_center()
+	player = player_scene.instantiate()
+	add_child(player)
+	player.global_position = Vector2(10200, -740)
+	step_ended = false
+	await Global.wait(0.1)
 	next_step()
 
 var steps: Array = [
 	func():
-		player = player_scene.instantiate()
-		add_child(player)
-		player.global_position = Vector2(10200, -740)
-		speech_bubble.set_dialogue(player.global_position,"LEVEL2_0"),
+		speech_bubble.set_dialogue(player.global_position,"LEVEL2_0")
+		step_ended = true,
 	func():
 		speech_bubble.set_dialogue(player.global_position,"LEVEL2_1"),
 	func():
@@ -58,6 +61,7 @@ var steps: Array = [
 		await Global.wait(2)
 		warrior.direction = 0
 		warrior.attack()
+		Main.play_bgm(3)
 		player.direction = 0.75
 		await Global.wait(0.05)
 		player.direction = 0
@@ -105,7 +109,7 @@ var steps: Array = [
 		player.is_jump_pressed = true
 		await Global.wait(0.1)
 		player.is_jump_pressed = false
-		await Global.wait(0.5)
+		await Global.wait(0.4)
 		warrior.direction = 0
 		player.direction = 0
 		await Global.wait(0.5)
@@ -149,13 +153,10 @@ var steps: Array = [
 		step_ended = false
 		speech_bubble.hide()
 		player.direction = 0.5
-		warrior.direction = 0.5
-		await Global.wait(5)
-		warrior.direction = 0
-		player.direction = 0
-		await Global.wait(1)
-		next_step(),
+		warrior.direction = 0.5,
 	func():
+		player.direction = 0
+		warrior.direction = 0
 		speech_bubble.set_dialogue(player.global_position,"LEVEL2_16")
 		step_ended = true,
 	func():
@@ -176,4 +177,8 @@ func next_step():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and step_ended:
+		next_step()
+
+func _on_stop_body_entered(body: Node2D) -> void:
+	if body == player:
 		next_step()

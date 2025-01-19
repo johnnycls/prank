@@ -16,7 +16,7 @@ var step_ended: bool = true
 @onready var whole_scene = $WholeScene
 
 func _ready() -> void:
-	Main.play_bgm(4, 0)
+	Main.stop_bgm()
 	whole_scene.init(cam)
 	whole_scene.set_house1_scene("outside")
 	next_step()
@@ -33,6 +33,7 @@ var steps: Array = [
 		await Global.wait(0.5)
 		next_step(),
 	func():
+		Main.play_bgm(3)
 		speech_bubble.set_dialogue(warrior.global_position, "LEVEL5_1")	
 		step_ended = true,
 	func():

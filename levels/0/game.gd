@@ -13,7 +13,7 @@ var goal_scene = preload("res://levels/0/goal.tscn")
 var goal
 
 func _start() -> void:
-	player.global_position = Vector2(11000, 750)
+	player.global_position = Vector2(16000, 760)
 	cam.global_position.x = player.global_position.x
 	player.init()
 

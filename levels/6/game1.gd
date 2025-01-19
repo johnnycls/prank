@@ -18,9 +18,6 @@ func _start() -> void:
 
 func _on_player_dead() -> void:
 	_start()
-	
-func _on_player_left_screen() -> void:
-	_start()
 
 func _on_warrior_died() -> void:
 	ended.emit()

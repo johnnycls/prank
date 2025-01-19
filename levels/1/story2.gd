@@ -18,19 +18,18 @@ var eat_sound = preload("res://assets/audio/eat.wav")
 var step_ended: bool = true
 var warrior
 
-
 func _ready() -> void:
+	Main.play_bgm(2)
 	whole_scene.set_castle_scene("room")
+	cam.global_position = whole_scene.castle_center()
+	step_ended = false
+	await Global.wait(0.1)
 	next_step()
 
 var steps: Array = [
 	func():
-		Main.play_bgm(2)
-		speech_bubble.show()
-		player.global_position = Vector2(10300, -740)
-		cam.global_position = whole_scene.castle_center()
-		cam.enabled = true
-		speech_bubble.set_dialogue(player.global_position,"LEVEL1_5"),
+		speech_bubble.set_dialogue(player.global_position, "LEVEL1_5")
+		step_ended = true,
 	func():
 		speech_bubble.set_dialogue(player.global_position,"LEVEL1_6"),
 	func():

@@ -23,8 +23,8 @@ var steps: Array = [
 		speech_bubble.set_dialogue(man.global_position,"LEVEL3_14"),
 	func():
 		step_ended = false
-		await eye_lid.close_eyes()
-		step_ended = true,
+		await eye_lid.close_eyes(4)
+		next_step(),
 ]
 
 var current_step: int = -1
