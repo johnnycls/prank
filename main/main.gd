@@ -30,6 +30,7 @@ func start_level(level: int) -> void:
 	_current_scene = load(Config.level_to_path(level)).instantiate()
 	add_child.call_deferred(_current_scene)
 	current_level = level
+	can_open_menu = true
 
 func back_to_home_screen() -> void:
 	_remove_scene()

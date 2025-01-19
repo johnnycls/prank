@@ -28,7 +28,6 @@ func _ready() -> void:
 		saved_game_state = init_game_state.duplicate(true)
 	change_scene(story1)
 	scene.ended.connect(_on_story1_ended)
-	Main.can_open_menu = false
 	
 func win() -> void:
 	var new_game_state = {
@@ -51,13 +50,10 @@ func get_checkpoint(checkpoint: int) -> void:
 func _on_story1_ended():
 	change_scene(game1)
 	scene.ended.connect(_on_game1_ended)
-	Main.can_open_menu = true
 	
 func _on_game1_ended():
 	change_scene(story2)
 	scene.ended.connect(_on_story2_ended)
-	Main.can_open_menu = false
 
 func _on_story2_ended():
 	win()
-	Main.can_open_menu = false

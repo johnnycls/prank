@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxuw1juispouu"]
+[gd_scene load_steps=10 format=3 uid="uid://cxuw1juispouu"]
 
 [ext_resource type="Script" path="res://levels/6/game1.gd" id="1_vlauj"]
 [ext_resource type="PackedScene" uid="uid://dnedubnevuigi" path="res://scenes/background.tscn" id="2_4fw08"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://chomgxa2p51c4" path="res://levels/6/spawn_food.tscn" id="4_owkuf"]
 [ext_resource type="PackedScene" uid="uid://dou3axyms2kyj" path="res://characters/last_warrior.tscn" id="5_g0auv"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="7_i038h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y50oa"]
+size = Vector2(60, 2420)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk14"]
+size = Vector2(7680, 60)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vlauj")
@@ -37,6 +43,24 @@ player = NodePath("../Player")
 
 [node name="PlayerFollowingCamera" parent="." instance=ExtResource("7_i038h")]
 
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(-3840, -950)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("RectangleShape2D_y50oa")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(3840, -950)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+shape = SubResource("RectangleShape2D_y50oa")
+
+[node name="Wall3" type="StaticBody2D" parent="."]
+position = Vector2(3840, -950)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
+position = Vector2(-3840, -1250)
+shape = SubResource("RectangleShape2D_aqk14")
+
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
-[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
 [connection signal="died" from="Warrior" to="." method="_on_warrior_died"]

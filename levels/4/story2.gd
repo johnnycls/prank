@@ -51,7 +51,7 @@ var steps: Array = [
 		step_ended = false
 		speech_bubble.hide()
 		man.direction = 0.75
-		await Global.wait(1)
+		await Global.wait(1.2)
 		man.direction = 0
 		await Global.wait(2)
 		next_step(),
