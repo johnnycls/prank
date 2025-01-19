@@ -23,7 +23,7 @@ func _ready() -> void:
 	whole_scene.set_castle_scene("room")
 	cam.global_position = whole_scene.castle_center()
 	step_ended = false
-	await Global.wait(0.1)
+	await get_tree().process_frame
 	next_step()
 
 var steps: Array = [

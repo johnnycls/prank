@@ -27,7 +27,7 @@ func _ready() -> void:
 	add_child(player)
 	player.global_position = Vector2(10200, -740)
 	step_ended = false
-	await Global.wait(0.1)
+	await get_tree().process_frame
 	next_step()
 
 var steps: Array = [
