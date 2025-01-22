@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d3x7pchoecb4e"]
+
+[ext_resource type="Shader" path="res://shaders/flicker_effect.gdshader" id="1_opn11"]
+
+[resource]
+shader = ExtResource("1_opn11")
+shader_parameter/flicker_active = false
+shader_parameter/flicker_speed = 5.0
+shader_parameter/flicker_color = Vector4(1, 1, 1, 1)

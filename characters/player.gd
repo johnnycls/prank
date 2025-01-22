@@ -120,13 +120,17 @@ func hit(damage:float, audio):
 		hp_label.text = "%.2f" % hp + "/ 100"
 		if hp<=0:
 			die()
-		var timer = get_tree().create_timer(invincible_time)
-		await timer.timeout
+		start_flicker()
+		await Global.wait(invincible_time)
+		stop_flicker()
 		is_invincible = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("killzone"):
-		hit(area.damage, splash_sound if area.is_in_group("poop") else hit_sound)
+		if area.is_in_group("poop"):
+			hit(area.damage, splash_sound) 
+		else:
+			hit(area.damage, hit_sound)
 	if area.is_in_group("remove_when_touched_by_player"):
 		area.queue_free()
 	if area.is_in_group("foods"):
@@ -134,9 +138,20 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("killzone"):
-		hit(body.damage, splash_sound if body.is_in_group("poop") else hit_sound)
+		if body.is_in_group("poop"):
+			hit(body.damage, splash_sound) 
+		else:
+			hit(body.damage, hit_sound)
 	if body.is_in_group("remove_when_touched_by_player"):
 		body.queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	left_screen.emit()
+
+var flicker_material = preload("res://shaders/flickering_material.tres")
+func start_flicker():
+		$ColorRect.material = flicker_material
+		$ColorRect.material.set("shader_parameter/flicker_active", true)
+func stop_flicker():
+		$ColorRect.material.set("shader_parameter/flicker_active", false)
+		$ColorRect.material = null

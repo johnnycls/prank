@@ -30,4 +30,6 @@ offset_bottom = -1.0
 theme = ExtResource("2_jaw7s")
 horizontal_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
