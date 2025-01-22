@@ -81,6 +81,8 @@ signal dead
 signal left_screen
 
 var splash_sound = preload("res://assets/audio/splash.wav")
+var hit_sound = preload("res://assets/audio/hit.mp3")
+var grab_sound = preload("res://assets/audio/grab_catus.mp3")
 
 @export var show_hp: bool = true
 @export var invincible_time: float = 0.2
@@ -124,13 +126,15 @@ func hit(damage:float, audio):
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("killzone"):
-		hit(area.damage, splash_sound if area.is_in_group("poop") else null)
+		hit(area.damage, splash_sound if area.is_in_group("poop") else hit_sound)
 	if area.is_in_group("remove_when_touched_by_player"):
 		area.queue_free()
+	if area.is_in_group("foods"):
+		Global.play_sound(hit_audio, grab_sound)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("killzone"):
-		hit(body.damage, splash_sound if body.is_in_group("poop") else null)
+		hit(body.damage, splash_sound if body.is_in_group("poop") else hit_sound)
 	if body.is_in_group("remove_when_touched_by_player"):
 		body.queue_free()
 

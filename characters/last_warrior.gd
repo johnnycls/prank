@@ -3,6 +3,8 @@ extends Area2D
 signal died
 
 var fireball_scene: PackedScene = preload("res://objects/fireball.tscn")
+var eat_sound = preload("res://assets/audio/eat_catus.mp3")
+var eat_sound_2 = preload("res://assets/audio/eat_catus_2.mp3")
 
 @export var move_speed: float = 250.0
 @export var hungry_drain_rate: float = 2.0
@@ -11,6 +13,7 @@ var fireball_scene: PackedScene = preload("res://objects/fireball.tscn")
 
 @onready var hp_label = $HPLabel
 @onready var shoot_timer = $ShootTimer
+@onready var audio = $AudioStreamPlayer
 
 var damage = 10.0
 
@@ -62,5 +65,6 @@ func eat_food(food_points: float):
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("foods"):
+		Global.play_sound(audio, eat_sound if randf()<0.5 else eat_sound_2)
 		eat_food(area.food_points)
 		area.on_eaten()

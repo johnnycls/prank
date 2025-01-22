@@ -3,6 +3,7 @@ extends Node2D
 signal ended
 
 var select_sound = preload("res://assets/audio/select.wav")
+var strong_attack_sound = preload("res://assets/audio/strong_attack.mp3")
 
 var step_ended: bool = true
 
@@ -45,7 +46,8 @@ var steps: Array = [
 	func():
 		step_ended = false
 		speech_bubble.hide()
-		await eye_lid.close_eyes(3)
+		Global.play_sound(audio, strong_attack_sound)
+		await eye_lid.close_eyes(6)
 		step_ended = true
 		next_step(),
 ]
