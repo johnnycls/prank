@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cw2r5gqa1w1ul"]
 
 [ext_resource type="Script" path="res://levels/4/story2.gd" id="1_amvex"]
-[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="2_gdxqk"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://uis/components/eye_lid.tscn" id="2_gdxqk"]
 [ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="3_ccckg"]
 [ext_resource type="PackedScene" uid="uid://bsbe2andqjhxm" path="res://characters/young_man_story.tscn" id="4_ocrln"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="5_87466"]

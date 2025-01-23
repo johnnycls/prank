@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dnedubnevuigi" path="res://scenes/background.tscn" id="2_mjkqm"]
 [ext_resource type="PackedScene" uid="uid://bmauwlu6blts7" path="res://characters/old_warrior_story.tscn" id="5_62tfp"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="6_mpur7"]
-[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="7_2sx72"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://uis/components/eye_lid.tscn" id="7_2sx72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7stki"]
 size = Vector2(100, 4320)

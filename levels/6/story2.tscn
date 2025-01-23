@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bmauwlu6blts7" path="res://characters/old_warrior_story.tscn" id="5_4dxxy"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="5_l7lrq"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="7_dnsyb"]
-[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="8_m5up3"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://uis/components/eye_lid.tscn" id="8_m5up3"]
 
 [node name="Story" type="Node2D"]
 script = ExtResource("1_va6qp")

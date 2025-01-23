@@ -20,6 +20,7 @@ func _start() -> void:
 func _ready() -> void:
 	whole_scene.set_castle_scene("outside")
 	whole_scene.init(cam)
+	Main.open_menu()
 
 func lose() -> void:
 	_start()

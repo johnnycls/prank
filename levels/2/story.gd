@@ -178,6 +178,8 @@ func next_step():
 func _input(event):
 	if event.is_action_pressed("ui_accept") and step_ended:
 		next_step()
+	elif event.is_action_pressed("skip_story"):
+		ended.emit()
 
 func _on_stop_body_entered(body: Node2D) -> void:
 	if body == player:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://pxtx1ael8rsu"]
 
-[ext_resource type="Script" path="res://objects/eye_lid.gd" id="1_a8ghw"]
+[ext_resource type="Script" path="res://uis/components/eye_lid.gd" id="1_a8ghw"]
 
 [node name="EyeLid" type="CanvasLayer"]
 script = ExtResource("1_a8ghw")

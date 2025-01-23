@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="3_g5a4g"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="3_majtc"]
 [ext_resource type="PackedScene" uid="uid://801yunnbif45" path="res://characters/man_story.tscn" id="4_adpcm"]
-[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://objects/eye_lid.tscn" id="4_afens"]
+[ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://uis/components/eye_lid.tscn" id="4_afens"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="5_sy7aa"]
 [ext_resource type="PackedScene" uid="uid://dr3ghqee7tryj" path="res://objects/trap.tscn" id="8_p0bfm"]
 

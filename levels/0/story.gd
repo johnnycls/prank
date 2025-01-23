@@ -63,3 +63,5 @@ func _ready() -> void:
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		next_step()
+	elif event.is_action_pressed("skip_story"):
+		ended.emit()
