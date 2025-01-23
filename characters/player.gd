@@ -86,7 +86,7 @@ var grab_sound = preload("res://assets/audio/grab_catus.mp3")
 
 @export var show_hp: bool = true
 @export var invincible_time: float = 0.2
-@onready var hp_label = $HPLabel
+@onready var hp_bar = $HPBar
 @onready var hit_audio = $HitAudio
 
 var hp: float = 100.0
@@ -100,12 +100,12 @@ func init() -> void:
 	is_jumping = false
 	
 	if show_hp:
-		hp_label.show()
+		hp_bar.show()
 	else:
-		hp_label.hide()
+		hp_bar.hide()
 		
 	hp = 100.0
-	hp_label.text = "%.2f" % hp + "/ 100"
+	hp_bar.value = hp
 	
 func die():
 	dead.emit()
@@ -117,7 +117,7 @@ func hit(damage:float, audio):
 			hit_audio.play()
 		is_invincible = true
 		hp -= damage
-		hp_label.text = "%.2f" % hp + "/ 100"
+		hp_bar.value = hp
 		if hp<=0:
 			die()
 		start_flicker()

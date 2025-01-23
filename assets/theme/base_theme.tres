@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bgq7gf52v0365"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bgq7gf52v0365"]
 
 [ext_resource type="FontFile" uid="uid://b6vy8u7dib2jk" path="res://assets/fonts/NotoSansTC-Regular.ttf" id="1_ia854"]
 
@@ -16,6 +16,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lajf8"]
 bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb10x"]
+bg_color = Color(0.69, 0, 0, 1)
 
 [resource]
 Button/colors/font_color = Color(0.8, 0.8, 0.8, 1)
@@ -40,3 +43,6 @@ PopupMenu/font_sizes/font_size = 64
 PopupMenu/fonts/font = ExtResource("1_ia854")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_b1s5r")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_lajf8")
+ProgressBar/font_sizes/font_size = 32
+ProgressBar/fonts/font = ExtResource("1_ia854")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_wb10x")
