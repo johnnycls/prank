@@ -28,6 +28,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [global_group]
 
@@ -38,6 +39,11 @@ moving_objects=""
 remove_when_touched_by_player=""
 poop=""
 birds=""
+
+[gui]
+
+theme/custom="res://assets/theme/base_theme.tres"
+theme/custom_font="res://assets/fonts/NotoSansTC-Regular.ttf"
 
 [input]
 

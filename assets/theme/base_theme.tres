@@ -12,13 +12,13 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xxe5j"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqclc"]
+bg_color = Color(0.6, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1s5r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lajf8"]
 bg_color = Color(0.176471, 0.176471, 0.176471, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb10x"]
-bg_color = Color(0.69, 0, 0, 1)
 
 [resource]
 Button/colors/font_color = Color(0.8, 0.8, 0.8, 1)
@@ -34,6 +34,9 @@ Button/styles/focus = SubResource("StyleBoxEmpty_prlny")
 Button/styles/hover = SubResource("StyleBoxEmpty_3cj5q")
 Button/styles/normal = SubResource("StyleBoxEmpty_24711")
 Button/styles/pressed = SubResource("StyleBoxEmpty_xxe5j")
+HPBar/base_type = &"ProgressBar"
+HPBar/font_sizes/font_size = 32
+HPBar/styles/fill = SubResource("StyleBoxFlat_eqclc")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 64
 Label/fonts/font = ExtResource("1_ia854")
@@ -43,6 +46,3 @@ PopupMenu/font_sizes/font_size = 64
 PopupMenu/fonts/font = ExtResource("1_ia854")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_b1s5r")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_lajf8")
-ProgressBar/font_sizes/font_size = 32
-ProgressBar/fonts/font = ExtResource("1_ia854")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_wb10x")

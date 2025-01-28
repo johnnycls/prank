@@ -1,4 +1,4 @@
-extends Control
+extends VBoxContainer
 
 @onready var story_btn: Button = $StoryBtn
 
@@ -20,3 +20,6 @@ func _on_story_btn_pressed() -> void:
 
 func _on_endless_btn_pressed() -> void:
 	Main.start_level(-1)
+
+func _on_exit_btn_pressed() -> void:
+	get_tree().quit()

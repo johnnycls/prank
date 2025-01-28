@@ -2,63 +2,37 @@
 
 [ext_resource type="Script" path="res://uis/home.gd" id="1_blhe6"]
 
-[node name="Home" type="Control"]
-layout_mode = 3
-anchors_preset = 15
+[node name="Home" type="VBoxContainer"]
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -380.0
+offset_bottom = -90.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 script = ExtResource("1_blhe6")
 
 [node name="StoryBtn" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -196.5
-offset_top = 60.0
-offset_right = 196.5
-offset_bottom = 156.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "STORY"
 
 [node name="EndlessBtn" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -196.5
-offset_top = 180.0
-offset_right = 196.5
-offset_bottom = 276.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "ENDLESS"
 
 [node name="SettingsBtn" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.5
-offset_top = 300.0
-offset_right = 151.5
-offset_bottom = 396.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "SETTINGS"
+
+[node name="ExitBtn" type="Button" parent="."]
+layout_mode = 2
+text = "QUIT_GAME"
 
 [connection signal="pressed" from="StoryBtn" to="." method="_on_story_btn_pressed"]
 [connection signal="pressed" from="EndlessBtn" to="." method="_on_endless_btn_pressed"]
 [connection signal="pressed" from="SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
