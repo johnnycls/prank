@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://nd1x06awfi2a"]
+[gd_scene load_steps=7 format=3 uid="uid://nd1x06awfi2a"]
 
 [ext_resource type="Script" path="res://characters/fairy.gd" id="1_oy8hc"]
 [ext_resource type="Theme" uid="uid://bgq7gf52v0365" path="res://assets/theme/base_theme.tres" id="2_3ol7m"]
 [ext_resource type="AudioStream" uid="uid://bce0gwu7cwrfy" path="res://assets/audio/run.ogg" id="3_ois6l"]
+[ext_resource type="Texture2D" uid="uid://df7jwhjewb0ss" path="res://assets/character_sprites/fairy.png" id="3_uyphx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
 size = Vector2(119, 402)
@@ -22,23 +23,26 @@ offset_bottom = 12.0
 theme = ExtResource("2_3ol7m")
 horizontal_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 120.0
-offset_bottom = 400.0
-color = Color(0, 0, 1, 1)
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -3.0
+offset_top = -37.0
+offset_right = 221.0
+offset_bottom = 409.0
+texture = ExtResource("3_uyphx")
+expand_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(59.5, 201)
+position = Vector2(100, 200)
 shape = SubResource("RectangleShape2D_0deo2")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(61.5, 201)
+position = Vector2(101, 201)
 shape = SubResource("RectangleShape2D_ynq2q")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(60, 203)
+position = Vector2(98, 200)
 scale = Vector2(5.9, 20.1)
 
 [node name="JumpAudio" type="AudioStreamPlayer" parent="."]

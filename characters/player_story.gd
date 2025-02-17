@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var jump_audio: AudioStreamPlayer = $JumpAudio
 @onready var run_audio: AudioStreamPlayer = $RunAudio
+@onready var wing: TextureRect = $Wing
+@onready var no_wing: TextureRect = $NoWing
 
 @export var move_speed : float = 3500.0
 @export var jump_speed : float = 3500.0
@@ -26,6 +28,14 @@ var is_jump_pressed: bool = false
 var rotation_input: float = 0.0 
 var direction: float = 0.0
 
+func _ready() -> void:
+	if can_fly:
+		wing.show()
+		no_wing.hide()
+	else:
+		wing.hide()
+		no_wing.show()
+		
 func _stop_jumping():
 	is_jumping = false
 	rotated_jumping_velocity.x = 0

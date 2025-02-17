@@ -1,20 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch6fho50h23xq"]
 
 [ext_resource type="Script" path="res://levels/0/goal.gd" id="1_08n8v"]
+[ext_resource type="Texture2D" uid="uid://q1ccxl6n6a73" path="res://assets/object_sprites/food.png" id="2_k3kwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6esh"]
-size = Vector2(100, 100)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n0rqg"]
-size = Vector2(100, 100)
+size = Vector2(174, 106)
 
 [node name="Goal" type="Area2D" groups=["moving_objects"]]
 script = ExtResource("1_08n8v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_c6esh")
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -102.0
+offset_top = -104.0
+offset_right = 106.0
+offset_bottom = 96.0
+texture = ExtResource("2_k3kwr")
+expand_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_n0rqg")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 3)
+shape = SubResource("RectangleShape2D_c6esh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

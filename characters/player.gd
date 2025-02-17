@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var visible_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var jump_audio: AudioStreamPlayer = $JumpAudio
 @onready var run_audio: AudioStreamPlayer = $RunAudio
+@onready var wing: TextureRect = $Wing
+@onready var no_wing: TextureRect = $NoWing
 
 @export var move_speed : float = 3500.0
 @export var jump_speed : float = 3500.0
@@ -21,6 +23,14 @@ var walking_velocity: Vector2 = Vector2.ZERO
 var rotated_jumping_velocity: Vector2 = Vector2.ZERO
 var gravitational_velocity: Vector2 = Vector2.ZERO
 var is_jumping: bool = false
+
+func _ready() -> void:
+	if can_fly:
+		wing.show()
+		no_wing.hide()
+	else:
+		wing.hide()
+		no_wing.show()
 
 func _stop_jumping():
 	is_jumping = false
@@ -150,8 +160,12 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 var flicker_material = preload("res://shaders/flickering_material.tres")
 func start_flicker():
-		$ColorRect.material = flicker_material
-		$ColorRect.material.set("shader_parameter/flicker_active", true)
+		wing.material = flicker_material
+		wing.material.set("shader_parameter/flicker_active", true)
+		no_wing.material = flicker_material
+		no_wing.material.set("shader_parameter/flicker_active", true)
 func stop_flicker():
-		$ColorRect.material.set("shader_parameter/flicker_active", false)
-		$ColorRect.material = null
+		wing.material.set("shader_parameter/flicker_active", false)
+		wing.material = null
+		no_wing.material.set("shader_parameter/flicker_active", false)
+		no_wing.material = null

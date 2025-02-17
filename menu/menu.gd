@@ -1,4 +1,4 @@
-extends Control
+extends VBoxContainer
 
 @onready var back_btn = $Btns/BackBtn
 	

@@ -1,23 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvfbyslx2mt5i"]
+[gd_scene load_steps=5 format=3 uid="uid://bvfbyslx2mt5i"]
 
 [ext_resource type="Script" path="res://characters/warrior_story.gd" id="1_mb76p"]
 [ext_resource type="AudioStream" uid="uid://bce0gwu7cwrfy" path="res://assets/audio/run.ogg" id="2_68wf4"]
+[ext_resource type="Texture2D" uid="uid://cwm2o4b8vnt2n" path="res://assets/character_sprites/warrior.png" id="2_qi5sp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
-size = Vector2(120, 400)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjbm8"]
+size = Vector2(184, 476)
 
 [node name="Warrior" type="CharacterBody2D"]
 z_index = 10
 script = ExtResource("1_mb76p")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 120.0
-offset_bottom = 400.0
-color = Color(1, 0, 0, 1)
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -83.0
+offset_top = -69.0
+offset_right = 281.0
+offset_bottom = 567.0
+texture = ExtResource("2_qi5sp")
+expand_mode = 1
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(60, 200)
-shape = SubResource("RectangleShape2D_0deo2")
+position = Vector2(92, 238)
+shape = SubResource("RectangleShape2D_gjbm8")
 
 [node name="JumpAudio" type="AudioStreamPlayer" parent="."]
 

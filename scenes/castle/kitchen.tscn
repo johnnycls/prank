@@ -19,7 +19,7 @@ script = ExtResource("1_oun64")
 offset_top = 1575.0
 offset_right = 2300.0
 offset_bottom = 3000.0
-color = Color(0, 0.583333, 1, 1)
+color = Color(0.6, 0.521569, 0.4, 1)
 
 [node name="KitchenDoor" parent="." instance=ExtResource("1_qq3df")]
 position = Vector2(200, 2400)

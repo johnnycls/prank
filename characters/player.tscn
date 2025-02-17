@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbefsipxb2dw8"]
+[gd_scene load_steps=8 format=3 uid="uid://cbefsipxb2dw8"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_fpagb"]
+[ext_resource type="Texture2D" uid="uid://dwnt674r6404p" path="res://assets/character_sprites/player_no_wing.png" id="2_m184p"]
 [ext_resource type="Theme" uid="uid://bgq7gf52v0365" path="res://assets/theme/base_theme.tres" id="2_yl3jm"]
+[ext_resource type="Texture2D" uid="uid://bfmqb81l2qxqb" path="res://assets/character_sprites/player.png" id="3_chepf"]
 [ext_resource type="AudioStream" uid="uid://bce0gwu7cwrfy" path="res://assets/audio/run.ogg" id="3_uaog5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0deo2"]
@@ -14,19 +16,31 @@ size = Vector2(123, 402)
 z_index = 10
 script = ExtResource("1_fpagb")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 120.0
-offset_bottom = 400.0
-color = Color(0, 0, 1, 1)
+[node name="NoWing" type="TextureRect" parent="."]
+offset_left = -183.0
+offset_top = -64.0
+offset_right = 370.0
+offset_bottom = 456.0
+texture = ExtResource("2_m184p")
+expand_mode = 1
+
+[node name="Wing" type="TextureRect" parent="."]
+visible = false
+offset_left = -183.0
+offset_top = -64.0
+offset_right = 370.0
+offset_bottom = 456.0
+texture = ExtResource("3_chepf")
+expand_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(59.5, 201)
+position = Vector2(95, 203)
 shape = SubResource("RectangleShape2D_0deo2")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(61.5, 201)
+position = Vector2(96, 204)
 shape = SubResource("RectangleShape2D_ynq2q")
 
 [node name="HPBar" type="ProgressBar" parent="."]
@@ -44,7 +58,7 @@ value = 100.0
 show_percentage = false
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(60, 203)
+position = Vector2(100, 208)
 scale = Vector2(5.9, 20.1)
 
 [node name="JumpAudio" type="AudioStreamPlayer" parent="."]

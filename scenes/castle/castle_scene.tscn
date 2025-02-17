@@ -24,4 +24,11 @@ color = Color(0.38, 0.28956, 0.1862, 1)
 position = Vector2(3840, 3820)
 shape = SubResource("RectangleShape2D_gdoh4")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 3398.0
+offset_right = 320.0
+offset_bottom = 3492.0
+text = "CASTLE"
+
 [connection signal="changed_scene" from="Castle" to="." method="_on_castle_changed_scene"]

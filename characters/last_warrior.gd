@@ -16,8 +16,8 @@ var eat_sound_2 = preload("res://assets/audio/eat_catus_2.mp3")
 @onready var audio = $AudioStreamPlayer
 
 var damage = 10.0
-
 var hp: float = 100.0
+
 var target
 
 func init():

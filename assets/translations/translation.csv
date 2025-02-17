@@ -2,6 +2,7 @@ keys,en,zh,cmn
 BACK,Back,返回,返回
 HOME,Back to Homepage,返回主頁,返回主页
 SETTINGS,Settings,設定,设定
+QUIT_GAME,Quit,離開,离开
 PLAY_AGAIN,Play Again,再玩一遍,再玩一遍
 START,Start,開始,开始
 BREAK_RECORD,New Record!,破紀錄啦！,破纪录啦！
@@ -212,3 +213,16 @@ LEVEL7_12,That must be it!,果然是這樣吧！,果然是这样吧！
 LEVEL7_13,What story do you want to hear today?,你們今天想聽什麽故事啊？,你们今天想听什么故事啊？
 LEVEL7_14,The demon story,惡魔的故事,恶魔的故事
 LEVEL7_15,Alright! Let me tell you a story about demons!,好！那今天，姐姐就給你們説惡魔的故事吧！,好！那今天，姐姐就给你们说恶魔的故事吧！
+PARK,Park,公園,公园
+CASTLE,Castle,城堡,城堡
+GRASS,Grass,草,草
+OCEAN,Ocean,海,海
+WILDERNESS,Wilderness,荒野,荒野
+FOREST,Forest,森林,森林
+DESERT,Desert,沙漠,沙漠
+TUTOR_0,"move “a, d”","左右移動 ""a, d""","左右移动 ""a, d"""
+TUTOR_1,jump/fly “w”,"跳/飛 ""w""","跳/飞 ""w"""
+TUTOR_2,interact “SPACE/Enter”,"互動 ""SPACE/Enter""","互动 ""SPACE/Enter"""
+TUTOR_3,"rotate “<-, ->”","旋轉""<-, ->""","旋转 ""<-, ->"""
+TUTOR_4,menu “Esc”,"菜單 ""Esc""","菜单 ""Esc"""
+TUTOR_5,Skip Story “Delete”,"跳過故事 ""Delete""","跳过故事 ""Delete"""

@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_5n7kh"]
 
-[node name="Menu" type="Control"]
-layout_mode = 3
+[node name="Menu" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,43 +12,58 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_5n7kh")
 
-[node name="Btns" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_bottom = 180.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Btns" type="HBoxContainer" parent="."]
+layout_mode = 2
 
 [node name="BackBtn" type="Button" parent="Btns"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -25.0
-offset_right = 25.0
-offset_bottom = 31.0
-grow_horizontal = 2
+layout_mode = 2
+focus_neighbor_right = NodePath("../HomeScreenBtn")
 focus_neighbor_bottom = NodePath("../HomeScreenBtn")
 text = "BACK"
 
+[node name="Control" type="Control" parent="Btns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="HomeScreenBtn" type="Button" parent="Btns"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -28.5
-offset_top = -31.0
-offset_right = 28.5
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
+focus_neighbor_left = NodePath("../BackBtn")
 focus_neighbor_top = NodePath("../BackBtn")
 text = "HOME"
+
+[node name="Tutor" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Tutor"]
+layout_mode = 2
+text = "TUTOR_0"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutor"]
+layout_mode = 2
+text = "TUTOR_1"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutor"]
+layout_mode = 2
+text = "TUTOR_2"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Tutor"]
+layout_mode = 2
+text = "TUTOR_3"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Tutor"]
+layout_mode = 2
+text = "TUTOR_4"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Tutor"]
+layout_mode = 2
+text = "TUTOR_5"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Btns/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="Btns/HomeScreenBtn" to="." method="_on_home_screen_btn_pressed"]

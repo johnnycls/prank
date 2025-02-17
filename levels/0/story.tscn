@@ -15,6 +15,7 @@ player_following_cam = NodePath("../Camera2D")
 
 [node name="Player" parent="." instance=ExtResource("2_2htsp")]
 position = Vector2(16000, 760)
+can_fly = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

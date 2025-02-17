@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://uis/components/eye_lid.gd" id="1_a8ghw"]
 
 [node name="EyeLid" type="CanvasLayer"]
-layer = 0
+layer = 128
 script = ExtResource("1_a8ghw")
 
 [node name="ColorRect" type="ColorRect" parent="."]

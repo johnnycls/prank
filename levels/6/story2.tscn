@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bo3om6r7lyoik" path="res://scenes/highland_scene.tscn" id="2_nokyi"]
 [ext_resource type="PackedScene" uid="uid://dnedubnevuigi" path="res://scenes/background.tscn" id="2_rjwgj"]
 [ext_resource type="PackedScene" uid="uid://cfdub3r3ey8yj" path="res://characters/fairy_story.tscn" id="4_dtnju"]
-[ext_resource type="PackedScene" uid="uid://bmauwlu6blts7" path="res://characters/old_warrior_story.tscn" id="5_4dxxy"]
+[ext_resource type="PackedScene" uid="uid://tlssttl1k6e0" path="res://characters/last_warrior_story.tscn" id="5_01mac"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="5_l7lrq"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="7_dnsyb"]
 [ext_resource type="PackedScene" uid="uid://pxtx1ael8rsu" path="res://uis/components/eye_lid.tscn" id="8_m5up3"]
@@ -20,7 +20,7 @@ position = Vector2(-3840, -2160)
 [node name="Fairy" parent="." instance=ExtResource("4_dtnju")]
 position = Vector2(-1820, -150)
 
-[node name="Warrior" parent="." instance=ExtResource("5_4dxxy")]
+[node name="Warrior" parent="." instance=ExtResource("5_01mac")]
 position = Vector2(1820, -150)
 
 [node name="PlayerFollowingCamera" parent="." instance=ExtResource("7_dnsyb")]

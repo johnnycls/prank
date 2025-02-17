@@ -16,6 +16,9 @@
 [node name="WholeScene" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_e28hk")
+wildnerness_revolution = 20
+forest_revolution = 25
+desert_revolution = 30
 
 [node name="Background" parent="." instance=ExtResource("2_2k24j")]
 

@@ -14,7 +14,7 @@ var progress: Dictionary
 var can_open_menu: bool = false
 
 func _ready() -> void:
-	# $State.delete_progress()
+	#$State.delete_progress()
 	Global.load_lang()
 	progress = $State.read_progress()
 	play_bgm(0,0)

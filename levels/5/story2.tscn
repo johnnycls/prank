@@ -4,10 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://t1346vl8kt37" path="res://scenes/whole_scene.tscn" id="2_go7nd"]
 [ext_resource type="PackedScene" uid="uid://cmhvosrsk22vw" path="res://characters/player_story.tscn" id="3_0318r"]
 [ext_resource type="PackedScene" uid="uid://bupgftai44g6l" path="res://scenes/player_following_camera.tscn" id="4_gk0sr"]
+[ext_resource type="Texture2D" uid="uid://8k2aylb1tlq5" path="res://assets/ui_sprites/dead_bodies.png" id="6_noejj"]
 [ext_resource type="PackedScene" uid="uid://cgcpl0ee6iilu" path="res://uis/components/speech_bubble.tscn" id="6_nv81l"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qa16k"]
-size = Vector2(7680, 4320)
 
 [node name="Story" type="Node2D"]
 script = ExtResource("1_ectyq")
@@ -37,4 +35,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_qa16k")
+texture = ExtResource("6_noejj")

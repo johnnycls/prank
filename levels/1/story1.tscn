@@ -10,6 +10,7 @@ script = ExtResource("1_a8lpc")
 
 [node name="Player" parent="." instance=ExtResource("2_2p2in")]
 position = Vector2(10800, 760)
+can_fly = false
 
 [node name="WholeScene" parent="." node_paths=PackedStringArray("player_following_cam") instance=ExtResource("3_jqogo")]
 position = Vector2(0, -2160)

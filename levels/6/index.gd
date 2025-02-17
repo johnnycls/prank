@@ -5,6 +5,7 @@ extends Node2D
 var game1 = preload("res://levels/6/game1.tscn")
 var story1 = preload("res://levels/6/story1.tscn")
 var story2 = preload("res://levels/6/story2.tscn")
+var story3 = preload("res://levels/6/story3.tscn")
 
 var scene
 
@@ -56,4 +57,8 @@ func _on_game1_ended():
 	scene.ended.connect(_on_story2_ended)
 
 func _on_story2_ended():
+	change_scene(story3)
+	scene.ended.connect(_on_story3_ended)
+	
+func _on_story3_ended():
 	win()

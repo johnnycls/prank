@@ -15,7 +15,7 @@ script = ExtResource("1_mkg8p")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1650.0
 offset_bottom = 1500.0
-color = Color(0.616667, 0, 1, 1)
+color = Color(0.878431, 0.721569, 0.745098, 1)
 
 [node name="RoomDoor" parent="." instance=ExtResource("1_iw4pa")]
 position = Vector2(200, 900)

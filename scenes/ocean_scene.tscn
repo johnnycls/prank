@@ -11,3 +11,10 @@ position = Vector2(7680, 0)
 
 [node name="Ocean3" parent="." instance=ExtResource("1_fti4n")]
 position = Vector2(15360, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 91.0
+offset_top = 3572.0
+offset_right = 326.0
+offset_bottom = 3666.0
+text = "OCEAN"

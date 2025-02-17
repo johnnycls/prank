@@ -23,3 +23,10 @@ offset_top = 3020.0
 offset_right = 7680.0
 offset_bottom = 3320.0
 color = Color(0.0996, 0.83, 0.416107, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 3398.0
+offset_right = 320.0
+offset_bottom = 3492.0
+text = "GRASS"

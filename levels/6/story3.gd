@@ -24,6 +24,7 @@ var steps: Array = [
 		await eye_lid.open_eyes(3)
 		next_step(),
 	func():
+		step_ended = true
 		speech_bubble.set_dialogue(player.global_position, "LEVEL6_24"),
 	func():
 		speech_bubble.set_dialogue(player.global_position, "LEVEL6_25"),
