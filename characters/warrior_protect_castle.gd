@@ -12,4 +12,4 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if Global.is_node_valid(player):
-		global_position.y = min(755, player.global_position.y)
+		global_position.y = min(680, player.global_position.y)

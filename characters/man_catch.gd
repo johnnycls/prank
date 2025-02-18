@@ -16,4 +16,8 @@ func _physics_process(delta: float) -> void:
 		var target_x = player.global_position.x
 		var max_movement = speed * delta
 		var new_x = move_toward(global_position.x, target_x, max_movement)
+		if new_x>=global_position.x:
+			$TextureRect.flip_h = true
+		else:
+			$TextureRect.flip_h = false
 		global_position.x = new_x

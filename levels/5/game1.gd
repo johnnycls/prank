@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _start() -> void:
 	whole_scene.init(cam)
+	whole_scene.set_castle_scene("outside")
 	for node in Global.get_valid_nodes_in_group("poop"):
 		node.queue_free()
 	for node in Global.get_valid_nodes_in_group("birds"):

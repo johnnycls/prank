@@ -36,6 +36,10 @@ func _physics_process(delta):
 	if Global.is_node_valid(target):
 		var direction = -1 if target.global_position.x < global_position.x else 1
 		var velocity = direction * move_speed
+		if velocity>=0:
+			$TextureRect.flip_h = true
+		else:
+			$TextureRect.flip_h = false
 		global_position.x += velocity * delta
 
 func find_nearest_target():

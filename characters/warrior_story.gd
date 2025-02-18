@@ -78,4 +78,8 @@ func _physics_process(delta) -> void:
 		rotated_jumping_velocity.x = move_toward(rotated_jumping_velocity.x, 0, resistance)
 		
 	velocity = rotated_jumping_velocity + rotated_walking_velocity + gravitational_velocity
+	if velocity.x>=0:
+		$TextureRect.flip_h = true
+	else:
+		$TextureRect.flip_h = false
 	move_and_slide()

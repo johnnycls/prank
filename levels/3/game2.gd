@@ -18,7 +18,7 @@ func _start() -> void:
 	for node in Global.get_valid_nodes_in_group("birds"):
 		node.queue_free()
 	player.global_position = Vector2(55000, 755)
-	man.global_position = Vector2(52000, 755)
+	man.global_position = Vector2(52000, 720)
 	player.init()
 
 func _on_player_dead() -> void:

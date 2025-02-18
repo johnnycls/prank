@@ -21,10 +21,10 @@ func set_dialogue(pos: Vector2, text: String):
 	
 	if canva_pos.x > viewport_size.x / 2:
 		texture_rect.flip_h = false
-		texture_rect.position = Vector2(canva_pos.x - texture_rect.size.x + 50, canva_pos.y - texture_rect.size.y)
+		texture_rect.position = Vector2(canva_pos.x - texture_rect.size.x + 75, canva_pos.y - texture_rect.size.y)
 	else:
 		texture_rect.flip_h = true
-		texture_rect.position = Vector2(canva_pos.x, canva_pos.y - texture_rect.size.y)
+		texture_rect.position = Vector2(canva_pos.x + 75, canva_pos.y - texture_rect.size.y)
 		
 	dialogue.position = Vector2(padding_x / 2, padding_y / 2)
 	

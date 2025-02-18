@@ -157,6 +157,7 @@ var steps: Array = [
 	func():
 		player.direction = 0
 		warrior.direction = 0
+		await Global.wait(0.1)
 		speech_bubble.set_dialogue(player.global_position,"LEVEL2_16")
 		step_ended = true,
 	func():

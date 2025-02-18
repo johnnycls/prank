@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cpa5735hwwn1c" path="res://assets/audio/jump.wav" id="2_ngxi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ji87u"]
-size = Vector2(166, 446)
+size = Vector2(166, 439)
 
 [node name="Man" type="Area2D" groups=["killzone", "moving_objects"]]
 z_index = 10
@@ -21,7 +21,7 @@ expand_mode = 1
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(89, 224)
+position = Vector2(89, 220.5)
 shape = SubResource("RectangleShape2D_ji87u")
 
 [node name="AttackAudio" type="AudioStreamPlayer" parent="."]
